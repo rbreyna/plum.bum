@@ -19,22 +19,24 @@ function Dashboard() {
             <h6>Joe Smith</h6>
           </Col>
           <Col className="content dash2" sm={8}>
-            <h4><strong>Your Writing Stats</strong></h4>
+            <p>Daily Word Count:</p><br></br>
+            <p>Weekly Word Count:</p><br></br>
+            <p>Writing Goal:</p>
           </Col>
         </Row>
         <Row className="fluid" id="row-2">
           <Col className="content dash3" sm={12}>
             <InputGroup>
+              <br></br>
+              <InputGroup id="passage-title" sm={12}>
+                <InputGroup.Prepend>
+                  <InputGroup.Text>Name of Passage</InputGroup.Text>
+                </InputGroup.Prepend>
+                <FormControl />
                 <br></br>
-                <InputGroup id="passage-title" sm={12}>
-                  <InputGroup.Prepend>
-                    <InputGroup.Text>Name of Passage</InputGroup.Text>
-                  </InputGroup.Prepend>
-                  <FormControl />
-                <br></br>
-                </InputGroup>
-                <FormControl id="passage" as="textarea" aria-label="With textarea" />
-              
+              </InputGroup>
+              <FormControl id="passage" as="textarea" aria-label="With textarea" />
+
 
             </InputGroup>
           </Col>
