@@ -3,9 +3,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import Projects from "./pages/Projects";
-import Login from "./components/Login"
 import Navigation from "./components/Navigation";
-import 'bulma/css/bulma.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // SHAYDA NOTE: This is the default css file; will need to be updated:
@@ -20,10 +18,8 @@ function App() {
     <Router>
       <Navigation />
       <div className="App">
-        
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/login" exact component={Login} />
           <Route path="/about" exact component={About} />
           <Route path="/projects" exact component={Projects} />
           <Route path="/dashboard" exact component={Dashboard} />

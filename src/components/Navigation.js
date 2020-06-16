@@ -17,15 +17,14 @@ function Navigation() {
           {!isLoading && !user && (
             <>
               <Nav.Link href="/about">About</Nav.Link>
-              <Nav.Link href="/">Join</Nav.Link>
-              <Nav.Link onClick={loginWithRedirect}>Login</Nav.Link>
+              <Nav.Link onClick={loginWithRedirect}>Login/Sign Up</Nav.Link>
             </>
           )}
           {!isLoading && user && (
             <>
               <Navbar.Text>Hello {user.name}!</Navbar.Text>
               <Nav.Link href="/about">About</Nav.Link>
-              <Nav.Link href="/">Join</Nav.Link>
+              <Nav.Link href="/dashboard">Dashboard</Nav.Link>
               <Nav.Link
                 onClick={() => logout({ returnTo: window.location.origin })}
                 className="navbar-item"
