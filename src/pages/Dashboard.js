@@ -1,11 +1,11 @@
 import React from "react";
 import "./Dashboard.css";
 import { Container, Col, Row, FormControl, InputGroup, Image } from "react-bootstrap"
-import { useAuth0 } from '../contexts/auth0-context';
+//import { useAuth0 } from '../contexts/auth0-context';
 
 function Dashboard() {
 
-  const { isLoading, user } = useAuth0();
+  //const { isLoading, user } = useAuth0();
 
   return (
 
