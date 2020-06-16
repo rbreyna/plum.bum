@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../components/Header'
+
 import { useAuth0 } from '../contexts/auth0-context';
 
 export default function Login (){
@@ -7,7 +7,7 @@ export default function Login (){
 
     return(
         <>
-        <Header />
+
         <div className="hero is-info is-fullheight">
           <div className="hero-body">
             <div className="container has-text-centered">
