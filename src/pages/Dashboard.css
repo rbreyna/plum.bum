@@ -17,7 +17,6 @@
 
 }
 
-
 .dash1 {
   background-color: purple;
 }
@@ -28,4 +27,13 @@
 
 .dash3{
   background-color: #b2e6b0;
+}
+
+#passage,
+#passage-title{
+  margin-top: 15px;
+}
+
+#passage{
+  min-height: 200px;
 }
