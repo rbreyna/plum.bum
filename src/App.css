@@ -1,3 +1,6 @@
+/* COLORS:
+#a8e6cf */
+
 .App {
   text-align: center;
 }
@@ -29,4 +32,28 @@ a:hover {
 
 #nav-logo {
   width: 200px;
+}
+
+.welcome-tron {
+  background-color: #a8e6cf;
+}
+
+.welcome-header {
+  padding: 50px 0 200px;
+}
+
+.welcome-img {
+  width: 50%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li {
+  font-family: "Montserrat Alternates", sans-serif;
 }
