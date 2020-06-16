@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import Projects from "./pages/Projects";
-import Nav from "./components/Nav";
+import Navigation from "./components/Navigation";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // SHAYDA NOTE: This is the default css file; will need to be updated:
@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Nav />
+        <Navigation />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/about" exact component={About} />
