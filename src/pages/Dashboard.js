@@ -4,9 +4,14 @@ import "./Dashboard.css";
 import { Container, Col, Row, FormControl, InputGroup, Image } from "react-bootstrap"
 import { useAuth0 } from '../contexts/auth0-context';
 
+import {Button} from 'react-bootstrap';
+import {WritingGoal} from '../components/WritingGoal';
+
 function Dashboard() {
 
 const { user } = useAuth0();
+const [modalShow, setModalShow] = React.useState(false);
+
 
   return (
     <div>
@@ -21,7 +26,24 @@ const { user } = useAuth0();
           <Col className="content dash2" sm={8}>
             <p>Daily Word Count:</p><br></br>
             <p>Weekly Word Count:</p><br></br>
-            <p>Writing Goal:</p>
+
+            {/*function App() {
+              const [modalShow, setModalShow] = React.useState(false);
+
+            return (*/}
+                <>
+                <Button onClick={() => setModalShow(true)}>
+                    <p>Writing Goal:</p>
+                </Button>
+
+                <WritingGoal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
+               </>
+              
+            
+            
 
           </Col>
         </Row>
