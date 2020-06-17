@@ -53,6 +53,11 @@ export class Auth0Provider extends Component{
         this.setState({ user, isAuthenticated: true, isLoading: false});
        window.history.replaceState({}, document.title, window.location.pathname);
     }
+
+    grabUser = () => {
+
+    }
+    
     render(){
         
         const { auth0Client, isLoading, isAuthenticated, user } = this.state;
