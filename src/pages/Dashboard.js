@@ -1,18 +1,21 @@
 import React from "react";
 import "./Dashboard.css";
 
-import {
-  Container,
-  Col,
-  Row,
-  FormControl,
-  InputGroup,
-  Image,
-} from "react-bootstrap";
-import { useAuth0 } from "../contexts/auth0-context";
+
+import {Button, Container, Col, Row, FormControl, InputGroup, Image } from "react-bootstrap";
+import { useAuth0 } from '../contexts/auth0-context';
+import {WritingGoal} from '../components/WritingGoal';
+{/*rashida : added*/}
+
+
+
 
 function Dashboard() {
   const { user } = useAuth0();
+
+{/*rashida : added*/}
+const [modalShow, setModalShow] = React.useState(false);
+
 
   return (
     <div>
@@ -31,11 +34,26 @@ function Dashboard() {
             <h6>{user ? `${user.name}` : null}</h6>
           </Col>
           <Col className="content dash2" sm={8}>
-            <p>Daily Word Count:</p>
-            <br></br>
-            <p>Weekly Word Count:</p>
-            <br></br>
-            <p>Writing Goal:</p>
+
+            <p>Daily Word Count:</p><br></br>
+            <p>Weekly Word Count:</p><br></br>
+
+           { /* Rahida : added this to pop a modal when Writing goal is clicked*/}
+                <>
+                <Button onClick={() => setModalShow(true)}>
+                    <p>Writing Goal:</p>
+                </Button>
+
+                <WritingGoal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
+               </>
+              
+            
+            
+
+
           </Col>
         </Row>
         <Row className="fluid" id="row-2">
