@@ -4,12 +4,15 @@ import "./Dashboard.css";
 import { Container, Col, Row, FormControl, InputGroup, Image } from "react-bootstrap"
 import { useAuth0 } from '../contexts/auth0-context';
 
+{/*rashida : added*/}
 import {Button} from 'react-bootstrap';
 import {WritingGoal} from '../components/WritingGoal';
 
 function Dashboard() {
 
 const { user } = useAuth0();
+
+{/*rashida : added*/}
 const [modalShow, setModalShow] = React.useState(false);
 
 
@@ -27,10 +30,7 @@ const [modalShow, setModalShow] = React.useState(false);
             <p>Daily Word Count:</p><br></br>
             <p>Weekly Word Count:</p><br></br>
 
-            {/*function App() {
-              const [modalShow, setModalShow] = React.useState(false);
-
-            return (*/}
+            {/* Rahida : added this to pop a modal when Writing goal is clicked*/}
                 <>
                 <Button onClick={() => setModalShow(true)}>
                     <p>Writing Goal:</p>
