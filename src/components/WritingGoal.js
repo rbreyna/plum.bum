@@ -29,6 +29,9 @@ render(){
         </Modal.Header>
         <Modal.Body>
           <div className="container">
+              <div className="modalImage">
+                  <img src="https://images.unsplash.com/photo-1555431189-0fabf2667795?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" 
+    alt="modal pic" />
 
               <Row>
                   <Col sm={6}>
@@ -51,13 +54,15 @@ render(){
                               <Form.Label>BY THIS DATE:</Form.Label>
                               <Form.Control
                                 type="date"
-                                name="GoalDate"
+                                name="WORDS"
                             
                                />
                           </Form.Group>
                       </Form>
                   </Col>
               </Row>
+              </div>
+              
           </div>
           
         </Modal.Body>
