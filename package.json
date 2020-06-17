@@ -2,7 +2,7 @@
   "name": "plumbum",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:3000/",
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.9.0",
     "@testing-library/jest-dom": "^4.2.4",
