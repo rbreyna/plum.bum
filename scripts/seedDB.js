@@ -1,3 +1,5 @@
+// NOTE: To run this test data, open Terminal and run < npm run seed >
+
 const mongoose = require("mongoose");
 const db = require("../models");
 
@@ -30,7 +32,6 @@ const userSeed = [
 ];
 
 // Data will be loaded into Database via Mongoose:
-
 db.Entry.remove({})
   .then(() => db.Entry.collection.insertMany(entrySeed))
   .then((data) => {
