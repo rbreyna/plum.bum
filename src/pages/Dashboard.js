@@ -1,5 +1,6 @@
 import React from "react";
 import "./Dashboard.css";
+
 import { Container, Col, Row, FormControl, InputGroup, Image } from "react-bootstrap"
 import { useAuth0 } from '../contexts/auth0-context';
 
@@ -8,7 +9,6 @@ function Dashboard() {
 const { user } = useAuth0();
 
   return (
-
     <div>
       <h1> {user ? `${user.name}'s` : null } Dashboard Page</h1>
 
@@ -22,6 +22,7 @@ const { user } = useAuth0();
             <p>Daily Word Count:</p><br></br>
             <p>Weekly Word Count:</p><br></br>
             <p>Writing Goal:</p>
+
           </Col>
         </Row>
         <Row className="fluid" id="row-2">
@@ -36,18 +37,15 @@ const { user } = useAuth0();
                 <br></br>
               </InputGroup>
               <FormControl id="passage" as="textarea" aria-label="With textarea" />
-
-
             </InputGroup>
           </Col>
         </Row>
       </Container>
     </div>
 
+
   )
 }
-
-
 
 
 export default Dashboard;
