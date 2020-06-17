@@ -1,5 +1,5 @@
 const express = require("express");
-
+const path = require("path");
 const mongoose = require("mongoose");
 
 // SHAYDA NOTE: I've commented out routes for now since none are yet included. Will update as needed.
@@ -31,9 +31,8 @@ mongoose.connect(MONGODB_URI, {
   useCreateIndex: true,
   useUnifiedTopology: true,
 });
-{
-  console.log("DB Connected");
-}
+
+console.log("DB Connected");
 
 // Start the API server
 app.listen(PORT, function () {

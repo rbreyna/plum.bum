@@ -1,6 +1,7 @@
 import React from "react";
 import "./Dashboard.css";
 
+
 import {Button, Container, Col, Row, FormControl, InputGroup, Image } from "react-bootstrap";
 import { useAuth0 } from '../contexts/auth0-context';
 import {WritingGoal} from '../components/WritingGoal';
@@ -8,9 +9,9 @@ import {WritingGoal} from '../components/WritingGoal';
 
 
 
-function Dashboard() {
 
-const { user } = useAuth0();
+function Dashboard() {
+  const { user } = useAuth0();
 
 {/*rashida : added*/}
 const [modalShow, setModalShow] = React.useState(false);
@@ -18,15 +19,22 @@ const [modalShow, setModalShow] = React.useState(false);
 
   return (
     <div>
-      <h1> {user ? `${user.name}'s` : null } Dashboard Page</h1>
+      <h1> {user ? `${user.name}'s` : null} Dashboard Page</h1>
 
       <Container>
         <Row className="justify-center-content fluid" id="row-1">
           <Col className="content dash1" sm={4}>
-            <Image src="./assets/images/profile-pic-placeholder.jpg" width={150} height={150} roundedCircle />
-            <h6>Joe Smith</h6>
+            <Image
+              src="./assets/images/profile-pic-placeholder.jpg"
+              width={150}
+              height={150}
+              style={{ marginTop: "20px" }}
+              roundedCircle
+            />
+            <h6>{user ? `${user.name}` : null}</h6>
           </Col>
           <Col className="content dash2" sm={8}>
+
             <p>Daily Word Count:</p><br></br>
             <p>Weekly Word Count:</p><br></br>
 
@@ -45,6 +53,7 @@ const [modalShow, setModalShow] = React.useState(false);
             
             
 
+
           </Col>
         </Row>
         <Row className="fluid" id="row-2">
@@ -58,16 +67,17 @@ const [modalShow, setModalShow] = React.useState(false);
                 <FormControl />
                 <br></br>
               </InputGroup>
-              <FormControl id="passage" as="textarea" aria-label="With textarea" />
+              <FormControl
+                id="passage"
+                as="textarea"
+                aria-label="With textarea"
+              />
             </InputGroup>
           </Col>
         </Row>
       </Container>
     </div>
-
-
-  )
+  );
 }
-
 
 export default Dashboard;
