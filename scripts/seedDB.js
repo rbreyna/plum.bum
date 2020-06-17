@@ -24,7 +24,7 @@ const userSeed = [
   {
     email: "testUser@testuser.test",
     password: "potato",
-    image: "",
+    image: "BOB",
   },
 ];
 
