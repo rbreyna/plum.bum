@@ -2,6 +2,7 @@
   "name": "plumbum",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3000/",
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.9.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -19,10 +20,13 @@
     "tailwindcss": "^1.4.6"
   },
   "scripts": {
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm run start\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "seed": "node scripts/seedDB.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,16 +43,8 @@
       "last 1 safari version"
     ]
   },
-  "description": "![Plumbum Logo](/public/assets/images/plumbum-main.png)",
-  "main": "server.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rbreyna/plum.bum.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rbreyna/plum.bum/issues"
-  },
-  "homepage": "https://github.com/rbreyna/plum.bum#readme"
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  }
 }

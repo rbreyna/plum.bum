@@ -11,17 +11,29 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Serve up static assets (usually on heroku)
+//Routes
+app.use("/api/entry", require("./routes/apiEntry"));
+
+//Serve static folder
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static("src/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "src", "build", "index.html"));
+  });
 }
 
-//SHAYDA NOTE: As noted above, commented out since these aren't currently in use.
-// Add routes, both API and view
-// app.use(routes);
-
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/plumbumApp");
+
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb//localhost/plumbumApp";
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
+{
+  console.log("DB Connected");
+}
 
 // Start the API server
 app.listen(PORT, function () {
