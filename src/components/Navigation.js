@@ -17,7 +17,11 @@ function Navigation() {
           {!isLoading && !user && (
             <>
               <Nav.Link href="/about">About</Nav.Link>
-              <Nav.Link onClick={loginWithRedirect}>Login | Sign Up</Nav.Link>
+              <Nav.Link onClick={(...p) => {
+              console.log(p);
+              loginWithRedirect(...p);
+            }
+              }>Login | Sign Up</Nav.Link>
             </>
           )}
           {!isLoading && user && (
