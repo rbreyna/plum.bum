@@ -5,18 +5,15 @@ import "./Dashboard.css";
 import {Button, Container, Col, Row, FormControl, InputGroup, Image } from "react-bootstrap";
 import { useAuth0 } from '../contexts/auth0-context';
 import {WritingGoal} from '../components/WritingGoal';
+import WordCount from "../components/WordCount";
+
 {/*rashida : added*/}
-
-
-
 
 function Dashboard() {
   const { user } = useAuth0();
 
 {/*rashida : added*/}
 const [modalShow, setModalShow] = React.useState(false);
-
-
   return (
     <div>
       <h1> {user ? `${user.name}'s` : null} Dashboard Page</h1>
@@ -31,10 +28,10 @@ const [modalShow, setModalShow] = React.useState(false);
               style={{ marginTop: "20px" }}
               roundedCircle
             />
-            <h6>{user ? `${user.name}` : null}</h6>
+           
           </Col>
           <Col className="content dash2" sm={8}>
-
+            
             <p>Daily Word Count:</p><br></br>
             <p>Weekly Word Count:</p><br></br>
 
@@ -49,32 +46,10 @@ const [modalShow, setModalShow] = React.useState(false);
                   onHide={() => setModalShow(false)}
                 />
                </>
-              
-            
-            
-
-
           </Col>
         </Row>
-        <Row className="fluid" id="row-2">
-          <Col className="content dash3" sm={12}>
-            <InputGroup>
-              <br></br>
-              <InputGroup id="passage-title" sm={12}>
-                <InputGroup.Prepend>
-                  <InputGroup.Text>Name of Passage</InputGroup.Text>
-                </InputGroup.Prepend>
-                <FormControl />
-                <br></br>
-              </InputGroup>
-              <FormControl
-                id="passage"
-                as="textarea"
-                aria-label="With textarea"
-              />
-            </InputGroup>
-          </Col>
-        </Row>
+        <WordCount
+          />
       </Container>
     </div>
   );

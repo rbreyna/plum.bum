@@ -37,3 +37,7 @@
 #passage{
   min-height: 200px;
 }
+
+#btns{
+  float: right;
+}
