@@ -3,16 +3,27 @@ import "./Dashboard.css";
 
 import { Button, Container, Col, Row, FormControl, InputGroup, Image } from "react-bootstrap";
 import { useAuth0 } from '../contexts/auth0-context';
+<<<<<<< HEAD
 import { WritingGoal } from '../components/WritingGoal';
+=======
+import {WritingGoal} from '../components/WritingGoal';
+import WordCount from "../components/WordCount";
+>>>>>>> 7762950fe586fa948de8dec8d28853589631f050
 
+{/*rashida : added*/}
 
 function Dashboard() {
   const { user } = useAuth0();
 
+<<<<<<< HEAD
   /*rashida : added*/
   const [modalShow, setModalShow] = React.useState(false);
 
 
+=======
+{/*rashida : added*/}
+const [modalShow, setModalShow] = React.useState(false);
+>>>>>>> 7762950fe586fa948de8dec8d28853589631f050
   return (
     <div>
       <h1> {user ? `${user.name}'s` : null} Dashboard Page</h1>
@@ -27,10 +38,10 @@ function Dashboard() {
               style={{ marginTop: "20px" }}
               roundedCircle
             />
-            <h6>{user ? `${user.name}` : null}</h6>
+           
           </Col>
           <Col className="content dash2" sm={8}>
-
+            
             <p>Daily Word Count:</p><br></br>
             <p>Weekly Word Count:</p><br></br>
 
@@ -40,6 +51,7 @@ function Dashboard() {
                 <p>Writing Goal:</p>
               </Button>
 
+<<<<<<< HEAD
               <WritingGoal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
@@ -66,8 +78,17 @@ function Dashboard() {
                 aria-label="With textarea"
               />
             </InputGroup>
+=======
+                <WritingGoal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
+               </>
+>>>>>>> 7762950fe586fa948de8dec8d28853589631f050
           </Col>
         </Row>
+        <WordCount
+          />
       </Container>
     </div>
   );

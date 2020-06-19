@@ -4,9 +4,10 @@ const Entry=require("../controllers/entriesController")
 
 router.route("/")
     .get(Entry.getEntry)
-    .post(Entry.createEntry)
+ 
 
-router.route("/:id")
+router.route("/:email")
+    .post(Entry.createEntry)
     .put(Entry.updateEntry)
     .delete(Entry.deleteEntry)
 

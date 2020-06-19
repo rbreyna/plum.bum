@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 // SHAYDA NOTE: I've commented out routes for now since none are yet included. Will update as needed.
 // const routes = require("./routes");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -13,6 +13,7 @@ app.use(express.json());
 
 //Routes
 app.use("/api/entry", require("./routes/apiEntry"));
+app.use("/api/user", require("./routes/apiUser"));
 
 //Serve static folder
 if (process.env.NODE_ENV === "production") {
@@ -25,7 +26,7 @@ if (process.env.NODE_ENV === "production") {
 
 // Connect to the Mongo DB
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb//localhost/plumbumApp";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/plumbumApp";
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useCreateIndex: true,
