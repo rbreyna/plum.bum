@@ -1,20 +1,16 @@
 import React from "react";
 import "./Dashboard.css";
 
-
-import {Button, Container, Col, Row, FormControl, InputGroup, Image } from "react-bootstrap";
+import { Button, Container, Col, Row, FormControl, InputGroup, Image } from "react-bootstrap";
 import { useAuth0 } from '../contexts/auth0-context';
-import {WritingGoal} from '../components/WritingGoal';
-{/*rashida : added*/}
-
-
+import { WritingGoal } from '../components/WritingGoal';
 
 
 function Dashboard() {
   const { user } = useAuth0();
 
-{/*rashida : added*/}
-const [modalShow, setModalShow] = React.useState(false);
+  /*rashida : added*/
+  const [modalShow, setModalShow] = React.useState(false);
 
 
   return (
@@ -38,20 +34,17 @@ const [modalShow, setModalShow] = React.useState(false);
             <p>Daily Word Count:</p><br></br>
             <p>Weekly Word Count:</p><br></br>
 
-           { /* Rahida : added this to pop a modal when Writing goal is clicked*/}
-                <>
-                <Button onClick={() => setModalShow(true)}>
-                    <p>Writing Goal:</p>
-                </Button>
+            { /* Rahida : added this to pop a modal when Writing goal is clicked*/}
+            <>
+              <Button onClick={() => setModalShow(true)}>
+                <p>Writing Goal:</p>
+              </Button>
 
-                <WritingGoal
-                  show={modalShow}
-                  onHide={() => setModalShow(false)}
-                />
-               </>
-              
-            
-            
+              <WritingGoal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+              />
+            </>
 
 
           </Col>
