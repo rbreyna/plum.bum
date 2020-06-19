@@ -6,12 +6,9 @@ import { useAuth0 } from '../contexts/auth0-context';
 import {WritingGoal} from '../components/WritingGoal';
 import WordCount from "../components/WordCount";
 
-/*rashida : added*/
-
 function Dashboard() {
   const { user } = useAuth0();
 
-/*rashida : added*/
 const [modalShow, setModalShow] = React.useState(false);
   return (
     <div>
