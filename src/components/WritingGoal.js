@@ -5,6 +5,10 @@ import {Modal, Button, Row, Col, Form} from "react-bootstrap";
 export class WritingGoal extends Component{
     constructor(props){
         super(props);
+
+       // this.state = {
+        //  userId: "",
+       // };
     }
 
     handleSubmit(event){

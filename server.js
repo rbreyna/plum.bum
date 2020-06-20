@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 // SHAYDA NOTE: I've commented out routes for now since none are yet included. Will update as needed.
 // const routes = require("./routes");
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 3001;
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 //Routes
 app.use("/api/entry", require("./routes/apiEntry"));
