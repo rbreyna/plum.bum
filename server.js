@@ -1,17 +1,18 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-const cors= require("cors");
+const cors = require("cors");
 
  var User= require("./models/User");
  var Entry= require("./models/Entry")
 const app = express();
-const PORT = process.env.PORT || 27017;
+const PORT = process.env.PORT || 9000;
 
 // Define middleware here
 app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 //Routes
 app.use("/api/entry", require("./routes/apiEntry"));
@@ -28,8 +29,7 @@ if (process.env.NODE_ENV === "production") {
 
 // Connect to the Mongo DB
 
-
-const MONGODB_URI =  "mongodb://localhost/plumbumApp";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/plumbumApp";
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useCreateIndex: true,
