@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const db = require("../models");
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost:27017/plumbumApp"
+  process.env.MONGODB_URI || "mongodb://localhost:9000/plumbumApp"
 );
 
 const entrySeed = [
@@ -28,6 +28,19 @@ const userSeed = [
     password: "potato",
     goal: 5000,
     image: "../public/assets/images/avatar1.png",
+  },
+  {
+    email: "testUser123@testuser.test",
+    password: "hello*password",
+    goal: 20000,
+    image: "../public/assets/images/avatar2.png",
+  },
+  {
+    email: "testUser1231233@testuser.test",
+    name: "June McTavish",
+    password: "23423*12321",
+    goal: 10000,
+    image: "../public/assets/images/avatar2.png",
   },
 ];
 
