@@ -3,20 +3,21 @@ import axios from "axios";
 export default {
   // Gets all entries
   findAllEntries: function () {
-    return axios.get("/api/entry/");
+    // Front end route will also need environment variable for production/deployment
+    return axios.get("http://localhost:9000/api/entry/");
   },
 
   // Saves a entry to the database
   createEntry: function (entryData) {
-    return axios.post("/api/entry/", entryData);
+    return axios.post("http://localhost:9000/api/entry/", entryData);
   },
 
   // Updates an entry
   updateEntry: function (entryData, id) {
-    return axios.put("/api/entry/" + id, entryData);
+    return axios.put("http://localhost:9000/api/entry/" + id, entryData);
   },
   // Deletes the entry with the given id
   deleteEntry: function (id) {
-    return axios.delete("/api/entry/" + id);
+    return axios.delete("http://localhost:9000/api/entry/" + id);
   },
 };
