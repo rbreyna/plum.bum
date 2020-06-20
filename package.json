@@ -1,6 +1,7 @@
 {
-  "name": "plumbum",
-  "version": "0.1.0",
+  "name": "plum.bum",
+  "version": "1.0.0",
+  "main": "server.js",
   "private": true,
   "proxy": "http://localhost:9000/",
   "dependencies": {
@@ -31,8 +32,12 @@
     "eject": "react-scripts eject",
     "seed": "node scripts/seedDB.js"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
   },
   "browserslist": {
     "production": [
@@ -45,9 +50,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4"
   }
 }
