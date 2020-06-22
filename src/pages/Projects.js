@@ -1,15 +1,9 @@
 import React from "react";
 import "./Dashboard.css";
 
-import {
-  Container,
-  Col,
-  Row,
-  FormControl,
-  InputGroup,
-  Image,
-} from "react-bootstrap";
+import { Container, Col, Row, Image } from "react-bootstrap";
 import { useAuth0 } from "../contexts/auth0-context";
+import PopulateEntries from "../components/PopulateEntries";
 
 function Dashboard() {
   const { user } = useAuth0();
@@ -20,9 +14,9 @@ function Dashboard() {
 
       <Container>
         <Row className="justify-center-content fluid" id="row-1">
-          <Col className="content dash1" sm={4}>
+          <Col className="content dash1" sm={12}>
             <Image
-              src="./assets/images/profile-pic-placeholder.jpg"
+              src="./assets/images/avatar2.png"
               width={150}
               height={150}
               style={{ marginTop: "20px" }}
@@ -30,31 +24,11 @@ function Dashboard() {
             />
             <h6>{user ? `${user.name}` : null}</h6>
           </Col>
-          <Col className="content dash2" sm={8}>
-            <p>Daily Word Count:</p>
-            <br></br>
-            <p>Weekly Word Count:</p>
-            <br></br>
-            <p>Writing Goal:</p>
-          </Col>
+          {/* <Col className="content dash2" sm={8}></Col> */}
         </Row>
         <Row className="fluid" id="row-2">
           <Col className="content dash3" sm={12}>
-            <InputGroup>
-              <br></br>
-              <InputGroup id="passage-title" sm={12}>
-                <InputGroup.Prepend>
-                  <InputGroup.Text>Name of Passage</InputGroup.Text>
-                </InputGroup.Prepend>
-                <FormControl />
-                <br></br>
-              </InputGroup>
-              <FormControl
-                id="passage"
-                as="textarea"
-                aria-label="With textarea"
-              />
-            </InputGroup>
+            <PopulateEntries />
           </Col>
         </Row>
       </Container>
