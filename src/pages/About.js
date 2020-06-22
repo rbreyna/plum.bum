@@ -5,7 +5,7 @@ import { useAuth0 } from "../contexts/auth0-context";
 function About() {
 
   const { user } = useAuth0();
-
+  
   return (
     <div>
       <Jumbotron>
@@ -24,6 +24,7 @@ function About() {
       </>
     )}
 
+    
     {!user && (
       <h4>You must sign in first!</h4>
     )}
