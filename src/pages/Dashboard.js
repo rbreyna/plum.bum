@@ -3,7 +3,7 @@ import "./Dashboard.css";
 
 import { Button, Container, Col, Row, Image } from "react-bootstrap";
 import { useAuth0 } from '../contexts/auth0-context';
-import {WritingGoal} from '../components/WritingGoal';
+import { WritingGoal } from '../components/WritingGoal';
 import WordCount from "../components/WordCount";
 
 function Dashboard() {

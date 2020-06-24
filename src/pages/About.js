@@ -9,9 +9,10 @@ function About() {
   const { user } = useAuth0();
 
   function handleClick(e) {
-
+      e.preventdefault();
+      
       return(
-      <Profile name = {user ? `${user.name}` : null}
+      <Profile name = {user.name}
       email = { user ? `${user.email}` : null}
       pictureSrc = {user ? `${user.name}` : null}/>)
     
