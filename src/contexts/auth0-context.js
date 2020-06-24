@@ -1,3 +1,5 @@
+//ROY: Remember to put in callback function in setState down below near line 55
+
 import React, { Component, createContext, useContext } from 'react';
 import createAuth0Client from '@auth0/auth0-spa-js'
 
@@ -50,6 +52,7 @@ export class Auth0Provider extends Component {
         await this.state.auth0Client.handleRedirectCallback();
         const user = await this.state.auth0Client.getUser();
 
+        //Need to put in callback function
         this.setState({ user, isAuthenticated: true, isLoading: false });
         window.history.replaceState({}, document.title, window.location.pathname);
     }
