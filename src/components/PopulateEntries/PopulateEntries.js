@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import apiEntry from "../utils/apiEntry";
+import apiEntry from "../../utils/apiEntry";
 import { Container, Button } from "react-bootstrap";
 import "./PopulateEntries.css";
 

@@ -11,11 +11,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {
-
-  
-
   return (
-   
     <Router>
       <Navigation />
       <div className="App">
@@ -24,11 +20,9 @@ function App() {
           <Route path="/about" exact component={About} />
           <Route path="/projects" exact component={Projects} />
           <Route path="/dashboard" exact component={Dashboard} />
-         
         </Switch>
       </div>
     </Router>
-  
   );
 }
 
