@@ -27,7 +27,7 @@ function Navigation() {
           {!isLoading && user && (
             <>
               <Navbar.Text>Hello {user.name}!</Navbar.Text>
-              <Nav.Link href="/about">About</Nav.Link>
+              <Nav.Link href="/profile">Profile</Nav.Link>
               <Nav.Link href="/dashboard">Dashboard</Nav.Link>
               <Nav.Link href="/projects">My Projects</Nav.Link>
               <Nav.Link
