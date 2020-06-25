@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import apiEntry from "../../utils/apiEntry";
 import { Container, Button } from "react-bootstrap";
 import "./PopulateEntries.css";
-import EntryCount from "./EntryCount";
 
 class PopulateEntries extends Component {
   constructor(props) {
@@ -56,10 +55,10 @@ class PopulateEntries extends Component {
                   <Button>Edit</Button> &nbsp;
                   <Button>View</Button>
                 </p>
-                {/* <p>{entry.entryBody}</p> */}
+
                 <p>Date Created: {entry.date}</p>
                 <p>Words: {entry.entryWords}</p>
-                {/* <EntryCount {this.countEntryWords} /> */}
+
                 <br></br>
               </div>
             );
