@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-import apiEntry from "../utils/apiEntry";
+import apiEntry from "../../utils/apiEntry";
 import { Container, Button } from "react-bootstrap";
 import "./PopulateEntries.css";
+import EntryCount from "./EntryCount";
 
 class PopulateEntries extends Component {
   constructor(props) {
     super(props);
     this.state = {
       entries: [],
-      title: "",
-      entryBody: "",
-      date: "",
     };
   }
 
@@ -18,18 +16,24 @@ class PopulateEntries extends Component {
     this.loadEntries();
   }
 
-  // SHAYDA NOTE: This loadEntries works, but only console.logs the data:
+  countEntryWords = (entry) => {
+    let entryBodyString = entry.entryBody;
+    let arrayCount = [];
+    arrayCount = entryBodyString.split(" ");
+    let entryWords = arrayCount.length;
+    return entryWords;
+  };
+
   loadEntries = () => {
     apiEntry
       .findAllEntries()
       .then((entries) => {
-        console.log(entries.data);
-        console.log(entries.data.length, "length");
+        entries.data.map((entry) => {
+          const wordCount = this.countEntryWords(entry);
+          entry.entryWords = wordCount;
+        });
         this.setState({
           entries: entries.data,
-          title: "",
-          entryBody: "",
-          date: "",
         });
       })
       .catch((err) => console.log(err));
@@ -44,8 +48,8 @@ class PopulateEntries extends Component {
         <div>
           {this.state.entries.map((entry) => {
             return (
-              <div>
-                <p key={entry._id}></p>
+              <div key={entry._id}>
+                {console.log(entry)}
                 <p>
                   {entry.title} &nbsp;
                   {/* This "Edit" button will allow the user to edit a particular chapter/entry */}
@@ -54,6 +58,8 @@ class PopulateEntries extends Component {
                 </p>
                 {/* <p>{entry.entryBody}</p> */}
                 <p>Date Created: {entry.date}</p>
+                <p>Words: {entry.entryWords}</p>
+                {/* <EntryCount {this.countEntryWords} /> */}
                 <br></br>
               </div>
             );

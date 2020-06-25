@@ -3,7 +3,7 @@ import "./Dashboard.css";
 
 import { Container, Col, Row, Image } from "react-bootstrap";
 import { useAuth0 } from "../contexts/auth0-context";
-import PopulateEntries from "../components/PopulateEntries";
+import PopulateEntries from "../components/PopulateEntries/PopulateEntries.js";
 
 function Dashboard() {
   const { user } = useAuth0();

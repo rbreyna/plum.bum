@@ -3,9 +3,7 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost:9000/plumbumApp"
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/plumbumApp");
 
 const entrySeed = [
   {
@@ -18,6 +16,12 @@ const entrySeed = [
     title: "Chapter 2 - Chaos Rising",
     entryBody:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin sagittis nisl rhoncus mattis rhoncus. Ac tincidunt vitae semper quis. Felis bibendum ut tristique et. Id ornare arcu odio ut sem. Orci ac auctor augue mauris augue neque gravida in fermentum. Fames ac turpis egestas maecenas pharetra convallis posuere. Neque volutpat ac tincidunt vitae semper quis lectus. Scelerisque in dictum non consectetur a. Laoreet suspendisse interdum consectetur libero id faucibus nisl. Vitae elementum curabitur vitae nunc. Sollicitudin tempor id eu nisl nunc. Et malesuada fames ac turpis egestas integer eget aliquet. Auctor neque vitae tempus quam pellentesque.\n\n Semper risus in hendrerit gravida rutrum quisque non tellus. Elementum pulvinar etiam non quam. Eget est lorem ipsum dolor sit amet consectetur adipiscing. Justo laoreet sit amet cursus sit amet dictum. Amet nisl suscipit adipiscing bibendum. Et malesuada fames ac turpis egestas. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing. Tortor condimentum lacinia quis vel eros donec ac. Cursus metus aliquam eleifend mi in nulla posuere sollicitudin aliquam. Urna cursus eget nunc scelerisque viverra mauris. Ac orci phasellus egestas tellus rutrum tellus pellentesque. Nullam vehicula ipsum a arcu. A scelerisque purus semper eget. Sit amet tellus cras adipiscing. Donec ac odio tempor orci. Dictum varius duis at consectetur lorem donec massa sapien.",
+    date: new Date(Date.now()),
+  },
+  {
+    title: "Chapter 3 - Chaos Rising",
+    entryBody:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     date: new Date(Date.now()),
   },
 ];
