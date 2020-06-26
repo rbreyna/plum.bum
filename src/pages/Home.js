@@ -11,7 +11,7 @@ function Home() {
           src="/assets/images/plumbum-blue.png"
           alt="plumbum"
         />
-        <div class="Home-definition">
+        <div className="Home-definition">
           <p style={{ fontSize: "12px" }}>
             <em>
               plumbum n (genitive plumbī); second declension<br></br> lead
