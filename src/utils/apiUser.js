@@ -2,7 +2,7 @@ import axios from "axios";
 import useAuth0 from "../context/autho0-context";
 
 export default {
-  // Updates an entry
+  // Finds a specific user
   findUser: function (id) {
     return axios.get("/api/user/" + id);
   },
@@ -10,8 +10,8 @@ export default {
   createUser: function (userData) {
     return axios.post("/api/user/", userData);
   },
-  // Deletes the entry with the given id
-  deleteEntry: function (id) {
-    return axios.delete("/api/user/" + id);
-  }
+  // Updates a user
+  updateUser: function (userData, id) {
+    return axios.put("/api/entry/" + id, entryData);
+  },
 };
