@@ -2,7 +2,6 @@ import React from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import PencilButton from "../components/PencilButton/PencilButton.js";
 import "./Home.css";
-import anime from "animejs/lib/anime.es.js";
 
 function Home() {
   return (

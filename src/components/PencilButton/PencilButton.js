@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./PencilButton.css";
 import Image from "react-bootstrap/Image";
 
