@@ -1,14 +1,13 @@
 const User = require("../models/User");
 
 module.exports = {
-  getUsers: (req, res) => {
+  getUsers: function (req, res) {
     User.find()
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
   getUser: function (req, res) {
     User.findById({ _id: req.params.id })
-      .then((dbModel) => dbModel.remove())
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   }, 
