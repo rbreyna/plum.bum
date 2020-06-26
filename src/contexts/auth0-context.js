@@ -53,7 +53,10 @@ export class Auth0Provider extends Component {
         const user = await this.state.auth0Client.getUser();
 
         //Need to put in callback function
-        this.setState({ user, isAuthenticated: true, isLoading: false });
+        this.setState({ user, isAuthenticated: true, isLoading: false }, ()=>{
+            const { user } = this.state;
+            console.log(user.sub.split("|")[1]);
+        });
         window.history.replaceState({}, document.title, window.location.pathname);
     }
 
