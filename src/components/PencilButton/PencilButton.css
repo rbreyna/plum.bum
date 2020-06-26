@@ -1,8 +1,8 @@
-.Circle-button {
+.Pencil-button {
   width: 15%;
 }
 
-.Circle-button:hover {
+.Pencil-button:hover {
   transition: transform 0.5s ease;
   transform: scale(1.2);
 }
