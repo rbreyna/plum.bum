@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import apiEntry from "../utils/apiEntry";
 import "../pages/Dashboard.css";
 
-export default class DailyWordcount extends Component {
+export default class highestWordCount extends Component {
   constructor(props) {
     super(props);
     this.state = {
-       dayliWordCount: 0
+      MaxCountWord: 0,
+     
     };
   }
   // Count Words
@@ -16,7 +17,7 @@ export default class DailyWordcount extends Component {
 
 
   componentDidMount() {
-    this.dailyWordCount()
+    this.entriesCount()
   }
 
   //Sum
@@ -30,27 +31,29 @@ export default class DailyWordcount extends Component {
 
 
   // Get daily word count
-  dailyWordCount = () => {
+  entriesCount = () => {
 
     apiEntry
-      .findEntriesbydate()
+      .findAllEntries()
       .then(entries => {
         console.log(entries.data);
-        let entriesbydate = []
+        let highestentries = []
 
         console.log(entries.data.length, "length");
         for (var i = 0; i < entries.data.length; i++) {
 
-          entriesbydate.push(this.countWords(entries.data[i].entryBody))
+            highestentries.push(this.countWords(entries.data[i].entryBody))
 
-          console.log("words", entriesbydate)
+          console.log("Highestwords", highestentries)
 
         }
-        
-        this.setState({
-          dayliWordCount: this.getArraySum(entriesbydate),
 
-        })
+        if (highestentries.length > 0) {
+          this.setState({
+            MaxCountWord: Math.max(...highestentries)
+          })
+        }
+        
 
       }).catch((err) => console.log(err));
   }
@@ -60,8 +63,7 @@ export default class DailyWordcount extends Component {
   render() {
     return (
       <div>
-        <p>Daily Word Count: {this.state.dayliWordCount}</p><br></br>
-       
+         <p> Best Daily Word Count : {this.state.MaxCountWord}</p>
       </div >
     )
   }
