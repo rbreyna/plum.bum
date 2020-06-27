@@ -2,6 +2,7 @@
 
 import React, { Component, createContext, useContext } from 'react';
 import createAuth0Client from '@auth0/auth0-spa-js'
+import Profile from "../pages/Profile"
 
 //create the context
 export const Auth0Context = createContext();
@@ -55,7 +56,15 @@ export class Auth0Provider extends Component {
         //Need to put in callback function
         this.setState({ user, isAuthenticated: true, isLoading: false }, ()=>{
             const { user } = this.state;
-            console.log(user.sub.split("|")[1]);
+            console.log(user);
+            return(
+                <Profile
+                email={user.email}
+                name={user.name}
+                picture={user.picture}
+                id={user.sub.split("|")[1]}/>
+            )
+            //console.log(user.sub.split("|")[1]);
         });
         window.history.replaceState({}, document.title, window.location.pathname);
     }
