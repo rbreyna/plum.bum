@@ -12,8 +12,8 @@ function Home() {
           src="/assets/images/plumbum-blue.png"
           alt="plumbum logo"
         />
-        <div class="Home-definition">
-          <p style={{ fontSize: "14px" }}>
+        <div className="Home-definition">
+          <p style={{ fontSize: "12px" }}>
             <em>
               plumbum: noun; new latin. <strong>pencil.</strong>
             </em>

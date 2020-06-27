@@ -17,13 +17,14 @@ app.use(cors());
 //Routes
 app.use("/api/entry", require("./routes/apiEntry"));
 app.use("/api/user", require("./routes/apiUser"));
+app.use("/api", require("./routes/apiDate"));
 
 //Serve static folder
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static("src/build"));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "src", "build", "index.html"));
   });
 }
 
