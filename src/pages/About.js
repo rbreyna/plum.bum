@@ -2,7 +2,7 @@ import React from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Profile from "./Profile"
 import { useAuth0 } from "../contexts/auth0-context";
-import { render } from "@testing-library/react";
+
 
 function About() {
 
