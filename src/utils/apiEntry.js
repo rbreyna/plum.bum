@@ -6,9 +6,22 @@ export default {
     // Front end route will also need environment variable for production/deployment
     return axios.get("http://localhost:9000/api/entry/");
   },
+  findEntriesbydate: function () {
+    // Front end route will also need environment variable for production/deployment
+    return axios.get("http://localhost:9000/api/date/");
+  },
 
+  //Find by week
+  findEntriesbyweek: function () {
+    // Front end route will also need environment variable for production/deployment
+    return axios.get("http://localhost:9000/api/week/");
+  },
   // Saves a entry to the database
   createEntry: function (entryData) {
+    return axios.post("http://localhost:9000/api/entry/", entryData);
+  },
+
+  createEntries: function (entryData) {
     return axios.post("http://localhost:9000/api/entry/", entryData);
   },
 

@@ -11,14 +11,6 @@ function Dashboard() {
     <div>
       <Jumbotron className="Projects-tron">
         <h1> {user ? `${user.name}'s` : null} Projects</h1>
-        <Image
-          src="../assets/images/avatar1.png"
-          width={150}
-          height={150}
-          style={{ marginTop: "20px" }}
-          roundedCircle
-        />
-        <h6>{user ? `${user.name}` : null}</h6>
       </Jumbotron>
 
       <Container>

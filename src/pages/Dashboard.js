@@ -1,11 +1,11 @@
 import React from "react";
 import "./Dashboard.css";
-
 import { Button, Container, Col, Row, Image } from "react-bootstrap";
 import { useAuth0 } from "../contexts/auth0-context";
 import { WritingGoal } from "../components/WritingGoal";
 import WordCount from "../components/WordCount";
-import WritingStreak from "../components/WritingStreak/WritingStreak.js";
+import DayliWordCount from "../components/DailyWordcount"
+import WeeklyWordCount from "../components/weeklyWordCount"
 
 function Dashboard() {
   const { user } = useAuth0();
@@ -28,13 +28,12 @@ function Dashboard() {
               roundedCircle
             />
           </Col>
+          
           <Col className="content dash2" sm={8}>
-            <p>Daily Word Count:</p>
-            <br></br>
-            <p>Weekly Word Count:</p>
-            <br></br>
-
-            {/* Rahida : added this to pop a modal when Writing goal is clicked*/}
+            
+          <DayliWordCount/>
+          <WeeklyWordCount/>
+            { /* Rahida : added this to pop a modal when Writing goal is clicked*/}
             <>
               <Button onClick={() => setModalShow(true)}>
                 <p>Writing Goal:</p>

@@ -1,7 +1,9 @@
 const router = require("express").Router();
 const Entry = require("../controllers/entriesController");
 
-router.route("/").get(Entry.getEntry);
+router.route("/")
+.get(Entry.getEntry)
+.post(Entry.createEntries);
 
 router
   .route("/:email")

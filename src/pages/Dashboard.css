@@ -17,7 +17,7 @@
 
 }
 
-.dash1 {
+.dash1, #btns  {
   background-color: purple;
 }
 
@@ -39,5 +39,5 @@
 }
 
 #btns{
-  float: right;
+ float: right;
 }
