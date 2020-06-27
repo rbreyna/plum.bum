@@ -26,7 +26,7 @@ const userSchema = new Schema({
         let userIndex =
           userImageArray[Math.floor(Math.random() * userImageArray.length)];
 
-        let userImage = "../public/assets/images/" + userIndex;
+        let userImage = "../public/assets/images/avatar" + userIndex;
 
         return userImage;
         // }

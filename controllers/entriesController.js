@@ -8,7 +8,7 @@ module.exports = {
     Entry.find()
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
-     res.redirect("/")
+    
   },
 
 

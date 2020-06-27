@@ -1,3 +1,20 @@
 body {
   background-color: #a8e6cf;
 }
+
+.Home-tron {
+  background-color: #a8e6cf;
+}
+
+.Home-header {
+  padding: 20px 0;
+}
+
+.Home-welcome-img {
+  width: 50%;
+}
+
+.Home-pencil-img {
+  margin: 8px;
+  width: 5%;
+}
