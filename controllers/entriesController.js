@@ -2,12 +2,17 @@ const Entry = require("../models/Entry");
 const User = require("../models/User");
 
 module.exports = {
-  getEntry: (req, res) => {
+  
+  //Entry
+ getEntry: (req, res) => {
     Entry.find()
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
+    
   },
 
+
+ //Create entry to an specific user
   createEntry: function (req, res) {
     Entry.create(req.body)
     .then(function(dbEntry) {
@@ -22,6 +27,12 @@ module.exports = {
     
       res.json(err);
     });
+    
+  },
+  createEntries: function (req, res) {
+    Entry.create(req.body)
+    .then((dbModel) => res.json(dbModel))
+    .catch((err) => res.status(422).json(err));
   
   },
 
