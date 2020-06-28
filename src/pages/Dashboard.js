@@ -6,6 +6,7 @@ import { WritingGoal } from "../components/WritingGoal";
 import WordCount from "../components/WordCount";
 import DayliWordCount from "../components/DailyWordcount"
 import WeeklyWordCount from "../components/weeklyWordCount"
+import HighestWordCount from "../components/highestWordCount"
 
 function Dashboard() {
   const { user } = useAuth0();
@@ -32,6 +33,7 @@ function Dashboard() {
           <Col className="content dash2" sm={8}>
             
           <DayliWordCount/>
+          <HighestWordCount/>
           <WeeklyWordCount/>
             { /* Rahida : added this to pop a modal when Writing goal is clicked*/}
             <>
