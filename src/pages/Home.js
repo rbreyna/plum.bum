@@ -13,7 +13,7 @@ function Home() {
           alt="plumbum logo"
         />
         <div className="Home-definition">
-          <p style={{ fontSize: "12px" }}>
+          <p style={{ fontSize: "14px" }}>
             <em>
               plumbum: noun; new latin. <strong>pencil.</strong>
             </em>

@@ -1,20 +1,33 @@
 import React from "react";
 import "./Dashboard.css";
 
+<<<<<<< HEAD
 import { Button, Container, Col, Row, Image } from "react-bootstrap";
 import { useAuth0 } from '../contexts/auth0-context';
 import { WritingGoal } from '../components/WritingGoal';
 import WordCount from "../components/WordCount";
 import DayliWordCount from "../components/DailyWordcount"
 import WeeklyWordCount from "../components/weeklyWordCount"
+=======
+import { Container, Col, Row, FormControl, InputGroup, Image } from "react-bootstrap"
+import { useAuth0 } from '../contexts/auth0-context';
+>>>>>>> master
 
 function Dashboard() {
   const { user } = useAuth0();
 
+<<<<<<< HEAD
 const [modalShow, setModalShow] = React.useState(false);
   return (
     <div>
       <h1> {user ? `${user.name}'s` : null} Dashboard Page</h1>
+=======
+const { user } = useAuth0();
+
+  return (
+    <div>
+      <h1> {user ? `${user.name}'s` : null } Dashboard Page</h1>
+>>>>>>> master
 
       <Container>
         <Row className="justify-center-content fluid" id="row-1">
