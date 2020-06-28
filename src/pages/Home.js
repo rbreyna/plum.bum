@@ -25,9 +25,7 @@ function Home() {
           <p style={{ fontWeight: "bold" }}>Now start writing.</p>
         </div>
         <div className="Writing-button">
-          <a href="/dashboard">
-            <PencilButton src="/assets/images/pencil.png" alt="dashboard" />
-          </a>
+          <PencilButton src="/assets/images/pencil.png" alt="pencil button" />
         </div>
       </Jumbotron>
     </div>
