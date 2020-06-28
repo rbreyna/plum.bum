@@ -6,8 +6,7 @@ export default class DailyWordcount extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      MaxCountWord: 0,
-      dayliWordCount: 0
+       dayliWordCount: 0
     };
   }
   // Count Words
@@ -47,11 +46,7 @@ export default class DailyWordcount extends Component {
           console.log("words", entriesbydate)
 
         }
-        if (entriesbydate.length > 0) {
-          this.setState({
-            MaxCountWord: Math.max(...entriesbydate)
-          })
-        }
+        
         this.setState({
           dayliWordCount: this.getArraySum(entriesbydate),
 
@@ -66,7 +61,7 @@ export default class DailyWordcount extends Component {
     return (
       <div>
         <p>Daily Word Count: {this.state.dayliWordCount}</p><br></br>
-        <p> Best Daily Word Count : {this.state.MaxCountWord}</p>
+       
       </div >
     )
   }
