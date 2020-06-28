@@ -11,21 +11,33 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  goal: {
+    type: Number,
+    default: 0,
+  },
   image: {
     type: String,
+    required: true,
     default: function () {
-      if (this.image === "") {
+      if (this.image === "" || this.image === null) {
         // Should allow us to assign a user a default image randomly
         let userImageArray = ["avatar1.png", "avatar2.png", "avatar3.png"];
 
         let userIndex =
           userImageArray[Math.floor(Math.random() * userImageArray.length)];
 
-        let userImage = "../public/assets/images/" + userIndex;
+        let userImage = "../public/assets/images/avatar" + userIndex;
 
         return userImage;
+        // }
       }
     },
+  },
+
+  auth0_id:{
+    type: String,
+    unique: true,
+    required: true,
   },
 
   // This allows us to populate "User" with any associated entry

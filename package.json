@@ -1,35 +1,49 @@
 {
-  "name": "plumbum",
-  "version": "0.1.0",
+  "name": "plum.bum",
+  "version": "1.0.0",
+  "main": "server.js",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:9000/",
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.9.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.29",
+    "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "animejs": "^3.2.0",
+    "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "bulma": "^0.9.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "moment": "^2.27.0",
     "mongoose": "^5.9.18",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
+    "react-moment": "^0.9.7",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "tailwindcss": "^1.4.6"
   },
   "scripts": {
-    "server": "nodemon server.js",
-    "dev": "concurrently \"npm run server\" \"npm run start\"",
-    "start": "react-scripts start",
+    "dev-server": "nodemon server.js",
+    "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
+    "start": "NODE_ENV=production node server.js",
+    "dev-client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "seed": "node scripts/seedDB.js"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
   },
   "browserslist": {
     "production": [
@@ -42,9 +56,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "concurrently": "^5.2.0",
-    "nodemon": "^2.0.4"
   }
 }

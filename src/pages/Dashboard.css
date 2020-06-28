@@ -17,7 +17,7 @@
 
 }
 
-.dash1 {
+.dash1, #btns  {
   background-color: purple;
 }
 
@@ -36,4 +36,8 @@
 
 #passage{
   min-height: 200px;
+}
+
+#btns{
+ float: right;
 }
