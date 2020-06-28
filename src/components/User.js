@@ -19,6 +19,8 @@ class User extends Component {
       picture: "",
       show: false,
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -29,21 +31,15 @@ class User extends Component {
     });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-
-    this.setState({
-      name: event.target.name.value,
-      email: event.target.email.value,
-      show: false
-    });
+  handleChange(event) {
+    const value = event.target.value;
+    this.setState({ [event.target.id]: value });
   }
 
   render() {
-    
     return (
       <div>
-        <Card bg="info" className="text-center">
+        <Card  style = {{backgroundColor: "#a8e6cf"}} className="text-center">
           <Card.Header>
             <Jumbotron>
               <h1>
@@ -81,39 +77,56 @@ class User extends Component {
           </Card.Body>
 
           <Card.Footer className="text-muted">
-            <Button onClick={()=> this.setState({show: true})} variant="secondary">
+            <Button
+              onClick={() => this.setState({ show: true })}
+              variant="secondary"
+            >
               Update Profile
             </Button>
 
-            <Modal show = {this.state.show} onHide={() => {this.setState({show: false})}}>
+            <Modal
+              show={this.state.show}
+              onHide={() => {
+                this.setState({ show: false });
+              }}
+            >
               <Modal.Header closeButton>
-                <h1>Verify your profile information</h1>
+                <h1>Update Your Profile.</h1>
               </Modal.Header>
 
               <Modal.Body>
                 <Form>
-                  <Form.Group controlId="formGroupProfile">
+                  <Form.Group controlId="name">
                     <Form.Label>Full Name</Form.Label>
                     <Form.Control
                       type="text"
                       name="name"
-                      placeholder="Enter Full Name"
+                      placeholder={this.state.name}
                       value={this.state.name}
+                      onChange={this.handleChange}
                     />
-              
+                  </Form.Group>
+                  <Form.Group controlId="email">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
                       type="text"
                       name="email"
-                      placeholder="Enter email address"
-                      value={this.props.email}
+                      placeholder={this.state.email}
+                      value={this.state.email}
+                      onChange={this.handleChange}
                     />
                   </Form.Group>
                 </Form>
               </Modal.Body>
 
               <Modal.Footer>
-                <Button onClick={this.handleSubmit}>Save</Button>
+                <Button
+                  onClick={() => {
+                    this.setState({ show: false });
+                  }}
+                >
+                  Save
+                </Button>
               </Modal.Footer>
             </Modal>
           </Card.Footer>
