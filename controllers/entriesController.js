@@ -10,7 +10,12 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
     
   },
-
+  getEntrybyUser: (req, res) => {
+    Entry.find({ email: req.params.email })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+    
+  },
 
  //Create entry to an specific user
   createEntry: function (req, res) {
