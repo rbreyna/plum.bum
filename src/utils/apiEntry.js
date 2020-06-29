@@ -10,7 +10,11 @@ export default {
     // Front end route will also need environment variable for production/deployment
     return axios.get("http://localhost:9000/api/date/");
   },
-
+  //Streak Lenght
+  getStreak: function () {
+    // Front end route will also need environment variable for production/deployment
+    return axios.get("http://localhost:9000/api/streak/");
+  },
   //Find by week
   findEntriesbyweek: function () {
     // Front end route will also need environment variable for production/deployment
