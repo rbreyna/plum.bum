@@ -14,11 +14,21 @@ export default class WordCount extends Component {
       title: "",
       entryBody: "",
       wordCount: 0,
-         
+      email:""   
     };
   }
+  componentDidMount() {
+    this.userEmail()
+  }
+  
 
-
+  userEmail=()=>{
+    const email =localStorage.getItem("email");
+    this.setState({
+      email: email
+    })
+    console.log(email)
+  }
   // Count Words
   countWords = (text) => {
     return text.split(/\s+|--+/).filter((word) => word.length > 0).length;
@@ -41,14 +51,18 @@ export default class WordCount extends Component {
   /* It works but still waiting in how can we get user credentials*/
   handleSave = (event) => {
     event.preventDefault();
-
+    this.setState({
+      email: localStorage.getItem("email")
+    })
     const newEntry = {
+      email: localStorage.getItem("email"),
       title: this.state.title,
       entryBody: this.state.entryBody,
     };
-
+   
     console.log(newEntry)
-    apiEntry.createEntries(newEntry)
+    console.log(this.state.email,"email")
+    apiEntry.createEntry(this.state.email,newEntry)
       .then(this.setState({
         message: alert("Your pasage is saved"),
         title: "",

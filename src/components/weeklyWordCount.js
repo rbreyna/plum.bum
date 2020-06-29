@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import apiEntry from "../utils/apiEntry";
 import "../pages/Dashboard.css";
 
-export default class DailyWordcount extends Component {
+
+export default class WeeklyWordcount extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
-      weeklyWordcount: 0
+      email: "",
+      weeklycount: 0
     };
   }
   // Count Words
@@ -17,7 +18,7 @@ export default class DailyWordcount extends Component {
 
 
   componentDidMount() {
-    this.weeklyWordCount()
+    this.weeklyCount()
   }
 
   //Sum
@@ -28,35 +29,35 @@ export default class DailyWordcount extends Component {
     }
     return total;
   }
-// word count last 7 days
-  weeklyWordCount = () => {
-    
+  // word count last 7 days
+  weeklyCount = () => {
+   
     apiEntry
-      .findEntriesbyweek()
+      .findEntriesbyweek(localStorage.getItem("email"))
       .then(entries => {
-        console.log(entries.data);
-        let entriesbydate = []
-     
-        console.log(entries.data.length, "length");
-        for (var i = 0; i < entries.data.length; i++) {
+          console.log(entries.data);
+          let entriesbydate = []
 
-          entriesbydate.push(this.countWords(entries.data[i].entryBody))
+          console.log(entries.data.length, "length");
+          for (var i = 0; i < entries.data.length; i++) {
 
-          console.log("weeks", entriesbydate)
-          
-        }
+            entriesbydate.push(this.countWords(entries.data[i].entryBody))
 
-        this.setState({
-          weeklyWordcount: this.getArraySum(entriesbydate)
-        })
+            console.log("weeks", entriesbydate)
 
-      }).catch((err) => console.log(err));
+          }
+
+          this.setState({
+            weeklycount: this.getArraySum(entriesbydate)
+          })
+
+        }).catch((err) => console.log(err));
   }
 
   render() {
     return (
       <div>
-        <p>Weekly Word Count: {this.state.weeklyWordcount}</p><br></br>
+        <p>Weekly Word Count: {this.state.weeklycount}</p><br></br>
       </div >
     )
   }
