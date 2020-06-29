@@ -7,6 +7,7 @@ router.route("/")
 
 router
   .route("/:email")
+ /* .get(Entry.getEntrybyemail)*/
   .post(Entry.createEntry)
   .put(Entry.updateEntry)
   .delete(Entry.deleteEntry);
