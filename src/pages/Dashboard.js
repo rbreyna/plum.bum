@@ -5,8 +5,6 @@ import {
   Container,
   Col,
   Row,
-  FormControl,
-  InputGroup,
   Image,
 } from "react-bootstrap";
 import { useAuth0 } from "../contexts/auth0-context";
