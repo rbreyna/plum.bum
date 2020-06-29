@@ -18,6 +18,10 @@ export default class highestWordCount extends Component {
 
     componentDidMount() {
         this.entriesCount()
+        this.setState({
+            email: localStorage.getItem("email")
+          })
+          
     }
 
     //Sum
@@ -34,7 +38,7 @@ export default class highestWordCount extends Component {
     entriesCount = () => {
 
         apiEntry
-            .findAllEntries()
+            .findEntries(localStorage.getItem("email"))
             .then(entries => {
                 console.log(entries.data);
                 let highestentries = []
