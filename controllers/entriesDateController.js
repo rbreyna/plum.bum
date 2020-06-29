@@ -10,9 +10,38 @@ module.exports = {
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
-  getEntrybyweek: (req, res) => {
-     Entry.find( {date :{ $gte: new Date((new Date().getTime() - (7 * 24 * 60 * 60 * 1000)))}})
+ /* getEntrybydateUser: (req, res) => {
+    var today = moment().startOf('day');
+    var tomorrow = moment(today).endOf('day');
+
+    Entry.findOne( where :[ { date: { '$gte': today, '$lte': tomorrow } && {email: req.params.email }}] )
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
-  }
+  },*/
+  getEntrybyweek: (req, res) => {
+     Entry.find( {date :{ '$gte': new Date((new Date().getTime() - (7 * 24 * 60 * 60 * 1000)))}})
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+  getstreakLenght: (req, res) => {
+    Entry.aggregate([
+      { "$group": {
+          "_id": {
+              "$add": [
+                  { "$subtract": [
+                      { "$subtract": [ "$date", new Date(0) ] },
+                      { "$mod": [
+                          { "$subtract": [ "$date", new Date(0) ] },
+                          1000 * 60 * 60 * 24 
+                      ]}
+                  ]},
+                  new Date(0)
+              ]
+          },
+          "entries": { "$sum": 1 }
+      }}
+  ])
+     .then((dbModel) => res.json(dbModel))
+     .catch((err) => res.status(422).json(err));
+ },
 };
