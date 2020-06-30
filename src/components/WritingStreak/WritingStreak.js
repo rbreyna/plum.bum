@@ -12,6 +12,9 @@ class WritingStreak extends Component {
 
   componentDidMount() {
     this.WritingStreak()
+    this.setState({
+      email:localStorage.getItem("email")
+    })
     
     
 }
