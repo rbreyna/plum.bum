@@ -11,7 +11,7 @@ export default function Profile() {
   const picture = user ? user.picture : null;
 
   console.log(name, email, picture)
-  
+  localStorage.setItem("email", email)
   return(
     <>
     {!isLoading && user && (

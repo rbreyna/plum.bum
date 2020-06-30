@@ -46,11 +46,11 @@ const userSchema = new Schema({
     },
   },
 
-  auth0_id:{
+  /*auth0_id:{
     type: String,
     unique: true,
     required: true,
-  },
+  },*/
 
   // This allows us to populate "User" with any associated entry
   entries: [

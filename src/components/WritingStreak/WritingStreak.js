@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import Moment from "react-moment";
+=======
+import apiEntry from "../../utils/apiEntry";
+>>>>>>> 34395995671094ab56df8f72be9eb1aef7723650
 
 class WritingStreak extends Component {
   constructor(props) {
     super(props);
     this.state = {
+<<<<<<< HEAD
       currentStreak: 0,
       longestStreak: 0,
     };
@@ -25,7 +30,41 @@ class WritingStreak extends Component {
         <Moment fromNow>2020-06-26T012:50-0500</Moment>
       </>
     );
+=======
+      streakLenght: 0,
+      email :"",
+    };
+  }
+
+  componentDidMount() {
+    this.WritingStreak()
+    this.setState({
+      email:localStorage.getItem("email")
+    })
+    
+    
+}
+
+
+  WritingStreak = () => {
+    apiEntry
+      .getStreak(localStorage.getItem("email"))
+      .then(entries => {
+        console.log(entries.data, "streaks");
+        console.log(entries.data.length, "streak");
+        this.setState({
+          streakLenght: entries.data.length
+        })
+
+      }).catch((err) => console.log(err));
+  }
+  render() {
+    return <div>
+      <p>Writing Streak : {this.state.streakLenght}</p>
+    </div >
+>>>>>>> 34395995671094ab56df8f72be9eb1aef7723650
   }
 }
 
 export default WritingStreak;
+

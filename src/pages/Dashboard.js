@@ -5,8 +5,6 @@ import {
   Container,
   Col,
   Row,
-  FormControl,
-  InputGroup,
   Image,
 } from "react-bootstrap";
 import { useAuth0 } from "../contexts/auth0-context";
@@ -15,6 +13,7 @@ import WordCount from "../components/WordCount";
 import DayliWordCount from "../components/DailyWordcount";
 import WeeklyWordCount from "../components/weeklyWordCount";
 import HighestWordCount from "../components/highestWordCount";
+import WritingStreak from "../components/WritingStreak/WritingStreak";
 
 function Dashboard() {
   const { user } = useAuth0();
@@ -37,13 +36,15 @@ function Dashboard() {
               roundedCircle
             />
           </Col>
-
-          <Col className="content dash2" sm={8}>
-            <DayliWordCount />
+          <Col className="content dash2" sm={6}>
+            <DayliWordCount />             
+            <WritingStreak/>
             <HighestWordCount />
             <WeeklyWordCount />
-            {/* Rahida : added this to pop a modal when Writing goal is clicked*/}
-            <>
+          </Col >
+          <Col sm={2}>
+           {/* Rahida : added this to pop a modal when Writing goal is clicked*/}
+           <>
               <Button onClick={() => setModalShow(true)}>
                 <p>Writing Goal:</p>
               </Button>
