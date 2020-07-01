@@ -31,7 +31,10 @@ function Navigation() {
               <Nav.Link href="/dashboard">Dashboard</Nav.Link>
               <Nav.Link href="/projects">My Projects</Nav.Link>
               <Nav.Link
-                onClick={() => logout({ returnTo: window.location.origin })}
+                onClick={() => logout(
+                  { returnTo: window.location.origin },
+                  window.localStorage.clear()
+                  )}
                 className="navbar-item"
               >
                 {" "}

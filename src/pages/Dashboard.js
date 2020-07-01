@@ -8,11 +8,11 @@ import {
   Image,
 } from "react-bootstrap";
 import { useAuth0 } from "../contexts/auth0-context";
-import { WritingGoal } from "../components/WritingGoal";
-import WordCount from "../components/WordCount";
-import DayliWordCount from "../components/DailyWordcount";
-import WeeklyWordCount from "../components/weeklyWordCount";
-import HighestWordCount from "../components/highestWordCount";
+import { WritingGoal } from '../components/WritingGoal/WritingGoal.js';
+import WordCount from "../components/WordCount/WordCount";
+import DayliWordCount from "../components/DailyWordCount/DailyWordcount";
+import WeeklyWordCount from "../components/WeeklyWordCount/weeklyWordCount";
+import HighestWordCount from "../components/HighestWordCount/highestWordCount";
 import WritingStreak from "../components/WritingStreak/WritingStreak";
 
 function Dashboard() {
@@ -43,13 +43,8 @@ function Dashboard() {
           <Col sm={2}>
            {/* Rahida : added this to pop a modal when Writing goal is clicked*/}
            <>
-              <Button onClick={() => setModalShow(true)}>
-                <p>Writing Goal:</p>
-              </Button>
-
+              
               <WritingGoal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
               />
             </>
           </Col>
