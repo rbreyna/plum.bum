@@ -15,6 +15,10 @@ const userSchema = new Schema({
     type: Number,
     default: 0,
   },
+  goalDate: {
+    type: Date,
+   
+  },
   image: {
     type: String,
     required: true,
@@ -33,6 +37,12 @@ const userSchema = new Schema({
       }
     },
   },
+
+  /*auth0_id:{
+    type: String,
+    unique: true,
+    required: true,
+  },*/
 
   // This allows us to populate "User" with any associated entry
   entries: [

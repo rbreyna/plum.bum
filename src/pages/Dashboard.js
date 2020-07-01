@@ -3,16 +3,17 @@ import "./Dashboard.css";
 
 import { Button, Container, Col, Row, Image } from "react-bootstrap";
 import { useAuth0 } from '../contexts/auth0-context';
-import { WritingGoal } from '../components/WritingGoal';
+import { WritingGoal } from '../components/WritingGoal/WritingGoal.js';
 import WordCount from "../components/WordCount";
-import DayliWordCount from "../components/DailyWordcount"
-import WeeklyWordCount from "../components/weeklyWordCount"
-import HighestWordCount from "../components/highestWordCount"
+import DayliWordCount from "../components/DailyWordcount";
+import WeeklyWordCount from "../components/weeklyWordCount";
+import HighestWordCount from "../components/highestWordCount";
+import WritingStreak from "../components/WritingStreak/WritingStreak";
 
 function Dashboard() {
   const { user } = useAuth0();
 
-const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = React.useState(false);
   return (
     <div>
       <h1> {user ? `${user.name}'s` : null} Dashboard Page</h1>
@@ -27,29 +28,23 @@ const [modalShow, setModalShow] = React.useState(false);
               style={{ marginTop: "20px" }}
               roundedCircle
             />
-           
           </Col>
-          
-          <Col className="content dash2" sm={8}>
-            
-          <DayliWordCount/>
-          <HighestWordCount/>
-          <WeeklyWordCount/>
-            { /* Rahida : added this to pop a modal when Writing goal is clicked*/}
-            <>
-              <Button onClick={() => setModalShow(true)}>
-                <p>Writing Goal:</p>
-              </Button>
-
-                <WritingGoal
-                  show={modalShow}
-                  onHide={() => setModalShow(false)}
-                />
-               </>
+          <Col className="content dash2" sm={6}>
+            <DayliWordCount />             
+            <WritingStreak/>
+            <HighestWordCount />
+            <WeeklyWordCount />
+          </Col >
+          <Col sm={2}>
+           {/* Rahida : added this to pop a modal when Writing goal is clicked*/}
+           <>
+              
+              <WritingGoal
+              />
+            </>
           </Col>
         </Row>
-        <WordCount
-          />
+        <WordCount />
       </Container>
     </div>
   );
