@@ -19,7 +19,6 @@ function PencilButton(props) {
       .createUser(info)
       .then((res) => {
         console.log("User created");
-        console.log(res);
       })
       .catch((err) => {
         apiUser
