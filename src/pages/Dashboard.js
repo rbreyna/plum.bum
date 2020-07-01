@@ -1,12 +1,6 @@
 import React from "react";
 import "./Dashboard.css";
-import {
-  Button,
-  Container,
-  Col,
-  Row,
-  Image,
-} from "react-bootstrap";
+import { Button, Container, Col, Row, Image } from "react-bootstrap";
 import { useAuth0 } from "../contexts/auth0-context";
 import { WritingGoal } from "../components/WritingGoal";
 import WordCount from "../components/WordCount";
@@ -21,13 +15,10 @@ function Dashboard() {
   const [modalShow, setModalShow] = React.useState(false);
   return (
     <div>
-      <h1> {user ? `${user.name}'s` : null} Dashboard Page</h1>
-
-      {/* <WritingStreak /> */}
-
-      <Container>
-        <Row className="justify-center-content fluid" id="row-1">
-          <Col className="content dash1" sm={4}>
+      <h1> {user ? `${user.name}'s` : null} Dashboard</h1>
+      <Container className="Dashboard-header">
+        <Row>
+          <Col md={3}>
             <Image
               src="./assets/images/profile-pic-placeholder.jpg"
               width={150}
@@ -36,26 +27,22 @@ function Dashboard() {
               roundedCircle
             />
           </Col>
-          <Col className="content dash2" sm={6}>
-            <DayliWordCount />             
-            <WritingStreak/>
+          <Col md={4}>
+            <DayliWordCount />
+            <WritingStreak />
+          </Col>
+          <Col md={4}>
             <HighestWordCount />
             <WeeklyWordCount />
-          </Col >
-          <Col sm={2}>
-           {/* Rahida : added this to pop a modal when Writing goal is clicked*/}
-           <>
-              <Button onClick={() => setModalShow(true)}>
-                <p>Writing Goal:</p>
-              </Button>
-
-              <WritingGoal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-              />
-            </>
+          </Col>
+          <Col md={1}>
+            <Button onClick={() => setModalShow(true)}>
+              <p>Writing Goal</p>
+            </Button>
+            <WritingGoal show={modalShow} onHide={() => setModalShow(false)} />
           </Col>
         </Row>
+
         <WordCount />
       </Container>
     </div>

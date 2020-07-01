@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { Button, Col, Row, FormControl,  InputGroup} from "react-bootstrap";
+import { Button, Col, Row, FormControl, InputGroup } from "react-bootstrap";
 import "../pages/Dashboard.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit, faSave } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faSave } from "@fortawesome/free-solid-svg-icons";
 import apiEntry from "../utils/apiEntry";
-
-
 
 export default class WordCount extends Component {
   constructor(props) {
@@ -14,34 +12,33 @@ export default class WordCount extends Component {
       title: "",
       entryBody: "",
       wordCount: 0,
-      email:""   
+      email: "",
     };
   }
   componentDidMount() {
-    this.userEmail()
+    this.userEmail();
   }
-  
 
-  userEmail=()=>{
-    const email =localStorage.getItem("email");
+  userEmail = () => {
+    const email = localStorage.getItem("email");
     this.setState({
-      email: email
-    })
-    console.log(email)
-  }
+      email: email,
+    });
+    console.log(email);
+  };
   // Count Words
   countWords = (text) => {
     return text.split(/\s+|--+/).filter((word) => word.length > 0).length;
   };
- 
-  //Input 
+
+  //Input
   handleinputText = (event) => {
     event.preventDefault();
     this.setState({ title: event.target.value });
     console.log("TextInput" + event.target.value);
   };
 
-  //Textarea 
+  //Textarea
   handleTextarea = (event) => {
     event.preventDefault();
     this.setState({ entryBody: event.target.value });
@@ -51,24 +48,23 @@ export default class WordCount extends Component {
   /* It works but still waiting in how can we get user credentials*/
   handleSave = (event) => {
     event.preventDefault();
-    
+
     const newEntry = {
       email: localStorage.getItem("email"),
       title: this.state.title,
       entryBody: this.state.entryBody,
     };
-   
-    console.log(newEntry)
-    console.log(this.state.email,"email")
-    
-    apiEntry.createEntry(this.state.email,newEntry)
-      .then(this.setState({
-        message: alert("Your pasage is saved"),
+
+    console.log(newEntry);
+    console.log(this.state.email, "email");
+
+    apiEntry.createEntry(this.state.email, newEntry).then(
+      this.setState({
+        message: alert("Your project has been saved!"),
         title: "",
-        entryBody: " "
-      }));
-      
-     
+        entryBody: " ",
+      })
+    );
   };
 
   // handleSave = (event) => {
@@ -93,17 +89,15 @@ export default class WordCount extends Component {
               <br></br>
               <InputGroup id="passage-title" sm={12}>
                 <InputGroup.Prepend>
-                  <InputGroup.Text
-                  >
-                    Name of Passage
-                </InputGroup.Text>
+                  <InputGroup.Text>Name of Passage</InputGroup.Text>
                 </InputGroup.Prepend>
                 <FormControl
                   value={this.state.title}
                   name="title"
                   type="text"
                   className="form-control"
-                  onChange={this.handleinputText} />
+                  onChange={this.handleinputText}
+                />
                 <br></br>
               </InputGroup>
               <FormControl
@@ -122,7 +116,8 @@ export default class WordCount extends Component {
         <Row>
           <Col sm={4}>
             <h3>
-              <FontAwesomeIcon icon={faEdit} />  : {this.countWords(this.state.entryBody)}
+              <FontAwesomeIcon icon={faEdit} /> :{" "}
+              {this.countWords(this.state.entryBody)}
             </h3>
           </Col>
           <Col sm={4}>
