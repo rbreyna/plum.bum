@@ -2,14 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
     unique: true,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
   },
   goal: {
     type: Number,
@@ -34,11 +33,11 @@ const userSchema = new Schema({
     },
   },
 
-  /*auth0_id:{
+  auth0_id: {
     type: String,
     unique: true,
     required: true,
-  },*/
+  },
 
   // This allows us to populate "User" with any associated entry
   entries: [

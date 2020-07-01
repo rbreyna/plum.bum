@@ -41,7 +41,7 @@ class User extends Component {
   render() {
     return (
       <div>
-        <Card  style = {{backgroundColor: "#a8e6cf"}} className="text-center">
+        <Card style={{ backgroundColor: "#a8e6cf" }} className="text-center">
           <Card.Header>
             <Jumbotron>
               <h1>
