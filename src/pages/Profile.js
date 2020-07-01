@@ -9,6 +9,7 @@ export default function Profile() {
   const name = user ? user.name : null;
   const email = user ? user.email : null;
   const picture = user ? user.picture : null;
+  const id =  user ? user.sub.splice("|")[1] : null;
 
   console.log(name, email, picture)
   localStorage.setItem("email", email)
@@ -18,7 +19,8 @@ export default function Profile() {
       <User
       name = {name}
       email = {email}
-      picture = {picture}/>
+      picture = {picture}
+      id = {id}/>
     )}
     </>
   )

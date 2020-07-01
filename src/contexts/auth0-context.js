@@ -57,6 +57,7 @@ export class Auth0Provider extends Component {
         this.setState({ user, isAuthenticated: true, isLoading: false }, ()=>{
             const { user } = this.state;
             console.log(user);
+            //clear local storage
             return(
                 <Profile
                 email={user.email}

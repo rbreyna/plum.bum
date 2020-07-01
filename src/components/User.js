@@ -17,6 +17,7 @@ class User extends Component {
       name: "",
       email: "",
       picture: "",
+      id: "",
       show: false,
     };
 
@@ -28,6 +29,7 @@ class User extends Component {
       name: this.props.name,
       email: this.props.email,
       picture: this.props.picture,
+      id: this.props.id,
     });
   }
 
