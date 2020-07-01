@@ -49,10 +49,10 @@ export class Auth0Provider extends Component {
 
     handleRedirectCallback = async () => {
         this.setState({ isLoading: true });
-
+        
         await this.state.auth0Client.handleRedirectCallback();
         const user = await this.state.auth0Client.getUser();
-
+        localStorage.setItem("email", user.email)
         //Need to put in callback function
         this.setState({ user, isAuthenticated: true, isLoading: false }, ()=>{
             const { user } = this.state;
@@ -62,7 +62,8 @@ export class Auth0Provider extends Component {
                 email={user.email}
                 name={user.name}
                 picture={user.picture}
-                id={user.sub.split("|")[1]}/>
+                id={user.sub.split("|")[1]}
+                />
             )
             //console.log(user.sub.split("|")[1]);
         });
@@ -87,6 +88,7 @@ export class Auth0Provider extends Component {
             getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
             //Call the logout and get redirected to the Auth0 logout
             logout: (...p) => auth0Client.logout(...p)
+            
         };
 
         return (

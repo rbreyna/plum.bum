@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Entry = require("../controllers/entriesDateController");
-
+//Email is a unique value
 router.route("/date")
 .get(Entry.getEntrybydate)
 

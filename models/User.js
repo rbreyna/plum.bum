@@ -27,6 +27,9 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  goalDate: {
+    type: Date,
+  },
   image: {
     type: String,
     required: true,

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import apiEntry from "../utils/apiEntry";
-import "../pages/Dashboard.css";
+import apiEntry from "../../utils/apiEntry";
+import "../../pages/Dashboard.css";
 
 export default class DailyWordcount extends Component {
   constructor(props) {
