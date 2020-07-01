@@ -14,4 +14,8 @@ export default {
   updateUser: function (userData, id) {
     return axios.put("/api/entry/" + id, entryData);
   },
+  //getting the Goal and goal date 
+  getGoal: function (userId){
+    return axios.get("/api/goal/"+ userId);
+  },
 };

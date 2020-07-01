@@ -51,13 +51,13 @@ export default class WordCount extends Component {
   /* It works but still waiting in how can we get user credentials*/
   handleSave = (event) => {
     event.preventDefault();
-
+    
     const newEntry = {
       email: localStorage.getItem("email"),
       title: this.state.title,
       entryBody: this.state.entryBody,
     };
-
+   
     console.log(newEntry)
     console.log(this.state.email, "email")
     
