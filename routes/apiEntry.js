@@ -5,6 +5,8 @@ router.route("/")
 .get(Entry.getEntry)
 .post(Entry.createEntries);
 
+
+//Email is a unique value
 router
   .route("/:email")
   .get(Entry.getEntrybyUser)
