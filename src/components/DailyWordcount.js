@@ -18,6 +18,10 @@ export default class DailyWordcount extends Component {
 
   componentDidMount() {
     this.dailyWordCount()
+    this.setState({
+      email:localStorage.getItem("email")
+    })
+    
   }
 
   //Sum
@@ -32,12 +36,9 @@ export default class DailyWordcount extends Component {
 
   // Get daily word count
   dailyWordCount = () => {
-    this.setState({
-      email:localStorage.getItem("email")
-    })
-    
+   
     apiEntry
-      .findEntriesbydate(this.state.email)
+      .findEntriesbydate(localStorage.getItem("email"))
       .then(entries => {
         console.log(entries.data);
         let entriesbydate = []
