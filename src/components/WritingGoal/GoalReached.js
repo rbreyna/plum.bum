@@ -10,7 +10,7 @@ export default class GoalReached extends Component {
       goalDate: "",
       wordCount: 0,
       startGoalDate: "",
-      show: false,
+      show: true,
     };
   }
 
@@ -29,13 +29,13 @@ export default class GoalReached extends Component {
   // }
 
   GetGoalInfo = () => {
-    countEntryWords = (entry) => {
-      let entryBodyString = entry.entryBody;
-      let arrayCount = [];
-      arrayCount = entryBodyString.split(" ");
-      let entryWords = arrayCount.length;
-      return entryWords;
-    };
+    // const countEntryWords = (entry) => {
+    //   let entryBodyString = entry.entryBody;
+    //   let arrayCount = [];
+    //   arrayCount = entryBodyString.split(" ");
+    //   let entryWords = arrayCount.length;
+    //   return entryWords;
+    // };
     apiUser
       .getGoal(localStorage.getItem("email"))
       .then((goalInfo) => {
@@ -61,7 +61,7 @@ export default class GoalReached extends Component {
   
   render() {
     const userGoalDate = this.state.goalDate;
-    const countWordsTodate = "";
+    const countWordsTodate = 0;
     const goalWords = this.state.goalCount;
 
     return (
@@ -95,7 +95,7 @@ export default class GoalReached extends Component {
         </>
 
       )}
-      {userGoalDate !== Date.now && countWordsTodate >= goalWords && (
+      {userGoalDate !== Date.now && countWordsTodate >= goalWords && false && (
         <>
         <Modal show={this.state.show} onHide={()=>this.handleModal()}>
           <Modal.Header closeButton>
@@ -108,7 +108,7 @@ export default class GoalReached extends Component {
         </>
 
       )}
-      {Date.now  === Date.now && (
+      {/* {Date.now  === Date.now && (
         <>
         <Modal show={this.state.show} onHide={()=>this.handleModal()}>
           <Modal.Header closeButton>
@@ -120,7 +120,7 @@ export default class GoalReached extends Component {
         </Modal>
         </>
 
-      )}
+      )} */}
  
       </div>
     );

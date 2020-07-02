@@ -1,5 +1,5 @@
 import axios from "axios";
-import useAuth0 from "../context/autho0-context";
+import useAuth0 from "../contexts/auth0-context";
 
 export default {
   // Finds a specific user with a given id
