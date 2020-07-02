@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Button, Col, Row, FormControl,  InputGroup} from "react-bootstrap";
-import "../pages/Dashboard.css";
+import { Button, Col, Row, FormControl, InputGroup } from "react-bootstrap";
+import "../../pages/Dashboard.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faSave } from '@fortawesome/free-solid-svg-icons'
-import apiEntry from "../utils/apiEntry";
+import apiEntry from "../../utils/apiEntry";
 
 
 
@@ -14,16 +14,16 @@ export default class WordCount extends Component {
       title: "",
       entryBody: "",
       wordCount: 0,
-      email:""   
+      email: ""
     };
   }
   componentDidMount() {
     this.userEmail()
   }
-  
 
-  userEmail=()=>{
-    const email =localStorage.getItem("email");
+
+  userEmail = () => {
+    const email = localStorage.getItem("email");
     this.setState({
       email: email
     })
@@ -33,7 +33,7 @@ export default class WordCount extends Component {
   countWords = (text) => {
     return text.split(/\s+|--+/).filter((word) => word.length > 0).length;
   };
- 
+
   //Input 
   handleinputText = (event) => {
     event.preventDefault();
@@ -59,16 +59,17 @@ export default class WordCount extends Component {
     };
    
     console.log(newEntry)
-    console.log(this.state.email,"email")
+    console.log(this.state.email, "email")
     
-    apiEntry.createEntry(this.state.email,newEntry)
-      .then(this.setState({
-        message: alert("Your pasage is saved"),
-        title: "",
-        entryBody: " "
-      }));
-      
-     
+      apiEntry.createEntry(this.state.email, newEntry)
+        .then(this.setState({
+          message: alert("Your pasage is saved"),
+          title: "",
+          entryBody: " "
+        }))
+   
+    window.location.reload();
+
   };
   render() {
     return (

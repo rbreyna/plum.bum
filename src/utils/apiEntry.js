@@ -32,9 +32,6 @@ export default {
     return axios.post("http://localhost:9000/api/entry/" + email, entryData);
   },
 
-  createEntries: function (entryData) {
-    return axios.post("http://localhost:9000/api/entry/", entryData);
-  },
 
   // Updates an entry
   updateEntry: function (entryData, id) {
