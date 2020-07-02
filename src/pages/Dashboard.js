@@ -32,7 +32,7 @@ function Dashboard() {
         {!isLoading && user && (
           <>
             {userInfo(user.sub.split("|")[1])}
-            <h1> {user.name}'s' Dashboard Page</h1>
+            <h1> {user.name}'s Dashboard Page</h1>
             <Container>
               <Row className="justify-center-content fluid" id="row-1">
                 <Col className="content dash1" sm={4}>

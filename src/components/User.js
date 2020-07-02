@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import apiUser from "../utils/apiUser";
 import {
   Jumbotron,
   Button,
@@ -37,6 +38,8 @@ class User extends Component {
     const value = event.target.value;
     this.setState({ [event.target.id]: value });
   }
+
+  updateUserInfo() {}
 
   render() {
     return (
@@ -125,6 +128,7 @@ class User extends Component {
                 <Button
                   onClick={() => {
                     this.setState({ show: false });
+                    this.updateUserInfo();
                   }}
                 >
                   Save

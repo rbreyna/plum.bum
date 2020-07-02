@@ -10,7 +10,6 @@ export default function Profile() {
   const picture = user ? user.picture : null;
   const id = user ? user.sub.split("|")[1] : null;
 
-  console.log(id);
   return (
     <>
       {!isLoading && user && (
