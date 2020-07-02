@@ -21,15 +21,7 @@ function PencilButton(props) {
         console.log("User created");
       })
       .catch((err) => {
-        apiUser
-          .findUser(info.auth0_id)
-          .then((res) => {
-            console.log("User found!");
-            console.log(res);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        throw err;
       });
   };
 
@@ -51,14 +43,14 @@ function PencilButton(props) {
       )}
       {!isLoading && user && (
         <>
-          {/* <a href="/dashboard"> */}
-          <Image
-            className="Pencil-button"
-            src={props.src}
-            alt={props.alt}
-            onClick={sendUser}
-          />
-          {/* </a> */}
+          <a href="/dashboard">
+            <Image
+              className="Pencil-button"
+              src={props.src}
+              alt={props.alt}
+              onClick={sendUser}
+            />
+          </a>
         </>
       )}
     </div>
