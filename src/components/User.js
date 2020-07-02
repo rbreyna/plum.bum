@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import apiUser from "../utils/apiUser";
 import {
   Jumbotron,
   Button,
@@ -17,6 +18,7 @@ class User extends Component {
       name: "",
       email: "",
       picture: "",
+      id: "",
       show: false,
     };
 
@@ -28,6 +30,7 @@ class User extends Component {
       name: this.props.name,
       email: this.props.email,
       picture: this.props.picture,
+      id: this.props.id,
     });
   }
 
@@ -36,10 +39,12 @@ class User extends Component {
     this.setState({ [event.target.id]: value });
   }
 
+  updateUserInfo() {}
+
   render() {
     return (
       <div>
-        <Card  style = {{backgroundColor: "#a8e6cf"}} className="text-center">
+        <Card style={{ backgroundColor: "#a8e6cf" }} className="text-center">
           <Card.Header>
             <Jumbotron>
               <h1>
@@ -123,6 +128,7 @@ class User extends Component {
                 <Button
                   onClick={() => {
                     this.setState({ show: false });
+                    this.updateUserInfo();
                   }}
                 >
                   Save
