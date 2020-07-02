@@ -1,5 +1,4 @@
 import axios from "axios";
-import useAuth0 from "../context/autho0-context";
 
 export default {
   // Finds a specific user with a given id
@@ -11,11 +10,15 @@ export default {
     return axios.post("/api/user/", userData);
   },
   // Updates a user with a given id
-  updateUser: function (userData, id) {
+  /*   updateUser: function (userData, id) {
     return axios.put("/api/entry/" + id, entryData);
+<<<<<<< HEAD
+  }, */
+=======
   },
   //getting the Goal and goal date 
   getGoal: function (userId){
     return axios.get("/api/goal/"+ userId);
   },
+>>>>>>> 14456bce2bf03469557ddda82396aa8586f98635
 };
