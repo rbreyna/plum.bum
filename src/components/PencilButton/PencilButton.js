@@ -7,7 +7,7 @@ import apiUser from "../../utils/apiUser";
 function PencilButton(props) {
   const { isLoading, user, loginWithRedirect } = useAuth0();
 
-  const sendUser = () => {
+  const createUser = () => {
     const info = {
       name: user.name,
       email: user.email,
@@ -43,14 +43,14 @@ function PencilButton(props) {
       )}
       {!isLoading && user && (
         <>
-          <a href="/dashboard">
-            <Image
-              className="Pencil-button"
-              src={props.src}
-              alt={props.alt}
-              onClick={sendUser}
-            />
-          </a>
+          {/* <a href="/dashboard"> */}
+          <Image
+            className="Pencil-button"
+            src={props.src}
+            alt={props.alt}
+            onClick={createUser}
+          />
+          {/* </a> */}
         </>
       )}
     </div>

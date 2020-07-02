@@ -1,8 +1,5 @@
-//ROY: Remember to put in callback function in setState down below near line 55
-
 import React, { Component, createContext, useContext } from "react";
 import createAuth0Client from "@auth0/auth0-spa-js";
-import Profile from "../pages/Profile";
 
 //create the context
 export const Auth0Context = createContext();
