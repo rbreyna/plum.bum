@@ -18,7 +18,7 @@ import WritingStreak from "../components/WritingStreak/WritingStreak";
 function Dashboard() {
   const { user } = useAuth0();
 
-  const [modalShow, setModalShow] = React.useState(false);
+ //const [modalShow, setModalShow] = React.useState(false);
   return (
     <div>
       <h1> {user ? `${user.name}'s` : null} Dashboard Page</h1>
@@ -41,11 +41,9 @@ function Dashboard() {
             <WeeklyWordCount />
           </Col >
           <Col sm={2}>
-           {/* Rahida : added this to pop a modal when Writing goal is clicked*/}
+           {/*  pop a modal when Writing goal is clicked*/}
            <>
-              
-              <WritingGoal
-              />
+              <WritingGoal/>
             </>
           </Col>
         </Row>

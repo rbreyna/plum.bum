@@ -4,6 +4,9 @@ import "../../pages/Dashboard.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faSave } from '@fortawesome/free-solid-svg-icons'
 import apiEntry from "../../utils/apiEntry";
+import GoalReached from "../WritingGoal/GoalReached";
+import apiUser from "../../utils/apiUser";
+import { updateLocale } from "moment";
 
 
 
@@ -67,6 +70,20 @@ export default class WordCount extends Component {
           title: "",
           entryBody: " "
         }))
+
+        // Idalmys solution to Goal wordcount
+        // apiUser.findUser("id")
+        // .then(user_info => {
+        //   if ((user_info.startGoalDate === Date.now) || (user_info.goalDate !== Date.now)){
+        //     counts = countwords(this.state.entrybody) + user_info.Totalword
+        //     if (counts >= goal){
+        //       updateUser({Totalword: counts})
+        //       .then(user_info => {
+        //         console.log(user_info)
+        //       })
+        //     }
+        //   }
+        // })
    
     window.location.reload();
 
@@ -113,8 +130,13 @@ export default class WordCount extends Component {
             </h3>
           </Col>
           <Col sm={4}>
+          
             <Button id="btns" onClick={this.handleSave}>
               <FontAwesomeIcon icon={faSave} />
+              <>
+              {/*when save btn is clicked need to goto GoalReached.js so modal pops up*/}
+              <GoalReached/>
+              </>
             </Button>
           </Col>
         </Row>

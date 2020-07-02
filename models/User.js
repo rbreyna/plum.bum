@@ -19,6 +19,10 @@ const userSchema = new Schema({
     type: Date,
    
   },
+  startGoalDate: {
+    type: Date,
+  }
+
   image: {
     type: String,
     required: true,
