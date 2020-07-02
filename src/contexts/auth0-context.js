@@ -37,7 +37,6 @@ export class Auth0Provider extends Component {
       return this.handleRedirectCallback();
     }
 
-<<<<<<< HEAD
     const isAuthenticated = await auth0Client.isAuthenticated();
     const user = isAuthenticated ? await auth0Client.getUser() : null;
     this.setState({ isLoading: false, isAuthenticated, user });
@@ -72,57 +71,6 @@ export class Auth0Provider extends Component {
       //Call the logout and get redirected to the Auth0 logout
       logout: (...p) => auth0Client.logout(...p),
     };
-=======
-    handleRedirectCallback = async () => {
-        this.setState({ isLoading: true });
-        
-        await this.state.auth0Client.handleRedirectCallback();
-        const user = await this.state.auth0Client.getUser();
-        localStorage.setItem("email", user.email)
-        //Need to put in callback function
-        this.setState({ user, isAuthenticated: true, isLoading: false }, ()=>{
-            const { user } = this.state;
-            console.log(user);
-            return(
-                <Profile
-                email={user.email}
-                name={user.name}
-                picture={user.picture}
-                id={user.sub.split("|")[1]}
-                />
-            )
-            //console.log(user.sub.split("|")[1]);
-        });
-        window.history.replaceState({}, document.title, window.location.pathname);
-    }
-
-
-    render() {
-
-        const { auth0Client, isLoading, isAuthenticated, user } = this.state;
-        const { children } = this.props;
-
-        const configObject = {
-            isLoading,
-            isAuthenticated,
-            user,
-            //Login method with Auth0's Universal Login
-            loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
-            //Grab a token so we can use for API calls
-            getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
-            //Get the information out of our token
-            getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
-            //Call the logout and get redirected to the Auth0 logout
-            logout: (...p) => auth0Client.logout(...p)
-            
-        };
-
-        return (
-            <Auth0Context.Provider value={configObject}>
-                {children}
-            </Auth0Context.Provider>
-        );
->>>>>>> 14456bce2bf03469557ddda82396aa8586f98635
 
     return (
       <Auth0Context.Provider value={configObject}>
