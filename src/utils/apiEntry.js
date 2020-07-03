@@ -8,28 +8,28 @@ export default {
   },
 
   //Get entries by email
-  findEntries: function (email) {
+  findEntries: function ( auth0_id) {
     // Front end route will also need environment variable for production/deployment
-    return axios.get("http://localhost:9000/api/entry/" + email);
+    return axios.get("http://localhost:9000/api/entry/" +  auth0_id);
   },
-  findEntriesbydate: function (email) {
+  findEntriesbydate: function ( auth0_id) {
     // Front end route will also need environment variable for production/deployment
-    return axios.get("http://localhost:9000/api/date/"+ email);
+    return axios.get("http://localhost:9000/api/date/"+  auth0_id);
   },
   //Find by week
-  findEntriesbyweek: function (email) {
+  findEntriesbyweek: function ( auth0_id) {
     // Front end route will also need environment variable for production/deployment
-    return axios.get("http://localhost:9000/api/week/"+ email);
+    return axios.get("http://localhost:9000/api/week/"+  auth0_id);
   },
   //Streak Lenght
-  getStreak: function (email) {
+  getStreak: function ( auth0_id) {
     // Front end route will also need environment variable for production/deployment
-    return axios.get("http://localhost:9000/api/streak/"+ email);
+    return axios.get("http://localhost:9000/api/streak/"+  auth0_id);
   },
   
   // Saves a entry to the database
-  createEntry: function ( email, entryData) {
-    return axios.post("http://localhost:9000/api/entry/" + email, entryData);
+  createEntry: function (  auth0_id, entryData) {
+    return axios.post("http://localhost:9000/api/entry/" +  auth0_id, entryData);
   },
 
 
