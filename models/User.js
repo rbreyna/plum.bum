@@ -29,6 +29,14 @@ const userSchema = new Schema({
   goalDate: {
     type: Date,
   },
+  startGoalDate: {
+    type: Date,
+  },
+  dailyWordCount: {
+    type: String,
+    default: 0
+  },
+
   image: {
     type: String,
     required: true,
