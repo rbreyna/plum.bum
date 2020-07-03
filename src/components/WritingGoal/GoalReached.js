@@ -13,7 +13,7 @@ export default class GoalReached extends Component {
       show: true,
     };
   }
-  
+
 //if userInfo.startGoalDate === Date.now then start count of words)
         //save into datebase
         //call Function to save the word count into the database
@@ -100,9 +100,9 @@ export default class GoalReached extends Component {
             WOW!!! you have reached your goal before the date!
           </Modal.Body>
         </Modal>
-        </> */}
+        </> 
 
-      )}
+      )}*/}
       </div>
     );
   }

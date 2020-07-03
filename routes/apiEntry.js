@@ -8,7 +8,7 @@ router.route("/")
 
 //Email is a unique value
 router
-  .route("/:email")
+  .route("/:auth0_id")
   .get(Entry.getEntrybyUser)
   .post(Entry.createEntry)
   .put(Entry.updateEntry)

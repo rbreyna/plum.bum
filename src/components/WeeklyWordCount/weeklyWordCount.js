@@ -7,7 +7,7 @@ export default class WeeklyWordcount extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      auth0_id: "",
       weeklycount: 0
     };
   }
@@ -33,7 +33,7 @@ export default class WeeklyWordcount extends Component {
   weeklyCount = () => {
    
     apiEntry
-      .findEntriesbyweek(localStorage.getItem("email"))
+      .findEntriesbyweek(localStorage.getItem("auth0_id"))
       .then(entries => {
           console.log(entries.data);
           let entriesbydate = []

@@ -17,21 +17,12 @@ export default class WordCount extends Component {
       title: "",
       entryBody: "",
       wordCount: 0,
-      email: ""
+      auth0_id: ""
     };
   }
-  componentDidMount() {
-    this.userEmail()
-  }
 
 
-  userEmail = () => {
-    const email = localStorage.getItem("email");
-    this.setState({
-      email: email
-    })
-    console.log(email)
-  }
+
   // Count Words
   countWords = (text) => {
     return text.split(/\s+|--+/).filter((word) => word.length > 0).length;
@@ -54,22 +45,15 @@ export default class WordCount extends Component {
   /* It works but still waiting in how can we get user credentials*/
   handleSave = (event) => {
     event.preventDefault();
-    
+
     const newEntry = {
-      email: localStorage.getItem("email"),
+      auth0_id: localStorage.getItem("auth0_id"),
       title: this.state.title,
       entryBody: this.state.entryBody,
     };
-   
+
     console.log(newEntry)
-    console.log(this.state.email, "email")
     
-      apiEntry.createEntry(this.state.email, newEntry)
-        .then(this.setState({
-          message: alert("Your pasage is saved"),
-          title: "",
-          entryBody: " "
-        }))
 
         // Idalmys solution to Goal wordcount
         // apiUser.findUser("id")
@@ -85,6 +69,15 @@ export default class WordCount extends Component {
         //   }
         // })
    
+    console.log(this.state.auth0_id, "auth0_id")
+
+    apiEntry.createEntry(this.state.auth0_id, newEntry)
+      .then(this.setState({
+        message: alert("Your pasage is saved"),
+        title: "",
+        entryBody: " "
+      }))
+
     window.location.reload();
 
   };
