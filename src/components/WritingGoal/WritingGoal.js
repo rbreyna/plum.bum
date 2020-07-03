@@ -95,7 +95,7 @@ export class WritingGoal extends Component {
               </div>
             </Modal.Body>
             <Modal.Footer>
-              {/* roy is working */}
+              {/* roy is working to save the data to the database */}
               <Button  onClick={() => {
                 this.setState({ show: false });
               }}>SAVE</Button>

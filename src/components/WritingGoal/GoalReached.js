@@ -13,15 +13,19 @@ export default class GoalReached extends Component {
       show: true,
     };
   }
-
+  
+//if userInfo.startGoalDate === Date.now then start count of words)
+        //save into datebase
+        //call Function to save the word count into the database
+  
   // handleChange(event) {
   //   const value = event.target.value;
   //   this.setState({ [event.target.id]: value });
   //   console.log("goal", value);
   //   apiUser.saveUserGoal({
-  //     wordGoal: this.state.wordGoal,
-  //     dateSetGoal: this.state.dateSetGoal,
-  //     todaysDate: this.state.todaysDate,
+  //     wordGoal: this.state.goalCount,
+  //     dateSetGoal: this.state.startGoalDate,
+  //     endGaolDate: this.state.goalDate,
   //   })
   // }
 
@@ -43,10 +47,7 @@ export default class GoalReached extends Component {
       })
       .catch((err) => console.log(err));
   };
-//if userInfo.startGoalDate === Date.now then start count of words)
-        //save into datebase
-        //call Function to save the word count into the database
-  
+
   handleModal()
   {
     this.setState({show:!this.state.show})

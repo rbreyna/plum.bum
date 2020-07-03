@@ -72,7 +72,7 @@ export default class DailyWordcount extends Component {
 }
 
 
-//RZ need to add to get the word count 
+//RZ need to add to get the word count ??  (idalmys suggestion)
 // apiUser
 //         .updateUser(user.sub.split("|")[1], {dailyWordCount: "name of her variable"})
 //         .then()
