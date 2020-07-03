@@ -7,10 +7,10 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   getUser: function (req, res) {
-    User.findById({ _id: req.params.id })
+    User.find({ auth0_id: req.params.id })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
-  }, 
+  },
   createUser: function (req, res) {
     User.create(req.body)
       .then((dbModel) => res.json(dbModel))
@@ -18,7 +18,7 @@ module.exports = {
   },
 
   updateUser: function (req, res) {
-    User.findOneAndUpdate({ _id: req.params.id }, req.body)
+    User.findOneAndUpdate({ auth0_id: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
