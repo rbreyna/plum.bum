@@ -1,7 +1,6 @@
 
 import React, { Component } from "react";
 import "./WritingGoal.css";
-import Moment from "react-moment";
 import { Modal, Button, Row, Col, Form } from "react-bootstrap";
 
 
