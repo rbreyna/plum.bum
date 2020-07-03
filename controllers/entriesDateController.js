@@ -18,14 +18,14 @@ module.exports = {
         var today = moment().startOf('day');
         var tomorrow = moment(today).endOf('day');
 
-        Entry.find({ $and: [{ date: { '$gte': today, '$lte': tomorrow } }, { email: req.params.email }] })
+        Entry.find({ $and: [{ date: { '$gte': today, '$lte': tomorrow } }, {  auth0_id: req.params.auth0_id }] })
             .then((dbModel) => res.json(dbModel))
             .catch((err) => res.status(422).json(err));
     },
 
     getEntrybyweek: (req, res) => {
 
-        Entry.find({ $and: [{ date: { '$gte': new Date((new Date().getTime() - (7 * 24 * 60 * 60 * 1000))) } }, { email: req.params.email }] })
+        Entry.find({ $and: [{ date: { '$gte': new Date((new Date().getTime() - (7 * 24 * 60 * 60 * 1000))) } }, {  auth0_id: req.params.auth0_id }] })
             .then((dbModel) => res.json(dbModel))
             .catch((err) => res.status(422).json(err));
     },
@@ -33,7 +33,7 @@ module.exports = {
     getstreakLenght: (req, res) => {
         Entry.aggregate([
             {
-                 $match : { email : req.params.email } 
+                 $match : {  auth0_id : req.params.auth0_id } 
             },
             {
                 "$group": {

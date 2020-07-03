@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import apiUser from "../utils/apiUser";
 import {
   Jumbotron,
   Button,
