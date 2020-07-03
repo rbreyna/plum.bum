@@ -6,6 +6,7 @@ import PopulateEntries from "../components/PopulateEntries/PopulateEntries.js";
 
 function Dashboard() {
   const { user } = useAuth0();
+  const picture = user ? user.picture : null;
 
   return (
     <div>
@@ -13,13 +14,7 @@ function Dashboard() {
         <Row className="justify-center-content fluid" id="row-1">
           <Col className="content dash1" sm={12}>
             <h1> {user ? `${user.name}'s` : null} Projects</h1>
-            <Image
-              src="../assets/images/avatar1.png"
-              width={150}
-              height={150}
-              style={{ marginTop: "20px" }}
-              roundedCircle
-            />
+            <Image src={picture} />
             <h6>{user ? `${user.name}` : null}</h6>
           </Col>
         </Row>

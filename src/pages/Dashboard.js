@@ -26,6 +26,8 @@ function Dashboard() {
       });
   };
 
+  const picture = user ? user.picture : null;
+
   return (
     <>
       <div>
@@ -36,13 +38,7 @@ function Dashboard() {
             <Container>
               <Row className="justify-center-content fluid" id="row-1">
                 <Col className="content dash1" sm={4}>
-                  <Image
-                    src="./assets/images/profile-pic-placeholder.jpg"
-                    width={150}
-                    height={150}
-                    style={{ marginTop: "20px" }}
-                    roundedCircle
-                  />
+                  <Image src={picture} />
                 </Col>
                 <Col className="content dash2" sm={6}>
                   <DayliWordCount />
