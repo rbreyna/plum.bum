@@ -4,9 +4,6 @@ import "../../pages/Dashboard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faSave } from "@fortawesome/free-solid-svg-icons";
 import apiEntry from "../../utils/apiEntry";
-import GoalReached from "../WritingGoal/GoalReached";
-import apiUser from "../../utils/apiUser";
-import { updateLocale } from "moment";
 
 export default class WordCount extends Component {
   constructor(props) {
@@ -15,10 +12,20 @@ export default class WordCount extends Component {
       title: "",
       entryBody: "",
       wordCount: 0,
-      auth0_id: "",
+      email: "",
     };
   }
+  componentDidMount() {
+    this.userEmail();
+  }
 
+  userEmail = () => {
+    const email = localStorage.getItem("email");
+    this.setState({
+      email: email,
+    });
+    console.log(email);
+  };
   // Count Words
   countWords = (text) => {
     return text.split(/\s+|--+/).filter((word) => word.length > 0).length;
@@ -43,38 +50,10 @@ export default class WordCount extends Component {
     event.preventDefault();
 
     const newEntry = {
-      auth0_id: localStorage.getItem("auth0_id"),
+      email: localStorage.getItem("email"),
       title: this.state.title,
       entryBody: this.state.entryBody,
     };
-
-    console.log(newEntry);
-
-    // Idalmys solution to Goal wordcount
-    // apiUser.findUser("id")
-    // .then(user_info => {
-    //   if ((user_info.startGoalDate === Date.now) || (user_info.goalDate !== Date.now)){
-    //     counts = countwords(this.state.entrybody) + user_info.Totalword
-    //     if (counts >= goal){
-    //       updateUser({Totalword: counts})
-    //       .then(user_info => {
-    //         console.log(user_info)
-    //       })
-    //     }
-    //   }
-    // })
-
-    console.log(this.state.auth0_id, "auth0_id");
-
-    apiEntry.createEntry(this.state.auth0_id, newEntry).then(
-      this.setState({
-        message: alert("Your pasage is saved"),
-        title: "",
-        entryBody: " ",
-      })
-    );
-
-    window.location.reload();
 
     console.log(newEntry);
     console.log(this.state.email, "email");
@@ -89,20 +68,6 @@ export default class WordCount extends Component {
 
     window.location.reload();
   };
-
-  // handleSave = (event) => {
-  //   event.preventDefault();
-  //   const { user } = useAuth0();
-  //   let user_email = user.email;
-  //   const newEntry = {
-  //     title: this.state.InputField,
-  //     entryBody: this.state.TextareaField,
-  //   };
-  //   axios
-  //     .post("http://localhost:9000/api/entry/" + user_email, newEntry)
-  //     .then(this.setState({ message: alert("Your passage is saved") }));
-  // };
-
   render() {
     return (
       <div className="wordcount">
@@ -146,10 +111,6 @@ export default class WordCount extends Component {
           <Col sm={4}>
             <Button id="btns" onClick={this.handleSave}>
               <FontAwesomeIcon icon={faSave} />
-              <>
-                {/*when save btn is clicked need to goto GoalReached.js so modal pops up*/}
-                <GoalReached />
-              </>
             </Button>
           </Col>
         </Row>
