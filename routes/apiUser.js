@@ -5,7 +5,7 @@ router.route("/")
     .get(User.getUsers)
     .post(User.createUser);
 
-router.route("/:auth0_id")
+router.route("/:id")
     .get(User.getUser)
     .put(User.updateUser)
     .delete(User.deleteUser)

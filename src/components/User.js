@@ -46,7 +46,7 @@ class User extends Component {
       
     }
     apiUser
-      .updateUser(localStorage.getItem("auth0_id"), userInfo)
+      .updateUser(localStorage.getItem("id"), userInfo)
       .then(User =>{
         console.log(User)
       })

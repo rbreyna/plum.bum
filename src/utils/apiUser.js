@@ -10,8 +10,8 @@ export default {
     return axios.post("/api/user/", userData);
   },
   // Updates a user with a given id
-  updateUser: function (auth0_id, userData) {
-    return axios.put("/api/user/" + auth0_id, userData);
+  updateUser: function (id, userData) {
+    return axios.put("/api/user/" + id, userData);
   }, 
 
   // saveUserGoal: function (goalData) {

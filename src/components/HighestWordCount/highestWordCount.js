@@ -35,7 +35,7 @@ export default class highestWordCount extends Component {
     entriesCount = () => {
 
         apiEntry
-            .findEntries(localStorage.getItem("auth0_id"))
+            .findEntries(localStorage.getItem("id"))
             .then(entries => {
                 console.log(entries.data);
                 let highestentries = []

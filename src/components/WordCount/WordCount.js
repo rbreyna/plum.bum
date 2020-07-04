@@ -42,12 +42,12 @@ export default class WordCount extends Component {
     event.preventDefault();
 
     const newEntry = {
-      auth0_id: localStorage.getItem("auth0_id"),
+      auth0_id: localStorage.getItem("id"),
       title: this.state.title,
       entryBody: this.state.entryBody,
     };
 
-    apiEntry.createEntry(localStorage.getItem("auth0_id"), newEntry)
+    apiEntry.createEntry(localStorage.getItem("id"), newEntry)
       .then(this.setState({
         message: alert("Your pasage is saved"),
         title: "",

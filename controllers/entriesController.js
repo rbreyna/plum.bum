@@ -11,7 +11,7 @@ module.exports = {
 
   },
   getEntrybyUser: (req, res) => {
-    Entry.find({  auth0_id: req.params.auth0_id })
+    Entry.find({  auth0_id: req.params.id })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
@@ -22,7 +22,7 @@ module.exports = {
       .then(function (dbEntry) {
 
       
-        return User.findOneAndUpdate({ auth0_id :req.params.auth0_id}, { $push: { entries: dbEntry._id } }, { new: true })
+        return User.findOneAndUpdate({ auth0_id :req.params.id}, { $push: { entries: dbEntry._id } }, { new: true })
       })
       .then(function (dbUser) {
 
@@ -70,13 +70,13 @@ module.exports = {
   },
 
   updateEntry: function (req, res) {
-    Entry.findOneAndUpdate({  auth0_id: req.params.auth0_id }, req.body)
+    Entry.findOneAndUpdate({  auth0_id: req.params.id }, req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
 
   deleteEntry: function (req, res) {
-    Entry.findById({  auth0_id: req.params.auth0_id })
+    Entry.findById({  auth0_id: req.params.id })
       .then((dbModel) => dbModel.remove())
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));

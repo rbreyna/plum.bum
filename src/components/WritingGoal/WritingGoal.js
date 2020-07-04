@@ -29,7 +29,7 @@ export class WritingGoal extends Component {
       startGoalDate : this.state.dateSetGoal
     }
     apiUser
-      .updateUser(localStorage.getItem("auth0_id"), userGoal)
+      .updateUser(localStorage.getItem("id"), userGoal)
       .then(User =>{
         console.log(User)
       })

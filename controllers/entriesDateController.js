@@ -13,10 +13,10 @@ module.exports = {
     },
 
     getgoalbydate: (req, res) => {
-        const startGoalDate ="";
-        const endGoalDate = "";
+        const startGoalDate ="2020-07-02T03:22:23.725Z";
+        const goalDate = "2020-07-06T03:22:23.725Z";
     
-        Entry.find({ $and: [{ date: { '$gte': startGoalDate, '$lte': endGoalDate } }, {  auth0_id: req.params.auth0_id }] })
+        Entry.find({ $and: [{ date: { '$gte': startGoalDate, '$lte': goalDate } }, {  auth0_id: req.params.id }] })
             .then((dbModel) => res.json(dbModel))
             .catch((err) => res.status(422).json(err));
     },
@@ -25,14 +25,14 @@ module.exports = {
         var today = moment().startOf('day');
         var tomorrow = moment(today).endOf('day');
 
-        Entry.find({ $and: [{ date: { '$gte': today, '$lte': tomorrow } }, {  auth0_id: req.params.auth0_id }] })
+        Entry.find({ $and: [{ date: { '$gte': today, '$lte': tomorrow } }, {  auth0_id: req.params.id }] })
             .then((dbModel) => res.json(dbModel))
             .catch((err) => res.status(422).json(err));
     },
 
     getEntrybyweek: (req, res) => {
 
-        Entry.find({ $and: [{ date: { '$gte': new Date((new Date().getTime() - (7 * 24 * 60 * 60 * 1000))) } }, {  auth0_id: req.params.auth0_id }] })
+        Entry.find({ $and: [{ date: { '$gte': new Date((new Date().getTime() - (7 * 24 * 60 * 60 * 1000))) } }, {  auth0_id: req.params.id }] })
             .then((dbModel) => res.json(dbModel))
             .catch((err) => res.status(422).json(err));
     },
@@ -40,7 +40,7 @@ module.exports = {
     getstreakLenght: (req, res) => {
         Entry.aggregate([
             {
-                 $match : {  auth0_id : req.params.auth0_id } 
+                 $match : {  auth0_id : req.params.id } 
             },
             {
                 "$group": {

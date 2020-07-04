@@ -12,9 +12,7 @@ class WritingStreak extends Component {
 
   componentDidMount() {
     this.WritingStreak()
-    this.setState({
-      auth0_id:localStorage.getItem("auth0_id")
-    })
+    
     
     
 }
@@ -22,7 +20,7 @@ class WritingStreak extends Component {
 
   WritingStreak = () => {
     apiEntry
-      .getStreak(localStorage.getItem("auth0_id"))
+      .getStreak(localStorage.getItem("id"))
       .then(entries => {
         console.log(entries.data, "streaks");
         console.log(entries.data.length, "streak");
