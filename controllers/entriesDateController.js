@@ -11,7 +11,7 @@ module.exports = {
             .then((dbModel) => res.json(dbModel))
             .catch((err) => res.status(422).json(err));
     },
-
+    // testing mongodb query by reached gol component
     getgoalbydate: (req, res) => {
         const startGoalDate ="2020-07-02T03:22:23.725Z";
         const goalDate = "2020-07-06T03:22:23.725Z";
