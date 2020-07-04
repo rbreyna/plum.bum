@@ -51,7 +51,6 @@ function Dashboard() {
                   <WeeklyWordCount />
                 </Col>
                 <Col sm={2}>
-                  {/* Rahida : added this to pop a modal when Writing goal is clicked*/}
                   <>
                     <Button onClick={() => setModalShow(true)}>
                       <p>Writing Goal:</p>
