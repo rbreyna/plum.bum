@@ -7,6 +7,9 @@ router.route("/date")
 router.route("/date/:auth0_id")
 .get(Entry.getEntrybydateUser)
 
+router.route("/goal/:auth0_id")
+.get(Entry.getgoalbydate)
+
 router.route("/week/:auth0_id")
 .get(Entry.getEntrybyweek)
 

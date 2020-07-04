@@ -9,6 +9,7 @@ import {
   Modal,
   Form,
 } from "react-bootstrap";
+import apiUser from "../utils/apiUser";
 
 class User extends Component {
   constructor(props) {
@@ -38,7 +39,21 @@ class User extends Component {
     this.setState({ [event.target.id]: value });
   }
 
-  updateUserInfo() {}
+  updateUserInfo() {
+    const userInfo={
+      name: this.state.name,
+      email: this.state.email,
+      
+    }
+    apiUser
+      .updateUser(localStorage.getItem("auth0_id"), userInfo)
+      .then(User =>{
+        console.log(User)
+      })
+          
+      this.setState({ show: false })
+
+  }
 
   render() {
     return (

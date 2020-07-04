@@ -12,7 +12,14 @@ module.exports = {
             .catch((err) => res.status(422).json(err));
     },
 
-
+    getgoalbydate: (req, res) => {
+        const startGoalDate ="";
+        const endGoalDate = "";
+    
+        Entry.find({ $and: [{ date: { '$gte': startGoalDate, '$lte': endGoalDate } }, {  auth0_id: req.params.auth0_id }] })
+            .then((dbModel) => res.json(dbModel))
+            .catch((err) => res.status(422).json(err));
+    },
     //Entry by date and user
     getEntrybydateUser: (req, res) => {
         var today = moment().startOf('day');

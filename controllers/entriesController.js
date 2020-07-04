@@ -21,7 +21,8 @@ module.exports = {
     Entry.create(req.body)
       .then(function (dbEntry) {
 
-        return User.findOneAndUpdate({  auth0_id: req.params.auth0_id }, { $push: { entries: dbEntry._id } }, { new: true });
+      
+        return User.findOneAndUpdate({ auth0_id :req.params.auth0_id}, { $push: { entries: dbEntry._id } }, { new: true })
       })
       .then(function (dbUser) {
 
@@ -33,7 +34,7 @@ module.exports = {
       });
 
   },
-  createEntryUser: function (req, res) {
+  /*createEntryUser: function (req, res) {
     User.findOne({  auth0_id: req.params.auth0_id })
       .then(function (dbUser) {
         if (dbUser) {
@@ -60,7 +61,7 @@ module.exports = {
         res.json(err);
       });
 
-  },
+  },*/
   createEntries: function (req, res) {
     Entry.create(req.body)
       .then((dbModel) => res.json(dbModel))
