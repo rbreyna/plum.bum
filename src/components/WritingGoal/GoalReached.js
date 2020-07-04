@@ -1,83 +1,114 @@
 import React, { Component } from "react";
+import apiEntry from "../../utils/apiEntry";
 import apiUser from "../../utils/apiUser";
-import { Modal } from "react-bootstrap";
 
 export default class GoalReached extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      goalCount: 0,
-      goalDate: "",
-      wordCount: 0,
-      startGoalDate: "",
+      totalWords: 0,
+      goal: 0,
       show: true,
     };
   }
 
-//if userInfo.startGoalDate === Date.now then start count of words)
-        //save into datebase
-        //call Function to save the word count into the database
-  
-  // handleChange(event) {
-  //   const value = event.target.value;
-  //   this.setState({ [event.target.id]: value });
-  //   console.log("goal", value);
-  //   apiUser.saveUserGoal({
-  //     wordGoal: this.state.goalCount,
-  //     dateSetGoal: this.state.startGoalDate,
-  //     endGaolDate: this.state.goalDate,
-  //   })
-  // }
 
-  GetGoalInfo = () => {
-    
-    apiUser
-      .findUser(localStorage.getItem("id"))
-      .then((userInfo) => {
-        console.log(userInfo.goalDate);
-        console.log(userInfo.goal);
-        console.log(userInfo.startGoalDate);
-        console.log(userInfo.dailyWordCount);
-        this.setState({
-          goalCount: userInfo.goal,
-          goalDate: userInfo.date,
-          wordCount: userInfo.dailyWordCount,
-          startGoalDate: userInfo.startGoalDate,
-        });
-      })
-      .catch((err) => console.log(err));
+  componentDidMount() {
+    this.GetGoalInfo()
+  }
+
+  // Count Words by entries
+  countWords = (text) => {
+    return text.split(/\s+|--+/).filter((word) => word.length > 0).length;
   };
 
-  handleModal()
-  {
-    this.setState({show:!this.state.show})
+  //Allow calculate Total
+  getArraySum = (a) => {
+    var total = 0;
+    for (var i in a) {
+      total += a[i];
+    }
+    return total;
   }
+
+  //When user reach the goal reset values into the database
+  ResetGoalData = () => {
+    const userGoal = {
+      goal: 0,
+      goalDate: "",
+      startGoalDate: ""
+    }
+    apiUser
+      .updateUser(localStorage.getItem("id"), userGoal)
+      .then(User => {
+        console.log(User)
+      })
+  }
+
+  //Get entries from the database  between startgoalDate date and goalDate (When user save data from writing goal that function 
+  //must calclate total words using that info)
+  //Take a look to console(inspect the app) of that way you can understand the mongodb result 
+ 
+  GetGoalInfo = () => {
+    //Get Goal
+    apiUser
+    .findUser(localStorage.getItem("id"))
+    
+    .then(UserGoal=>{
+      this.setState({goal : UserGoal.data[0].goal})
+    })
+   
+    apiEntry
+      .getgoaldata(localStorage.getItem("id"))
+      .then(entries => {
+        console.log(entries.data, "goal")
+        let entriesbydate = []
+        if(entries.data.length > 0){
+          for (var i = 0; i < entries.data.length; i++) {
+            entriesbydate.push(this.countWords(entries.data[i].entryBody))
+            console.log("words", entriesbydate)
+          }
   
-  
+          //Calculate Total words betwen startGoalDate and GoalDate
+          //With that value you can compare the goal
+          this.setState({
+            totalWords: this.getArraySum(entriesbydate),
+          })
+          console.log(" totalwords ", this.state.totalWords)
+          console.log(" Goal ", this.state.goal)
+                
+        }else{
+          this.setState({message: "No data Found"})
+        }
+      })  
+  }
+
+  handleModal() {
+    this.setState({ show: !this.state.show })
+  }
+
   render() {
-    const userGoalDate = this.state.goalDate;
-    const countWordsTodate = this.state.wordCount;
-    const goalWords = this.state.goalCount;
-    const startDate = this.state.startGoalDate;
 
     return (
 
-    <div>
-      {userGoalDate === Date.now && countWordsTodate >= goalWords && (
+      //Create statement using total words and goal, remember if the user reach the goal you can reset values 
+
+      <div>
+        {/*userGoalDate === Date.now && countWordsTodate >= goalWords && (
         <>
-        <Modal show={this.state.show} onHide={()=>this.handleModal()}>
-          <Modal.Header closeButton>
-            GOAL:
+          <Modal show={this.state.show} onHide={() => this.handleModal()}>
+            <Modal.Header closeButton>
+              GOAL:
           </Modal.Header>
-          <Modal.Body>
-            Congrats! You have reached your goal!
-            Click Writing Goal To Set a New Goal.
+            <Modal.Body>
+              Congrats! You have reached your goal!
+              Click Writing Goal To Set a New Goal.
           </Modal.Body>
-        </Modal>
+          </Modal>
         </>
 
-      )}
-      {/* {userGoalDate === Date.now && countWordsTodate < goalWords && (
+      )*/}
+        {/* {userGoalDate === Date.now && countWordsTodate < goalWords && (
         <>
         <Modal show={this.state.show} onHide={()=>this.handleModal()}>
           <Modal.Header closeButton>
@@ -90,7 +121,7 @@ export default class GoalReached extends Component {
         </>
 
       )} */}
-      {/* {userGoalDate !== Date.now && countWordsTodate >= goalWords &&  (
+        {/* {userGoalDate !== Date.now && countWordsTodate >= goalWords &&  (
         <>
         <Modal show={this.state.show} onHide={()=>this.handleModal()}>
           <Modal.Header closeButton>
