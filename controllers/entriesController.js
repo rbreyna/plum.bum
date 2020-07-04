@@ -11,7 +11,7 @@ module.exports = {
 
   },
   getEntrybyUser: (req, res) => {
-    Entry.find({ email: req.params.email })
+    Entry.find({  auth0_id: req.params.auth0_id })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
@@ -21,7 +21,7 @@ module.exports = {
     Entry.create(req.body)
       .then(function (dbEntry) {
 
-        return User.findOneAndUpdate({ email: req.params.email }, { $push: { entries: dbEntry._id } }, { new: true });
+        return User.findOneAndUpdate({  auth0_id: req.params.auth0_id }, { $push: { entries: dbEntry._id } }, { new: true });
       })
       .then(function (dbUser) {
 
@@ -34,7 +34,7 @@ module.exports = {
 
   },
   createEntryUser: function (req, res) {
-    User.findOne({ email: req.params.email })
+    User.findOne({  auth0_id: req.params.auth0_id })
       .then(function (dbUser) {
         if (dbUser) {
           res.json(
@@ -46,7 +46,7 @@ module.exports = {
             .then((dbModel) => res.json(dbModel))
             .catch((err) => res.status(422).json(err));
 
-          return User.findOneAndUpdate({ email: req.params.email }, { $push: { entries: dbEntry._id } }, { new: true });
+          return User.findOneAndUpdate({  auth0_id: req.params.auth0_id }, { $push: { entries: dbEntry._id } }, { new: true });
         } else {
           res.json(
             {
@@ -69,13 +69,13 @@ module.exports = {
   },
 
   updateEntry: function (req, res) {
-    Entry.findOneAndUpdate({ email: req.params.email }, req.body)
+    Entry.findOneAndUpdate({  auth0_id: req.params.auth0_id }, req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
 
   deleteEntry: function (req, res) {
-    Entry.findById({ email: req.params.email })
+    Entry.findById({  auth0_id: req.params.auth0_id })
       .then((dbModel) => dbModel.remove())
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));

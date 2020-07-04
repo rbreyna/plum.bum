@@ -13,4 +13,10 @@ export default {
   /*   updateUser: function (userData, id) {
     return axios.put("/api/entry/" + id, entryData);
   }, */
+
+  // saveUserGoal: function (goalData) {
+  //   return axios.post("/api/user/goal", goalData)
+  // }
+
 };
+

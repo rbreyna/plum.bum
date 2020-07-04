@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import apiUser from "../../utils/apiUser";
+import { Modal } from "react-bootstrap";
 
 export default class GoalReached extends Component {
   constructor(props) {
@@ -8,67 +9,102 @@ export default class GoalReached extends Component {
       goalCount: 0,
       goalDate: "",
       wordCount: 0,
+      startGoalDate: "",
+      show: true,
     };
   }
 
-  GoalReached = () => {
+//if userInfo.startGoalDate === Date.now then start count of words)
+        //save into datebase
+        //call Function to save the word count into the database
+  
+  // handleChange(event) {
+  //   const value = event.target.value;
+  //   this.setState({ [event.target.id]: value });
+  //   console.log("goal", value);
+  //   apiUser.saveUserGoal({
+  //     wordGoal: this.state.goalCount,
+  //     dateSetGoal: this.state.startGoalDate,
+  //     endGaolDate: this.state.goalDate,
+  //   })
+  // }
+
+  GetGoalInfo = () => {
+    
     apiUser
-      .getGoal(localStorage.getItem("id"))
-      .then((goalInfo) => {
-        console.log(goalInfo.goalDate, "Date");
-        console.log(goalInfo.goal, "goal");
+      .findUser(localStorage.getItem("id"))
+      .then((userInfo) => {
+        console.log(userInfo.goalDate);
+        console.log(userInfo.goal);
+        console.log(userInfo.startGoalDate);
+        console.log(userInfo.dailyWordCount);
         this.setState({
-          goalCount: goalInfo.goal,
-          goalDate: goalInfo.date,
+          goalCount: userInfo.goal,
+          goalDate: userInfo.date,
+          wordCount: userInfo.dailyWordCount,
+          startGoalDate: userInfo.startGoalDate,
         });
       })
       .catch((err) => console.log(err));
   };
 
-  GoalCondition = () => {
-    const userGoalDate = goalDate;
-    const countWordsTodate = "";
-    const goalWords = goalCount;
-
-    if (userGoalDate === Date.now && countWordsTodate >= goalWords) {
-      return <p>Congrats! You have reached your goal!</p>;
-      // reset goal()
-    } else if (userGoalDate === Date.now && countWordsTodate < goalWords) {
-      return <p>You have not reached your word goal! Keep on writing!</p>;
-      // reset goal()
-    } else if (userGoalDate !== Date.now && countWordsTodate >= goalWords) {
-      return <p>WOW!!! you have reached your goal before the date!</p>;
-      // reset goal
-    }
-  };
+  handleModal()
+  {
+    this.setState({show:!this.state.show})
+  }
+  
+  
   render() {
+    const userGoalDate = this.state.goalDate;
+    const countWordsTodate = this.state.wordCount;
+    const goalWords = this.state.goalCount;
+    const startDate = this.state.startGoalDate;
+
     return (
-      <div>
-        <p>GoalCondition: {this.state.weeklycount}</p>
-        <br></br>
+
+    <div>
+      {userGoalDate === Date.now && countWordsTodate >= goalWords && (
+        <>
+        <Modal show={this.state.show} onHide={()=>this.handleModal()}>
+          <Modal.Header closeButton>
+            GOAL:
+          </Modal.Header>
+          <Modal.Body>
+            Congrats! You have reached your goal!
+            Click Writing Goal To Set a New Goal.
+          </Modal.Body>
+        </Modal>
+        </>
+
+      )}
+      {/* {userGoalDate === Date.now && countWordsTodate < goalWords && (
+        <>
+        <Modal show={this.state.show} onHide={()=>this.handleModal()}>
+          <Modal.Header closeButton>
+            GOAL:
+          </Modal.Header>
+          <Modal.Body>
+            Reset your Goal!
+          </Modal.Body>
+        </Modal>
+        </>
+
+      )} */}
+      {/* {userGoalDate !== Date.now && countWordsTodate >= goalWords &&  (
+        <>
+        <Modal show={this.state.show} onHide={()=>this.handleModal()}>
+          <Modal.Header closeButton>
+            GOAL:
+          </Modal.Header>
+          <Modal.Body>
+            WOW!!! you have reached your goal before the date!
+          </Modal.Body>
+        </Modal>
+        </> 
+
+      )}*/}
       </div>
     );
   }
 }
 
-//need an query to save this to the date base
-//need to add date in the controller folder
-
-//updateUser() need id
-//words and the date
-
-//show the information to the user
-//funtion will be get user by id
-// get: goal and date
-
-//build statement by getting the user and the wordstodate (need to calculate the total words to date)compare with the the goal words count.
-//compare the current date with the gaol date
-
-/* for loop from the date of the goal to the goaldate
-countEntryWords = (entry) => {
-  let entryBodyString = entry.entryBody;
-  let arrayCount = [];
-  arrayCount = entryBodyString.split(" ");
-  let entryWords = arrayCount.length;
-  return entryWords;
-};*/

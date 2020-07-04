@@ -4,12 +4,12 @@ const Entry = require("../controllers/entriesDateController");
 router.route("/date")
 .get(Entry.getEntrybydate)
 
-router.route("/date/:email")
+router.route("/date/:auth0_id")
 .get(Entry.getEntrybydateUser)
 
-router.route("/week/:email")
+router.route("/week/:auth0_id")
 .get(Entry.getEntrybyweek)
 
-router.route("/streak/:email")
+router.route("/streak/:auth0_id")
 .get(Entry.getstreakLenght)
 module.exports = router;
