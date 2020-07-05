@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   menuItem: {
     fontFamily: "Montserrat Alternates",
     "&:hover": {
-      color: "white",
+      color: theme.palette.secondary.main,
       backgroundColor: "#a8e6cf",
     },
   },

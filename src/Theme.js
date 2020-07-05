@@ -1,19 +1,20 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
-const plumbumTeal = "#a8e6cf";
-const plumbumPlum = "#88498f";
+const plumTeal = "#a8e6cf";
+const plumPlum = "#88498f";
+const plumDarkTeal = "#247ba0";
 
 export default createMuiTheme({
   palette: {
     common: {
-      paleTeal: `${plumbumTeal}`,
-      plum: `${plumbumPlum}`,
+      plumTeal: `${plumTeal}`,
+      plumPlum: `${plumPlum}`,
     },
     primary: {
-      main: `${plumbumTeal}`,
+      main: `${plumTeal}`,
     },
     secondary: {
-      main: `${plumbumPlum}`,
+      main: `${plumDarkTeal}`,
     },
   },
   typography: {
