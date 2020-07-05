@@ -1,20 +1,31 @@
 import React from "react";
 import { useAuth0 } from "../contexts/auth0-context";
 import User from "../components/User";
+import apiUser from "../utils/apiUser";
 
 export default function Profile() {
   const { isLoading, user } = useAuth0();
 
-  const name = user ? user.name : null;
-  const email = user ? user.email : null;
+  let name = "";
+  let email = "";
+
   const picture = user ? user.picture : null;
   const id = user ? user.sub.split("|")[1] : null;
 
-  return (
-    <>
-      {!isLoading && user && (
-        <User name={name} email={email} picture={picture} id={id} />
-      )}
-    </>
-  );
+  const loadUserInfo = (id) => {
+    apiUser
+      .findUser(id)
+      .then((res) => {
+        console.log("User found!");
+        console.log(res);
+        name = res.data.name;
+        email = res.data.email;
+        return <User name={name} email={email} picture={picture} id={id} />;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  return <>{!isLoading && user && loadUserInfo(id)}</>;
 }
