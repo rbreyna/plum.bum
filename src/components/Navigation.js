@@ -6,6 +6,18 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { Link } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 import { useAuth0 } from "../contexts/auth0-context";
+import { makeStyles } from "@material-ui/core/styles";
+
+// Material UI variables
+const useStyles = makeStyles((theme) => ({
+  menuItem: {
+    fontFamily: "Montserrat Alternates",
+    "&:hover": {
+      color: "white",
+      backgroundColor: "#a8e6cf",
+    },
+  },
+}));
 
 function Navigation() {
   const { isLoading, user, loginWithRedirect, logout } = useAuth0();
@@ -20,6 +32,8 @@ function Navigation() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const classes = useStyles();
 
   return (
     <Navbar bg="light" expand="lg">
@@ -45,7 +59,9 @@ function Navigation() {
           )}
           {!isLoading && user && (
             <>
-              <Navbar.Text>Hello {user.name}!</Navbar.Text>
+              <Navbar.Text style={{ fontFamily: "Montserrat Alternates" }}>
+                Hello, {user.name}!
+              </Navbar.Text>
               &nbsp;
               <Button
                 aria-controls="simple-menu"
@@ -61,17 +77,31 @@ function Navigation() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem component={Link} to="/profile" onClick={handleClose}>
+                <MenuItem className={classes.menuItem} onClick={handleClose}>
+                  <Avatar alt="profile picture" src={picture} />
+                </MenuItem>
+                <MenuItem
+                  className={classes.menuItem}
+                  component={Link}
+                  to="/profile"
+                  onClick={handleClose}
+                >
                   Profile
                 </MenuItem>
                 <MenuItem
+                  className={classes.menuItem}
                   component={Link}
                   to="/dashboard"
                   onClick={handleClose}
                 >
                   Dashboard
                 </MenuItem>
-                <MenuItem component={Link} to="/projects" onClick={handleClose}>
+                <MenuItem
+                  className={classes.menuItem}
+                  component={Link}
+                  to="/projects"
+                  onClick={handleClose}
+                >
                   My Projects
                 </MenuItem>
               </Menu>

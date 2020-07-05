@@ -1,7 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
-const plumbumTeal = "##a8e6cf";
-const plumbumPlum = "##88498f";
+const plumbumTeal = "#a8e6cf";
+const plumbumPlum = "#88498f";
 
 export default createMuiTheme({
   palette: {
