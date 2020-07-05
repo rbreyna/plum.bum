@@ -14,20 +14,9 @@ const userSchema = new Schema({
     type: Number,
     default: 0,
   },
-  currentStreak: {
-    type: Number,
-    default: 0,
-  },
-  longestStreak: {
-    type: Number,
-    default: 0,
-  },
-  startStreakTime: {
-    type: Date,
-    default: Date.now,
-  },
   goalDate: {
     type: Date,
+   
   },
   startGoalDate: {
     type: Date,
