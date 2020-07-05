@@ -20,12 +20,17 @@ export default function Profile() {
         console.log(res);
         name = res.data.name;
         email = res.data.email;
-        return <User name={name} email={email} picture={picture} id={id} />;
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  return <>{!isLoading && user && loadUserInfo(id)}</>;
+  return (
+    <>
+      {!isLoading && user && (
+        <User name={name} email={email} picture={picture} id={id} />
+      )}
+    </>
+  );
 }
