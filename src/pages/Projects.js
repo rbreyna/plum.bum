@@ -15,10 +15,17 @@ import Container from "@material-ui/core/Container";
 
 // Material UI variables
 const useStyles = makeStyles((theme) => ({
-  large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
+  avatar: {
+    width: theme.spacing(10),
+    height: theme.spacing(10),
     marginTop: "20px",
+  },
+  userHeader: {
+    justify: "space-between",
+    wrap: "nowrap",
+  },
+  headerText: {
+    marginLeft: "20px",
   },
   root: {
     flexGrow: 1,
@@ -34,34 +41,33 @@ function Dashboard() {
   const { user } = useAuth0();
   const picture = user ? user.picture : null;
   const classes = useStyles();
+  const name = user ? user.name : null;
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container>
-        <div className={classes.root}>
-          <Grid container spacing={3}>
-            <Grid item xs={3}>
-              <Paper className={classes.paper}>
-                <Avatar
-                  alt="user image"
-                  src={picture}
-                  className={classes.large}
-                />
-              </Paper>
-            </Grid>
-            <Grid item xs={9}>
-              <Paper className={classes.paper}>
-                <h3>{user ? `${user.name}'s` : null} Projects</h3>
-                <h6>{user ? `${user.name}` : null}</h6>
-              </Paper>
-            </Grid>
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>xs=12</Paper>
-            </Grid>
+    <>
+      <div className={classes.userHeader}>
+        <Container>
+          <Grid item xs={12}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <img alt={name} src={picture} className={classes.avatar} />
+              <h1 className={classes.headerText}>
+                {user ? `${user.name}'s` : null} Projects
+              </h1>
+            </div>
           </Grid>
-        </div>
+        </Container>
+      </div>
+      <Container>
+        <Grid item xs={12} style={{ marginTop: "40px" }}>
+          <PopulateEntries />
+        </Grid>
       </Container>
-    </ThemeProvider>
+    </>
   );
 }
 
