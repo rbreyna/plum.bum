@@ -17,6 +17,14 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#a8e6cf",
     },
   },
+  avatarButton: {
+    "&:focus": {
+      outline: "none",
+    },
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
 }));
 
 function Navigation() {
@@ -67,8 +75,13 @@ function Navigation() {
                 aria-controls="simple-menu"
                 aria-haspopup="true"
                 onClick={handleClick}
+                className={classes.avatarButton}
               >
-                <Avatar alt="profile picture" src={picture} />
+                <Avatar
+                  className={classes.avatarButton}
+                  alt="profile picture"
+                  src={picture}
+                />
               </Button>
               <Menu
                 id="simple-menu"
