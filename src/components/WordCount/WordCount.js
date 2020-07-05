@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Button, Col, Row, FormControl, InputGroup } from "react-bootstrap";
 import "../../pages/Dashboard.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faSave } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit, faSave } from '@fortawesome/free-solid-svg-icons'
 import apiEntry from "../../utils/apiEntry";
 import GoalReached from "../WritingGoal/GoalReached";
 
@@ -13,26 +13,31 @@ export default class WordCount extends Component {
       title: "",
       entryBody: "",
       wordCount: 0,
+     
     };
   }
+
 
   // Count Words
   countWords = (text) => {
     return text.split(/\s+|--+/).filter((word) => word.length > 0).length;
   };
 
-  //Input
+  //Input 
   handleinputText = (event) => {
     event.preventDefault();
     this.setState({ title: event.target.value });
+    
   };
 
-  //Textarea
+  //Textarea 
   handleTextarea = (event) => {
     event.preventDefault();
     this.setState({ entryBody: event.target.value });
+   
   };
 
+  
   handleSave = (event) => {
     event.preventDefault();
 
@@ -42,15 +47,15 @@ export default class WordCount extends Component {
       entryBody: this.state.entryBody,
     };
 
-    apiEntry.createEntry(localStorage.getItem("id"), newEntry).then(
-      this.setState({
+    apiEntry.createEntry(localStorage.getItem("id"), newEntry)
+      .then(this.setState({
         message: alert("Your pasage is saved"),
         title: "",
-        entryBody: " ",
-      })
-    );
+        entryBody: " "
+      }))
 
     window.location.reload();
+
   };
   render() {
     return (
@@ -61,15 +66,17 @@ export default class WordCount extends Component {
               <br></br>
               <InputGroup id="passage-title" sm={12}>
                 <InputGroup.Prepend>
-                  <InputGroup.Text>Name of Passage</InputGroup.Text>
+                  <InputGroup.Text
+                  >
+                    Name of Passage
+                </InputGroup.Text>
                 </InputGroup.Prepend>
                 <FormControl
                   value={this.state.title}
                   name="title"
                   type="text"
                   className="form-control"
-                  onChange={this.handleinputText}
-                />
+                  onChange={this.handleinputText} />
                 <br></br>
               </InputGroup>
               <FormControl
@@ -88,16 +95,16 @@ export default class WordCount extends Component {
         <Row>
           <Col sm={4}>
             <h3>
-              <FontAwesomeIcon icon={faEdit} /> :{" "}
-              {this.countWords(this.state.entryBody)}
+              <FontAwesomeIcon icon={faEdit} />  : {this.countWords(this.state.entryBody)}
             </h3>
           </Col>
           <Col sm={4}>
+          
             <Button id="btns" onClick={this.handleSave}>
               <FontAwesomeIcon icon={faSave} />
               <>
-                {/*when save btn is clicked need to goto GoalReached.js so modal pops up*/}
-                <GoalReached />
+              {/*when save btn is clicked need to goto GoalReached.js so modal pops up*/}
+              <GoalReached/>
               </>
             </Button>
           </Col>

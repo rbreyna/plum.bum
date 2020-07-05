@@ -1,3 +1,11 @@
+#row-1{
+  height: 30vh;
+}
+
+#row-2{
+  height: 50vh;
+}
+
 .content {
   border-radius: 25px;
   border-color: white;
@@ -6,31 +14,31 @@
   opacity: 0.5;
   color: white;
   height: 100%;
+
 }
 
-.dash1,
-#btns {
+.dash1, #btns  {
   background-color: purple;
 }
 
 .dash2 {
   background-color: darkcyan;
-  height: 200px;
+  height:200px
 }
 
-.dash3 {
+.dash3{
   background-color: #b2e6b0;
 }
 
 #passage,
-#passage-title {
+#passage-title{
   margin-top: 15px;
 }
 
-#passage {
+#passage{
   min-height: 200px;
 }
 
-#btns {
-  float: right;
+#btns{
+ float: right;
 }
