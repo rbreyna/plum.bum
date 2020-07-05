@@ -7,9 +7,9 @@ export default class DailyWordcount extends Component {
     super(props);
     this.state = {
       dayliWordCount: 0,
-      auth0_id: "",
     };
   }
+
   // Count Words
   countWords = (text) => {
     return text.split(/\s+|--+/).filter((word) => word.length > 0).length;
@@ -17,9 +17,6 @@ export default class DailyWordcount extends Component {
 
   componentDidMount() {
     this.dailyWordCount();
-    this.setState({
-      auth0_id: localStorage.getItem("auth0_id"),
-    });
   }
 
   //Sum
@@ -34,15 +31,13 @@ export default class DailyWordcount extends Component {
   // Get daily word count
   dailyWordCount = () => {
     apiEntry
-      .findEntriesbydate(this.state.auth0_id)
+      .findEntriesbydate(localStorage.getItem("id"))
       .then((entries) => {
         console.log(entries.data);
         let entriesbydate = [];
-        console.log(this.state.auth0_id, " auth0_id");
-        console.log(entries.data.length, "length");
+
         for (var i = 0; i < entries.data.length; i++) {
           entriesbydate.push(this.countWords(entries.data[i].entryBody));
-
           console.log("words", entriesbydate);
         }
 
@@ -61,12 +56,3 @@ export default class DailyWordcount extends Component {
     );
   }
 }
-
-
-//RZ need to add to get the word count ??  (idalmys suggestion)
-// apiUser
-//         .updateUser(user.sub.split("|")[1], {dailyWordCount: "name of her variable"})
-//         .then()
-//         .catch(err => { 
-//           console.log(err)
-//         })

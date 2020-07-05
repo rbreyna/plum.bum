@@ -6,20 +6,16 @@ class WritingStreak extends Component {
     super(props);
     this.state = {
       streakLenght: 0,
-      auth0_id: "",
     };
   }
 
   componentDidMount() {
     this.WritingStreak();
-    this.setState({
-      auth0_id: localStorage.getItem("auth0_id"),
-    });
   }
 
   WritingStreak = () => {
     apiEntry
-      .getStreak(localStorage.getItem("auth0_id"))
+      .getStreak(localStorage.getItem("id"))
       .then((entries) => {
         console.log(entries.data, "streaks");
         console.log(entries.data.length, "streak");

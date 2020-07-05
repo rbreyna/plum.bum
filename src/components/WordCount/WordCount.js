@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faSave } from "@fortawesome/free-solid-svg-icons";
 import apiEntry from "../../utils/apiEntry";
 import GoalReached from "../WritingGoal/GoalReached";
-import apiUser from "../../utils/apiUser";
-import { updateLocale } from "moment";
 
 export default class WordCount extends Component {
   constructor(props) {
@@ -15,7 +13,6 @@ export default class WordCount extends Component {
       title: "",
       entryBody: "",
       wordCount: 0,
-      auth0_id: "",
     };
   }
 
@@ -28,45 +25,24 @@ export default class WordCount extends Component {
   handleinputText = (event) => {
     event.preventDefault();
     this.setState({ title: event.target.value });
-    console.log("TextInput" + event.target.value);
   };
 
   //Textarea
   handleTextarea = (event) => {
     event.preventDefault();
     this.setState({ entryBody: event.target.value });
-    console.log("TextTarea" + event.target.value);
   };
 
-  /* It works but still waiting in how can we get user credentials*/
   handleSave = (event) => {
     event.preventDefault();
 
     const newEntry = {
-      auth0_id: localStorage.getItem("auth0_id"),
+      auth0_id: localStorage.getItem("id"),
       title: this.state.title,
       entryBody: this.state.entryBody,
     };
 
-    console.log(newEntry);
-
-    // Idalmys solution to Goal wordcount
-    // apiUser.findUser("id")
-    // .then(user_info => {
-    //   if ((user_info.startGoalDate === Date.now) || (user_info.goalDate !== Date.now)){
-    //     counts = countwords(this.state.entrybody) + user_info.Totalword
-    //     if (counts >= goal){
-    //       updateUser({Totalword: counts})
-    //       .then(user_info => {
-    //         console.log(user_info)
-    //       })
-    //     }
-    //   }
-    // })
-
-    console.log(this.state.auth0_id, "auth0_id");
-
-    apiEntry.createEntry(this.state.auth0_id, newEntry).then(
+    apiEntry.createEntry(localStorage.getItem("id"), newEntry).then(
       this.setState({
         message: alert("Your pasage is saved"),
         title: "",
