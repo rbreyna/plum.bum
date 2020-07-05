@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import "./WritingGoal.css";
 import { Modal, Button, Row, Col, Form } from "react-bootstrap";
-
+import apiUser from "../../utils/apiUser";
 
 export class WritingGoal extends Component {
   constructor(props) {
@@ -22,9 +22,26 @@ export class WritingGoal extends Component {
     this.setState({ [event.target.id]: value });
     console.log("goal", value);
   }
-
+  handleSave = () =>{
+    const userGoal={
+      goal: this.state.wordGoal,
+      goalDate: this.state.goalSetDate,
+      startGoalDate : this.state.dateSetGoal
+    }
+    apiUser
+      .updateUser(localStorage.getItem("id"), userGoal)
+      .then(User =>{
+        console.log(User)
+      })
+          
+  }
   render() {
     return (
+
+      //You must validate form because the user can not select a day before today 
+      //Example: if today is july 4 the user can not select july 3
+
+
       <>
       <Button onClick={() => this.setState({ show: true })}>
         <p>Writing Goal:</p>
@@ -96,6 +113,7 @@ export class WritingGoal extends Component {
             <Modal.Footer>
               {/* roy is working to save the data to the database */}
               <Button  onClick={() => {
+                this.handleSave()
                 this.setState({ show: false });
               }}>SAVE</Button>
             </Modal.Footer>
@@ -104,5 +122,6 @@ export class WritingGoal extends Component {
       </Modal>
       </>
     )
-  }
+  } 
 }
+

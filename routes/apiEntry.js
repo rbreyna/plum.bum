@@ -5,10 +5,8 @@ router.route("/")
 .get(Entry.getEntry)
 .post(Entry.createEntries);
 
-
-//Email is a unique value
 router
-  .route("/:auth0_id")
+  .route("/:id")
   .get(Entry.getEntrybyUser)
   .post(Entry.createEntry)
   .put(Entry.updateEntry)

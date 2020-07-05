@@ -9,7 +9,7 @@ export default {
   createUser: function (userData) {
     return axios.post("/api/user/", userData);
   },
-
+  // Updates a user with a given id
   updateUser: function (id, userData) {
     return axios.put("/api/user/" + id, userData);
   },

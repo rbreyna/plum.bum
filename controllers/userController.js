@@ -1,30 +1,36 @@
 const User = require("../models/User");
-
+const Entry = require("../models/Entry");
 module.exports = {
-  getUsers: function (req, res) {
-    User.find()
-      .then((dbModel) => res.json(dbModel))
-      .catch((err) => res.status(422).json(err));
-  },
-  getUser: function (req, res) {
-    User.find({ auth0_id: req.params.id })
-      .then((dbModel) => res.json(dbModel))
-      .catch((err) => res.status(422).json(err));
-  },
+
+  //Grab user into the database
   createUser: function (req, res) {
     User.create(req.body)
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
+  //Get all Users
+  getUsers: function (req, res) {
+    User.find()
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
 
+  //Get user by id
+  getUser: function (req, res) {
+    User.find({ auth0_id: req.params.id })
+      .then((dbModel) => res.json(dbModel))
+      .catch((err) => res.status(422).json(err));
+  },
+
+  //Update an specific user
   updateUser: function (req, res) {
     User.findOneAndUpdate({ auth0_id: req.params.id }, req.body, { new: true })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },
-
+  //Delete an specific user
   deleteUser: function (req, res) {
-    User.findById({ _id: req.params.id })
+    User.findById({ auth0_id: req.params.id })
       .then((dbModel) => dbModel.remove())
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
