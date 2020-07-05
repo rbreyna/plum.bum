@@ -25,7 +25,7 @@ class PopulateEntries extends Component {
 
   loadEntries = () => {
     apiEntry
-      .findEntries(localStorage.getItem("auth0_id"))
+      .findEntries(localStorage.getItem("id"))
       .then((entries) => {
         entries.data.map((entry) => {
           const wordCount = this.countEntryWords(entry);

@@ -1,15 +1,19 @@
 const router = require("express").Router();
 const Entry = require("../controllers/entriesDateController");
-//Email is a unique value
+
 router.route("/date")
 .get(Entry.getEntrybydate)
 
-router.route("/date/:auth0_id")
+router.route("/date/:id")
 .get(Entry.getEntrybydateUser)
 
-router.route("/week/:auth0_id")
+router.route("/week/:id")
 .get(Entry.getEntrybyweek)
 
-router.route("/streak/:auth0_id")
+router.route("/streak/:id")
 .get(Entry.getstreakLenght)
+
+router.route("/goal/:id")
+.get(Entry.getgoalbydate)
+
 module.exports = router;

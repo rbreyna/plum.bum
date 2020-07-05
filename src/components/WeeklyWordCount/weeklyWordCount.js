@@ -31,9 +31,8 @@ export default class WeeklyWordcount extends Component {
   }
   // word count last 7 days
   weeklyCount = () => {
-   
     apiEntry
-      .findEntriesbyweek(localStorage.getItem("auth0_id"))
+      .findEntriesbyweek(localStorage.getItem("id"))
       .then(entries => {
           console.log(entries.data);
           let entriesbydate = []
