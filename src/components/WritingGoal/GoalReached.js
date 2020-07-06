@@ -59,9 +59,9 @@ export default class GoalReached extends Component {
     .then(UserGoal=>{
       this.setState
       ({
-        goal : UserGoal.data[0].goal,
-        goalDate:  UserGoal.data[0].goalDate,
-        startGoalDate: UserGoal.data[0].startGoalDate
+        goal : UserGoal.data.goal,
+        goalDate:  UserGoal.data.goalDate,
+        startGoalDate: UserGoal.data.startGoalDate
       })
     })
    
