@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import apiEntry from "../../utils/apiEntry";
-// import { Container, Button } from "react-bootstrap";
+import CreateNewEntry from "./CreateNewEntry";
+
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
+import CreateIcon from "@material-ui/icons/Create";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 import "./PopulateEntries.css";
 
 class PopulateEntries extends Component {
@@ -41,6 +44,11 @@ class PopulateEntries extends Component {
   };
 
   render() {
+    const myWorkHeader = {
+      textAlign: "left",
+      marginBottom: "3%",
+    };
+
     const myWork = {
       textAlign: "left",
     };
@@ -57,8 +65,9 @@ class PopulateEntries extends Component {
 
     return (
       <Container className="PopulateEntries">
-        <div>
+        <div style={myWorkHeader}>
           <h1>My Work</h1>
+          <CreateNewEntry />
         </div>
         <div style={myWork}>
           {this.state.entries.map((entry) => {
@@ -69,11 +78,13 @@ class PopulateEntries extends Component {
                   <h3>{entry.title}</h3>
                   {/* This "Edit" button will allow the user to edit a particular chapter/entry */}
                   <Button variant="contained" color="secondary">
-                    Edit
+                    <CreateIcon />
+                    &nbsp; Edit
                   </Button>{" "}
                   &nbsp;
                   <Button variant="contained" style={buttonView}>
-                    View
+                    <VisibilityIcon />
+                    &nbsp; View
                   </Button>
                   <br></br>
                   <br></br>
