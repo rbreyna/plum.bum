@@ -41,8 +41,13 @@ class PopulateEntries extends Component {
   };
 
   render() {
-    const entryReturn = {
+    const myWork = {
       textAlign: "left",
+    };
+
+    const entryReturn = {
+      backgroundColor: "#f8f9fa",
+      padding: "3%",
     };
 
     const buttonView = {
@@ -51,17 +56,17 @@ class PopulateEntries extends Component {
     };
 
     return (
-      <Container className="PopulateEntries" fluid>
+      <Container className="PopulateEntries">
         <div>
           <h1>My Work</h1>
         </div>
-        <div style={entryReturn}>
+        <div style={myWork}>
           {this.state.entries.map((entry) => {
             return (
-              <div key={entry._id}>
-                {console.log(entry)}
-                <p>
-                  {entry.title} &nbsp;
+              <>
+                <div style={entryReturn} key={entry._id}>
+                  {console.log(entry)}
+                  <h3>{entry.title}</h3>
                   {/* This "Edit" button will allow the user to edit a particular chapter/entry */}
                   <Button variant="contained" color="secondary">
                     Edit
@@ -70,13 +75,22 @@ class PopulateEntries extends Component {
                   <Button variant="contained" style={buttonView}>
                     View
                   </Button>
-                </p>
-
-                <p>Date Created: {entry.date}</p>
-                <p>Words: {entry.entryWords}</p>
-
-                <br></br>
-              </div>
+                  <br></br>
+                  <br></br>
+                  <p>
+                    <strong>Date Created:</strong>{" "}
+                    {entry.date.substring(0, entry.date.indexOf("T"))}
+                  </p>
+                  <p>
+                    <strong>Words:</strong> {entry.entryWords}
+                  </p>
+                </div>
+                <div>
+                  &nbsp;
+                  <p>.............</p>
+                  &nbsp;
+                </div>
+              </>
             );
           })}
         </div>
