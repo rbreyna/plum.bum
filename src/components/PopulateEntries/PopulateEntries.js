@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import apiEntry from "../../utils/apiEntry";
-import { Container, Button } from "react-bootstrap";
+// import { Container, Button } from "react-bootstrap";
+import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
 import "./PopulateEntries.css";
 
 class PopulateEntries extends Component {
@@ -39,12 +41,21 @@ class PopulateEntries extends Component {
   };
 
   render() {
+    const entryReturn = {
+      textAlign: "left",
+    };
+
+    const buttonView = {
+      color: "white",
+      backgroundColor: "#88498f",
+    };
+
     return (
       <Container className="PopulateEntries" fluid>
         <div>
           <h1>My Work</h1>
         </div>
-        <div>
+        <div style={entryReturn}>
           {this.state.entries.map((entry) => {
             return (
               <div key={entry._id}>
@@ -52,8 +63,13 @@ class PopulateEntries extends Component {
                 <p>
                   {entry.title} &nbsp;
                   {/* This "Edit" button will allow the user to edit a particular chapter/entry */}
-                  <Button>Edit</Button> &nbsp;
-                  <Button>View</Button>
+                  <Button variant="contained" color="secondary">
+                    Edit
+                  </Button>{" "}
+                  &nbsp;
+                  <Button variant="contained" style={buttonView}>
+                    View
+                  </Button>
                 </p>
 
                 <p>Date Created: {entry.date}</p>
