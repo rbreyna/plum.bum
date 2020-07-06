@@ -52,18 +52,19 @@ export default class GoalReached extends Component {
   //Take a look to console(inspect the app) of that way you can understand the mongodb result 
  
   GetGoalInfo = () => {
-    //Get Goal
+  
     apiUser
     .findUser(localStorage.getItem("id"))
     
-    .then(UserGoal=>{
-      this.setState
-      ({
-        goal : UserGoal.data[0].goal,
-        goalDate:  UserGoal.data[0].goalDate,
-        startGoalDate: UserGoal.data[0].startGoalDate
-      })
-    })
+     .then(UserGoal=>{
+       console.log("user " , UserGoal)
+       this.setState
+       ({
+         goal : UserGoal.data.goal,
+         goalDate:  UserGoal.data.goalDate,
+         startGoalDate: UserGoal.data.startGoalDate
+       })
+     })
    
     apiEntry
       .getgoaldata(localStorage.getItem("id"))
@@ -81,10 +82,10 @@ export default class GoalReached extends Component {
           this.setState({
             totalWords: this.getArraySum(entriesbydate),
           })
-          console.log(" totalwords ", this.state.totalWords)
-          console.log(" Goal ", this.state.goal)
-          console.log(" GoalDate ", this.state.goalDate)
-          console.log(" StartGoalDate ", this.state.startGoalDate)
+           console.log(" totalwords ", this.state.totalWords)
+           console.log(" Goal ", this.state.goal)
+           console.log(" GoalDate ", this.state.goalDate)
+           console.log(" StartGoalDate ", this.state.startGoalDate)
                 
         }else{
           this.setState({message: "No data Found"})
@@ -100,10 +101,10 @@ export default class GoalReached extends Component {
 
     return (
 
-      //Create statement using total words and goal, remember if the user reach the goal you can reset values 
+      //Create statement using total words and goal, remember if the user reach the goal they can reset the values 
 
       <div>
-        {/*userGoalDate === Date.now && countWordsTodate >= goalWords && (
+        {goalDate === Date.now && totalWords >= goal && (
         <>
           <Modal show={this.state.show} onHide={() => this.handleModal()}>
             <Modal.Header closeButton>
@@ -116,8 +117,8 @@ export default class GoalReached extends Component {
           </Modal>
         </>
 
-      )*/}
-        {/* {userGoalDate === Date.now && countWordsTodate < goalWords && (
+      )}
+         {goalDate === Date.now && totalWords < goal && (
         <>
         <Modal show={this.state.show} onHide={()=>this.handleModal()}>
           <Modal.Header closeButton>
@@ -129,8 +130,8 @@ export default class GoalReached extends Component {
         </Modal>
         </>
 
-      )} */}
-        {/* {userGoalDate !== Date.now && countWordsTodate >= goalWords &&  (
+      )} 
+         {goalDate !== Date.now && totalWords >= goal &&  (
         <>
         <Modal show={this.state.show} onHide={()=>this.handleModal()}>
           <Modal.Header closeButton>
@@ -142,7 +143,7 @@ export default class GoalReached extends Component {
         </Modal>
         </> 
 
-      )}*/}
+      )}
       </div>
     );
   }

@@ -82,6 +82,8 @@ export class WritingGoal extends Component {
                   <Row>
                     <Col sm={6}>
                       <Form.Group controlId="dateSetGoal">
+                        {/* {(dateSetGoal === Date.now -1)
+                            alert 'Please select a new date'} */}
                         <Form.Label>Start Date of My Goal:</Form.Label>
                         <Form.Control
                           type="Date"
