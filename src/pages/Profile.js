@@ -17,14 +17,14 @@ export default function Profile() {
   const [picture, setPicture] = useState("");
   const [id, setID] = useState("");
 
-  useEffect(() => {
-    setName(user ? user.name : null);
-    setEmail(user ? user.email : null);
-    setPicture(user ? user.picture : null);
-    setID(user ? user.sub.split("|")[1] : null);
+  const userName = user ? user.name : null;
+  const userEmail = user ? user.email : null;
+  const userPicture = user ? user.picture : null;
+  const userID = user ? user.sub.split("|")[1] : null;
 
-    if (id) {
-      loadUserInfo(id);
+  useEffect(() => {
+    if (userID) {
+      loadUserInfo(userID);
     }
     return () => {
       console.log("info updated");
@@ -39,6 +39,8 @@ export default function Profile() {
         console.log(res);
         setName(res.data[0].name);
         setEmail(res.data[0].email);
+        setPicture(res.data[0].image);
+        setID(res.data[0].auth0_id);
       })
       .catch((err) => {
         console.log(err);
@@ -48,5 +50,16 @@ export default function Profile() {
   if (id) {
     return <User name={name} email={email} picture={picture} id={id} />;
   }
-  return <></>;
+  return (
+    <>
+      {!isLoading && user && (
+        <User
+          name={userName}
+          email={userEmail}
+          picture={userPicture}
+          id={userID}
+        />
+      )}
+    </>
+  );
 }

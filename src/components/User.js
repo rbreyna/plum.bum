@@ -34,6 +34,24 @@ class User extends Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.data !== this.props.data) {
+      apiUser
+        .findUser(this.state.id)
+        .then((res) => {
+          console.log("User found!");
+          console.log(res);
+          this.setState({
+            name: res.data[0].name,
+            email: res.data[0].email,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+
   handleChange(event) {
     const value = event.target.value;
     this.setState({ [event.target.id]: value });
@@ -53,6 +71,20 @@ class User extends Component {
       })
       .catch((err) => {
         throw err;
+      });
+
+    apiUser
+      .findUser(this.state.id)
+      .then((res) => {
+        console.log("User found!");
+        console.log(res);
+        this.setState({
+          name: res.data[0].name,
+          email: res.data[0].email,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 
