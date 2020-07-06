@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import apiEntry from "../../utils/apiEntry";
-import { Container, Button } from "react-bootstrap";
+import { Container, Button ,FormControl} from "react-bootstrap";
 import "./PopulateEntries.css";
 
 class PopulateEntries extends Component {
@@ -8,13 +8,14 @@ class PopulateEntries extends Component {
     super(props);
     this.state = {
       entries: [],
+      show: false
     };
   }
+
 
   componentDidMount() {
     this.loadEntries();
   }
-
   countEntryWords = (entry) => {
     let entryBodyString = entry.entryBody;
     let arrayCount = [];
@@ -52,7 +53,7 @@ class PopulateEntries extends Component {
                 <p>
                   {entry.title} &nbsp;
                   {/* This "Edit" button will allow the user to edit a particular chapter/entry */}
-                  <Button>Edit</Button> &nbsp;
+                  <Button >Edit</Button> &nbsp;
                   <Button>View</Button>
                 </p>
 

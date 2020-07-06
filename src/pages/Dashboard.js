@@ -13,7 +13,7 @@ import apiUser from "../utils/apiUser";
 function Dashboard() {
   const { isLoading, user } = useAuth0();
   const [modalShow, setModalShow] = React.useState(false);
-
+ 
   const userInfo = (id) => {
     apiUser
       .findUser(id)
@@ -25,8 +25,10 @@ function Dashboard() {
         console.log(err);
       });
   };
+  const id = user ? user.sub.split("|")[1] : null;
 
   return (
+    
     <>
       <div>
         {!isLoading && user && (
@@ -57,7 +59,9 @@ function Dashboard() {
                   />
                 </Col>
               </Row>
-              <WordCount />
+             
+              <WordCount
+                />
             </Container>
           </>
         )}
