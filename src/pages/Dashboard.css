@@ -38,7 +38,10 @@
 #passage{
   min-height: 200px;
 }
-
+#entryBody {
+  min-height: 200px;
+  margin-top: 15px;
+}
 #btns{
  float: right;
 }
