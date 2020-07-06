@@ -6,11 +6,16 @@ export default {
     return axios.get("/api/entry/");
   },
 
-  //Get entries by _id
+  //Get entries by user
   findEntries: function (id) {
     return axios.get("/api/entry/" + id);
   },
 
+  //Get entries by entry_id
+  findbyEntry_id: function (id) {
+    return axios.get("/api/entry/id/" + id);
+  },
+  
   //Get entries by date
   findEntriesbydate: function (id) {
     return axios.get("/api/date/" + id);

@@ -33,7 +33,7 @@ export class WritingGoal extends Component {
       .then(User =>{
         console.log(User)
       })
-          
+      window.location.reload();    
   }
   render() {
     return (
