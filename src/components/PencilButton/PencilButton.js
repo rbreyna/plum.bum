@@ -35,7 +35,6 @@ function PencilButton(props) {
             src={props.src}
             alt={props.alt}
             onClick={(...p) => {
-              console.log(p);
               loginWithRedirect(...p);
             }}
           />
