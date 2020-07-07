@@ -30,10 +30,12 @@ export default function CreateNewEntry() {
 
   return (
     <div className={classes.root}>
-      <Fab className={classes.fab} variant="extended" color="secondary">
-        <AddIcon className={classes.extendedIcon} />
-        Create New Project
-      </Fab>
+      <a href="/dashboard">
+        <Fab className={classes.fab} variant="extended" color="secondary">
+          <AddIcon className={classes.extendedIcon} />
+          Create New Project
+        </Fab>
+      </a>
     </div>
   );
 }
