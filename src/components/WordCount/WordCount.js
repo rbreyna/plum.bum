@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Col, Row, FormControl, InputGroup, Form } from "react-bootstrap";
-import "../../pages/Dashboard.css";
 import apiEntry from "../../utils/apiEntry";
 import SaveButton from "./SaveButton";
 import DisplaySessionCount from "./DisplaySessionCount";
@@ -69,11 +68,20 @@ export default class WordCount extends Component {
                 <br></br>
                 <InputGroup id="passage-title" sm={12}>
                   <InputGroup.Prepend>
-                    <InputGroup.Text>Title | Chapter</InputGroup.Text>
+                    <InputGroup.Text
+                      style={{
+                        color: "black",
+                        fontFamily: "Montserrat Alternates",
+                        backgroundColor: "#ffd3b6",
+                      }}
+                    >
+                      Title | Chapter
+                    </InputGroup.Text>
                   </InputGroup.Prepend>
                   <FormControl
                     id="title"
                     value={this.state.title}
+                    placeholder="Enter the name of your chapter or title of your project"
                     name="title"
                     type="text"
                     className="form-control"
@@ -86,6 +94,7 @@ export default class WordCount extends Component {
                   value={this.state.entryBody}
                   name="bodyEntry"
                   type="text"
+                  placeholder="''This is how you do it: you sit down at the keyboard and you put one word after another until it's done. It's that easy, and that hard.''  -  Neil Gaiman "
                   className="form-control"
                   onChange={this.handleChange}
                   as="textarea"
