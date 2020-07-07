@@ -2,59 +2,44 @@ import React, { useState, useEffect } from "react";
 import { useAuth0 } from "../contexts/auth0-context";
 import User from "../components/User";
 import apiUser from "../utils/apiUser";
-//import ProgressBar from "../components/ProgressBar/ProgressBar.js";
 
 export default function Profile() {
-  const { isLoading, user } = useAuth0();
+  //Destruct user object from Auth0 context and store appropriate fields in dbUser
+  const { user } = useAuth0();
+  const [dbUser, setUser] = useState({});
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [picture, setPicture] = useState("");
-  const [id, setID] = useState("");
-
-  const userName = user ? user.name : null;
-  const userEmail = user ? user.email : null;
-  const userPicture = user ? user.picture : null;
+  //Grab ID from Auth0 user to make queries to the database
   const userID = user ? user.sub.split("|")[1] : null;
 
+  //When an ID is found, a query is made to MongoDB to grab the record for that user
   useEffect(() => {
     if (userID) {
       loadUserInfo(userID);
     }
-    return () => {
-      console.log("info updated");
-    };
-  }, [user, id]);
+    return () => {};
+  }, [user, userID]);
 
+  //API call to grab record
   const loadUserInfo = (id) => {
     apiUser
       .findUser(id)
       .then((res) => {
-        console.log("User found!");
-        console.log(res);
-        setName(res.data[0].name);
-        setEmail(res.data[0].email);
-        setPicture(res.data[0].image);
-        setID(res.data[0].auth0_id);
+        setUser({
+          name: res.data.name,
+          email: res.data.email,
+          picture: res.data.image,
+          id: res.data.auth0_id,
+        });
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  if (id) {
-    return <User name={name} email={email} picture={picture} id={id} />;
-  }
   return (
     <>
-      {!isLoading && user && (
-        <User
-          name={userName}
-          email={userEmail}
-          picture={userPicture}
-          id={userID}
-        />
-      )}
+      {/*Render User with dbUser object containing user info*/}
+      <User dbUser={dbUser} />
     </>
   );
 }
