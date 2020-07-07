@@ -5,37 +5,33 @@ class WritingStreak extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      streakLenght: 0
-     
+      streakLength: 0,
     };
   }
 
   componentDidMount() {
-    this.WritingStreak()
-    
-    
-    
-}
-
+    this.WritingStreak();
+  }
 
   WritingStreak = () => {
     apiEntry
       .getStreak(localStorage.getItem("id"))
-      .then(entries => {
+      .then((entries) => {
         console.log(entries.data, "streaks");
         console.log(entries.data.length, "streak");
         this.setState({
-          streakLenght: entries.data.length
-        })
-
-      }).catch((err) => console.log(err));
-  }
+          streakLength: entries.data.length,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
   render() {
-    return <div>
-      <p>Writing Streak : {this.state.streakLenght}</p>
-    </div >
+    return (
+      <div>
+        <p>{this.state.streakLength}</p>
+      </div>
+    );
   }
 }
 
 export default WritingStreak;
-
