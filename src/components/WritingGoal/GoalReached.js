@@ -139,10 +139,15 @@ export default class GoalReached extends Component {
     }
   };
   render() {
+    const checkProgressBtn = {
+      margin: "10px",
+    };
+
     return (
       <Button
         variant="contained"
         color="secondary"
+        style={checkProgressBtn}
         onClick={this.goalUpdateModal}
       >
         Check Goal Progress

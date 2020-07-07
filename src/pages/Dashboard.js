@@ -1,5 +1,4 @@
 import React from "react";
-import "./Dashboard.css";
 import { Container, Col, Row, Image } from "react-bootstrap";
 import { useAuth0 } from "../contexts/auth0-context";
 import { WritingGoal } from "../components/WritingGoal/WritingGoal.js";
@@ -15,6 +14,8 @@ function Dashboard() {
   const { isLoading, user } = useAuth0();
   const [modalShow, setModalShow] = React.useState(false);
 
+  const picture = user ? user.picture : null;
+
   const userInfo = (id) => {
     apiUser
       .findUser(id)
@@ -28,6 +29,10 @@ function Dashboard() {
   };
   const id = user ? user.sub.split("|")[1] : null;
 
+  const goalDiv = {
+    textAlign: "right",
+  };
+
   return (
     <>
       <div>
@@ -36,33 +41,23 @@ function Dashboard() {
             {userInfo(user.sub.split("|")[1])}
             <h1>{user.name}'s Dashboard</h1>
             <Container>
-              <Row className="justify-center-content fluid" id="row-1">
-                <Col className="content dash1" sm={4}>
-                  <Image
-                    src="./assets/images/profile-pic-placeholder.jpg"
-                    width={150}
-                    height={150}
-                    style={{ marginTop: "20px" }}
-                    roundedCircle
-                  />
-                </Col>
-                <Col className="content dash2" sm={6}>
-                  <DayliWordCount />
-                  <WritingStreak />
-                  <HighestWordCount />
-                  <WeeklyWordCount />
-                </Col>
-                <Col sm={2}>
-                  <WritingGoal
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                  />
-                  <GoalReached
-                    show={modalShow}
-                    onHide={() => setModalShow(false)}
-                  />
-                </Col>
-              </Row>
+              <Image src={picture} width={150} height={150} roundedCircle />
+              <DayliWordCount />
+              <WritingStreak />
+              <HighestWordCount />
+              <WeeklyWordCount />
+
+              <div style={goalDiv}>
+                <WritingGoal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
+                <GoalReached
+                  show={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
+              </div>
+
               <WordCount />
             </Container>
           </>

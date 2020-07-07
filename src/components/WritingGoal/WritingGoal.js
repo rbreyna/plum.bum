@@ -44,6 +44,7 @@ export class WritingGoal extends Component {
     const setGoalBtn = {
       color: "white",
       backgroundColor: "#88498f",
+      margin: "10px",
     };
 
     return (
