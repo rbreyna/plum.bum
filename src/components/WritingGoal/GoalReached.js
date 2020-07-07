@@ -7,10 +7,10 @@ export default class GoalReached extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      totalWords: 18,
-      goal: 1000,
-      goalDate: "2020-07-06T00:00:00.000Z",
-      startGoalDate: "2020-07-06T00:00:00.000Z",
+      totalWords: 0,
+      goal: 0,
+      goalDate: "",
+      startGoalDate: "",
       show: false,
     };
   }
@@ -75,10 +75,10 @@ export default class GoalReached extends Component {
         this.setState({
           totalWords: this.getArraySum(entriesbydate),
         });
-        console.log(" totalwords ", this.state.totalWords);
-        console.log(" Goal ", this.state.goal);
-        console.log(" GoalDate ", this.state.goalDate);
-        console.log(" StartGoalDate ", this.state.startGoalDate);
+        // console.log(" totalwords ", this.state.totalWords);
+        // console.log(" Goal ", this.state.goal);
+        // console.log(" GoalDate ", this.state.goalDate);
+        // console.log(" StartGoalDate ", this.state.startGoalDate);
       } else {
         this.setState({ message: "No data Found" });
       }
@@ -91,6 +91,10 @@ export default class GoalReached extends Component {
 
   goalUpdateModal = ()=> {
     let goalDate = (Date.parse(this.state.goalDate))
+    console.log("goalDate", goalDate)
+    console.log("Datanow", Date.now())
+    console.log("totalWords", this.state.totalWords)
+    console.log("goal", this.state.goal)
     if (
       goalDate === Date.now() &&
       this.state.totalWords >= this.state.goal
