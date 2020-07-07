@@ -13,13 +13,13 @@ class PopulateEntries extends Component {
     super(props);
     this.state = {
       entries: [],
+      show: false,
     };
   }
 
   componentDidMount() {
     this.loadEntries();
   }
-
   countEntryWords = (entry) => {
     let entryBodyString = entry.entryBody;
     let arrayCount = [];
