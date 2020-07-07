@@ -74,7 +74,10 @@ export class WritingGoal extends Component {
           <div className="modal-container">
             <Form onSubmit={this.handleSubmit}>
               <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
+                <Modal.Title
+                  style={{ fontFamily: "Ribeye Marrow", fontSize: "3rem" }}
+                  id="contained-modal-title-vcenter"
+                >
                   Writing Goal
                 </Modal.Title>
               </Modal.Header>
@@ -84,7 +87,14 @@ export class WritingGoal extends Component {
                     <Row>
                       <Col sm={6}>
                         <Form.Group controlId="wordGoal">
-                          <Form.Label>MY GOAL WORD COUNT:</Form.Label>
+                          <Form.Label
+                            style={{
+                              fontFamily: "Montserrat Alternates",
+                              fontWeight: "bold",
+                            }}
+                          >
+                            MY GOAL WORD COUNT:
+                          </Form.Label>
                           <Form.Control
                             type="number"
                             name="words"
@@ -98,7 +108,14 @@ export class WritingGoal extends Component {
                     <Row>
                       <Col sm={6}>
                         <Form.Group controlId="dateSetGoal">
-                          <Form.Label>Start Date of My Goal:</Form.Label>
+                          <Form.Label
+                            style={{
+                              fontFamily: "Montserrat Alternates",
+                              fontWeight: "bold",
+                            }}
+                          >
+                            Start Date of My Goal:
+                          </Form.Label>
                           <Form.Control
                             type="Date"
                             name="date"
@@ -112,7 +129,14 @@ export class WritingGoal extends Component {
                     <Row>
                       <Col sm={6}>
                         <Form.Group controlId="goalSetDate">
-                          <Form.Label>Reach My Goal By This Date:</Form.Label>
+                          <Form.Label
+                            style={{
+                              fontFamily: "Montserrat Alternates",
+                              fontWeight: "bold",
+                            }}
+                          >
+                            Reach My Goal By This Date:
+                          </Form.Label>
                           <Form.Control
                             type="Date"
                             name="date"
@@ -137,6 +161,8 @@ export class WritingGoal extends Component {
               <Modal.Footer>
                 {/* roy is working to save the data to the database */}
                 <Button
+                  variant="contained"
+                  color="primary"
                   onClick={() => {
                     this.handleSave();
                     this.setState({ show: false });
