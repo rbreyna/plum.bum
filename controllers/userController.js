@@ -17,7 +17,7 @@ module.exports = {
 
   //Get user by id
   getUser: function (req, res) {
-    User.find({ auth0_id: req.params.id })
+    User.findOne({ auth0_id: req.params.id })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },

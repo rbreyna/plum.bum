@@ -9,6 +9,7 @@ import WeeklyWordCount from "../components/WeeklyWordCount/weeklyWordCount";
 import HighestWordCount from "../components/HighestWordCount/highestWordCount";
 import WritingStreak from "../components/WritingStreak/WritingStreak";
 import apiUser from "../utils/apiUser";
+import GoalReached from "../components/WritingGoal/GoalReached.js";
 
 function Dashboard() {
   const { isLoading, user } = useAuth0();
@@ -51,12 +52,22 @@ function Dashboard() {
                   <WritingStreak />
                   <HighestWordCount />
                   <WeeklyWordCount />
+                  
                 </Col>
                 <Col sm={2}>
+                  
                   <WritingGoal
                       show={modalShow}
                       onHide={() => setModalShow(false)}
                     />
+                   
+                {/* </Col> */}
+                {/* <Col> */}
+                <GoalReached
+                      show={modalShow}
+                      onHide={() => setModalShow(false)}
+                    />
+
                 </Col>
               </Row>
              

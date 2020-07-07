@@ -105,10 +105,10 @@ export default class WordCount extends Component {
               /*disabled={!this.state.formValid}*/
               >
                 <FontAwesomeIcon icon={faSave} />
-                <>
-                  {/*when save btn is clicked need to goto GoalReached.js so modal pops up*/}
+                {/* <>
+                  when save btn is clicked need to goto GoalReached.js so modal pops up
                   <GoalReached />
-                </>
+                </> */}
               </Button>
             </Col>
           </Row>
