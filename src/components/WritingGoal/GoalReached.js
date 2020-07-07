@@ -8,6 +8,8 @@ export default class GoalReached extends Component {
     this.state = {
       totalWords: 0,
       goal: 0,
+      goalDate: "",
+      startGoalDate: "",
       show: true,
     };
   }
@@ -55,7 +57,12 @@ export default class GoalReached extends Component {
     .findUser(localStorage.getItem("id"))
     
     .then(UserGoal=>{
-      this.setState({goal : UserGoal.data[0].goal})
+      this.setState
+      ({
+        goal : UserGoal.data.goal,
+        goalDate:  UserGoal.data.goalDate,
+        startGoalDate: UserGoal.data.startGoalDate
+      })
     })
    
     apiEntry
@@ -76,6 +83,8 @@ export default class GoalReached extends Component {
           })
           console.log(" totalwords ", this.state.totalWords)
           console.log(" Goal ", this.state.goal)
+          console.log(" GoalDate ", this.state.goalDate)
+          console.log(" StartGoalDate ", this.state.startGoalDate)
                 
         }else{
           this.setState({message: "No data Found"})

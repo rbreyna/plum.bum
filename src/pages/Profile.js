@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth0 } from "../contexts/auth0-context";
 import User from "../components/User";
+import ProgressBar from "../components/ProgressBar/ProgressBar.js";
 
 export default function Profile() {
   const { isLoading, user } = useAuth0();
@@ -15,6 +16,7 @@ export default function Profile() {
       {!isLoading && user && (
         <User name={name} email={email} picture={picture} id={id} />
       )}
+      {/* <ProgressBar /> */}
     </>
   );
 }
