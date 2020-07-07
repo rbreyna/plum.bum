@@ -8,6 +8,12 @@ import CreateIcon from "@material-ui/icons/Create";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 
+import Accordion from "@material-ui/core/Accordion";
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import Typography from "@material-ui/core/Typography";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
 class PopulateEntries extends Component {
   constructor(props) {
     super(props);
@@ -49,13 +55,13 @@ class PopulateEntries extends Component {
     };
 
     const entryReturn = {
-      backgroundColor: "#f8f9fa",
-      padding: "2.5%",
+      backgroundColor: "#a8e6cf",
+      padding: ".5%",
     };
 
     const buttonDiv = {
-      marginTop: "30px",
-      marginBottom: "30px",
+      marginTop: "10px",
+      marginBottom: "10px",
     };
 
     const buttonEdit = {
@@ -72,8 +78,8 @@ class PopulateEntries extends Component {
       },
     };
 
-    const spacerDiv = {
-      height: "20px",
+    const accordionStyle = {
+      backgroundColor: "#dcedc1",
     };
 
     return (
@@ -85,38 +91,50 @@ class PopulateEntries extends Component {
               <>
                 <div style={entryReturn} key={entry._id}>
                   {console.log(entry)}
-                  <h3>
-                    <MenuBookIcon fontSize="large" />
-                    &nbsp;
-                    <strong>{entry.title}</strong>
-                  </h3>
-                  {/* This "Edit" button will allow the user to edit a particular chapter/entry */}
-
-                  <div style={buttonDiv}>
-                    <Button
-                      style={buttonEdit}
-                      variant="contained"
-                      color="secondary"
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1a-content"
+                      id="panel1a-header"
+                      style={accordionStyle}
                     >
-                      <CreateIcon />
-                      &nbsp; Edit
-                    </Button>{" "}
-                    &nbsp; &nbsp;
-                    <Button variant="contained" style={buttonView}>
-                      <VisibilityIcon />
-                      &nbsp; View
-                    </Button>
-                  </div>
+                      <Typography>
+                        <h4>
+                          <MenuBookIcon fontSize="large" />
+                          &nbsp;
+                          <strong>{entry.title}</strong>
+                        </h4>
+                      </Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Typography>
+                        <div style={buttonDiv}>
+                          <Button
+                            style={buttonEdit}
+                            variant="contained"
+                            color="secondary"
+                          >
+                            <CreateIcon />
+                            &nbsp; Edit
+                          </Button>{" "}
+                          &nbsp; &nbsp;
+                          <Button variant="contained" style={buttonView}>
+                            <VisibilityIcon />
+                            &nbsp; View
+                          </Button>
+                        </div>
 
-                  <p>
-                    <strong>Date Created:</strong>{" "}
-                    {entry.date.substring(0, entry.date.indexOf("T"))}
-                  </p>
-                  <p>
-                    <strong>Words:</strong> {entry.entryWords}
-                  </p>
+                        <p>
+                          <strong>Date Created:</strong>{" "}
+                          {entry.date.substring(0, entry.date.indexOf("T"))}
+                        </p>
+                        <p>
+                          <strong>Words:</strong> {entry.entryWords}
+                        </p>
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
                 </div>
-                <div style={spacerDiv}></div>
               </>
             );
           })}
