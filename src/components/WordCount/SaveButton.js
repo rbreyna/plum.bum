@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
+import SaveIcon from "@material-ui/icons/Save";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,17 +25,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CreateNewEntry() {
+export default function SaveButton(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <a href="/dashboard">
-        <Fab className={classes.fab} variant="extended" color="secondary">
-          <AddIcon className={classes.extendedIcon} />
-          Create New Project
-        </Fab>
-      </a>
+      <Fab className={classes.fab} variant="extended" color="secondary">
+        <SaveIcon className={classes.extendedIcon} />
+        Save
+      </Fab>
     </div>
   );
 }
