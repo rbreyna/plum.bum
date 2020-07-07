@@ -68,7 +68,7 @@ export default function InsetDividers() {
           </Avatar>
         </ListItemAvatar>
         <ListItemText
-          primary="This Week's Wordcount"
+          primary="This Week's Word Count"
           secondary={<WeeklyWordCount />}
         />
       </ListItem>

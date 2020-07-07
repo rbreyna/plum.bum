@@ -57,9 +57,18 @@ class PopulateEntries extends Component {
       padding: "3%",
     };
 
+    const buttonEdit = {
+      "&:focus": {
+        outline: "none",
+      },
+    };
+
     const buttonView = {
       color: "white",
       backgroundColor: "#88498f",
+      "&:focus": {
+        outline: "none",
+      },
     };
 
     return (
@@ -76,7 +85,11 @@ class PopulateEntries extends Component {
                   {console.log(entry)}
                   <h3>{entry.title}</h3>
                   {/* This "Edit" button will allow the user to edit a particular chapter/entry */}
-                  <Button variant="contained" color="secondary">
+                  <Button
+                    style={buttonEdit}
+                    variant="contained"
+                    color="secondary"
+                  >
                     <CreateIcon />
                     &nbsp; Edit
                   </Button>{" "}
@@ -96,7 +109,7 @@ class PopulateEntries extends Component {
                   </p>
                 </div>
                 <div>
-                  &nbsp;
+                  {/* &nbsp; */}
                   <center>
                     <p>. . . . . . . . . . . . .</p>
                   </center>
