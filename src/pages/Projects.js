@@ -8,21 +8,17 @@ import PopulateEntries from "../components/PopulateEntries/PopulateEntries.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import { Avatar } from "@material-ui/core";
+import Image from "react-bootstrap/Image";
 
 // Material UI variables
 const useStyles = makeStyles((theme) => ({
-  avatar: {
-    width: theme.spacing(10),
-    height: theme.spacing(10),
-    marginTop: "20px",
-  },
-  userHeader: {
-    justify: "space-between",
-    wrap: "nowrap",
+  headerDiv: {
+    textAlign: "center",
   },
   headerText: {
-    marginLeft: "20px",
+    fontFamily: "Ribeye Marrow",
+    marginTop: "20px",
+    marginBottom: "10px",
   },
   root: {
     flexGrow: 1,
@@ -45,16 +41,19 @@ function Dashboard() {
       <div className={classes.userHeader}>
         <Container>
           <Grid item xs={12}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <Avatar alt={name} src={picture} className={classes.avatar} />
+            <div className={classes.headerDiv}>
               <h1 className={classes.headerText}>
+                {" "}
+                &nbsp; &nbsp;
                 {user ? `${user.name}'s` : null} Projects
               </h1>
+              <Image
+                alt={name}
+                src={picture}
+                width={100}
+                height={100}
+                roundedCircle
+              />
             </div>
           </Grid>
         </Container>

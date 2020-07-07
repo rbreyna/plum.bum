@@ -7,7 +7,6 @@ import apiUser from "../utils/apiUser";
 import GoalReached from "../components/WritingGoal/GoalReached.js";
 import DashboardUI from "../components/DashboardUI";
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
@@ -52,7 +51,9 @@ function Dashboard() {
   };
 
   const headerStyles = {
-    margin: "20px",
+    fontFamily: "Ribeye Marrow",
+    marginTop: "20px",
+    marginBottom: "30px",
   };
 
   return (
@@ -62,6 +63,7 @@ function Dashboard() {
           <>
             {userInfo(user.sub.split("|")[1])}
             <h1 style={headerStyles}>{user.name}'s Dashboard</h1>
+
             <Container>
               <div>
                 <Grid container spacing={3}>

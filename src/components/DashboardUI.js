@@ -22,9 +22,6 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "40px",
     backgroundColor: theme.palette.secondary,
   },
-  listText: {
-    fontFamily: "Montserrat Alternates",
-  },
   avatar: {
     color: "#ffd3b6",
     backgroundColor: "#88498f",
@@ -36,7 +33,7 @@ export default function InsetDividers() {
 
   return (
     <List className={classes.root}>
-      <ListItem className={classes.listText}>
+      <ListItem>
         <ListItemAvatar>
           <Avatar className={classes.avatar}>
             <TrendingUpIcon />

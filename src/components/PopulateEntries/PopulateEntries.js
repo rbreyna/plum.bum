@@ -73,10 +73,7 @@ class PopulateEntries extends Component {
 
     return (
       <Container className="PopulateEntries">
-        <div style={myWorkHeader}>
-          <h1>My Work</h1>
-          <CreateNewEntry />
-        </div>
+        <CreateNewEntry />
         <div style={myWork}>
           {this.state.entries.map((entry) => {
             return (
