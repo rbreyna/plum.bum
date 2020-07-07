@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import apiEntry from "../../utils/apiEntry";
 import apiUser from "../../utils/apiUser";
-import { Modal } from "react-bootstrap";
+// import { Modal } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import AlarmOnIcon from "@material-ui/icons/AlarmOn";
 
@@ -87,14 +87,14 @@ export default class GoalReached extends Component {
     });
   };
 
-  handleModal() {
-    this.setState({ show: !this.state.show });
-  }
+  // handleModal() {
+  //   this.setState({ show: !this.state.show });
+  // }
 
   goalUpdateModal = ()=> {
     let goalDate = (Date.parse(this.state.goalDate))
     console.log("goalDate", goalDate)
-    console.log("Datanow", Date.now())
+    console.log("Datenow", Date.now())
     console.log("totalWords", this.state.totalWords)
     console.log("goal", this.state.goal)
     if (
