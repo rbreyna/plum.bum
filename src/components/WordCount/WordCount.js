@@ -117,11 +117,7 @@ export default class WordCount extends Component {
                 onClick={this.handleSave}
                 /*disabled={!this.state.formValid}*/
               >
-                <SaveButton id="btns" onClick={this.handleSave} />
-                <>
-                  {/*when save btn is clicked need to goto GoalReached.js so modal pops up*/}
-                  <GoalReached />
-                </>
+                <SaveButton />
               </div>
             </Col>
           </Row>
