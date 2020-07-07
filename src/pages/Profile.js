@@ -55,7 +55,6 @@ export default function Profile() {
           id={userID}
         />
       )}
-      {/* <ProgressBar /> */}
     </>
   );
 }

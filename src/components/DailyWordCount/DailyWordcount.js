@@ -31,7 +31,7 @@ export default class DailyWordcount extends Component {
   // Get daily word count
   dailyWordCount = () => {
     apiEntry
-      .findEntriesbydate(JSON.parse(localStorage.getItem("id")))
+      .findEntriesbydate(localStorage.getItem("id"))
       .then((entries) => {
         console.log(entries.data);
         let entriesbydate = [];
@@ -49,11 +49,6 @@ export default class DailyWordcount extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <p>Daily Word Count: {this.state.dayliWordCount}</p>
-        <br></br>
-      </div>
-    );
+    return <div>{this.state.dailyWordCount}</div>;
   }
 }

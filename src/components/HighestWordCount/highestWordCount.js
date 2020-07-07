@@ -53,10 +53,6 @@ export default class highestWordCount extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <p> Best Daily Word Count : {this.state.MaxCountWord}</p>
-      </div>
-    );
+    return <>{this.state.MaxCountWord}</>;
   }
 }

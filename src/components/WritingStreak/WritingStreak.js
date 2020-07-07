@@ -28,7 +28,7 @@ class WritingStreak extends Component {
   render() {
     return (
       <div>
-        <p>Writing Streak : {this.state.streakLength}</p>
+        <p>{this.state.streakLength}</p>
       </div>
     );
   }
