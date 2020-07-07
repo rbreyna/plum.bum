@@ -3,15 +3,12 @@ import React from "react";
 // Files/Components
 import { useAuth0 } from "../contexts/auth0-context";
 import PopulateEntries from "../components/PopulateEntries/PopulateEntries.js";
-import theme from "../Theme";
 
 // Material UI
-import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
+import { Avatar } from "@material-ui/core";
 
 // Material UI variables
 const useStyles = makeStyles((theme) => ({
@@ -54,7 +51,7 @@ function Dashboard() {
                 alignItems: "center",
               }}
             >
-              <img alt={name} src={picture} className={classes.avatar} />
+              <Avatar alt={name} src={picture} className={classes.avatar} />
               <h1 className={classes.headerText}>
                 {user ? `${user.name}'s` : null} Projects
               </h1>
