@@ -26,11 +26,7 @@ class WritingStreak extends Component {
       .catch((err) => console.log(err));
   };
   render() {
-    return (
-      <div>
-        <p>{this.state.streakLength}</p>
-      </div>
-    );
+    return <div>{this.state.streakLength} days</div>;
   }
 }
 
