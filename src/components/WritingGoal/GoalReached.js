@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import apiEntry from "../../utils/apiEntry";
 import apiUser from "../../utils/apiUser";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import Button from "@material-ui/core/Button";
+import AlarmOnIcon from "@material-ui/icons/AlarmOn";
 
 export default class GoalReached extends Component {
   constructor(props) {
@@ -89,12 +91,9 @@ export default class GoalReached extends Component {
     this.setState({ show: !this.state.show });
   }
 
-  goalUpdateModal = ()=> {
-    let goalDate = (Date.parse(this.state.goalDate))
-    if (
-      goalDate === Date.now() &&
-      this.state.totalWords >= this.state.goal
-    ) {
+  goalUpdateModal = () => {
+    let goalDate = Date.parse(this.state.goalDate);
+    if (goalDate === Date.now() && this.state.totalWords >= this.state.goal) {
       return (
         // <Modal show={this.state.show} onHide={() => this.handleModal()}>
         //   <Modal.Header closeButton>{/* GOAL: */}</Modal.Header>
@@ -103,7 +102,9 @@ export default class GoalReached extends Component {
         //     New Goal.
         //   </Modal.Body>
         // </Modal>
-        alert("Congrats! You have reached your goal! Click Writing Goal To Set a New Goal.")
+        alert(
+          "Congrats! You have reached your goal! You can keep writing or set a new goal."
+        )
       );
     } else if (
       goalDate === Date.now() &&
@@ -123,8 +124,8 @@ export default class GoalReached extends Component {
       this.state.totalWords >= this.state.goal
     ) {
       console.log("reached goal");
-      console.log(this.state.totalWords)
-     console.log(this.state.goal)
+      console.log(this.state.totalWords);
+      console.log(this.state.goal);
       return (
         // <Modal show={this.state.show} onHide={() => this.handleModal()}>
         //   <Modal.Header closeButton>{/* GOAL: */}</Modal.Header>
@@ -134,16 +135,24 @@ export default class GoalReached extends Component {
         // </Modal>
         alert("WOW!!! you have reached your goal before the goal date!")
       );
-    }else {
+    } else {
       console.log("reached here");
-      
     }
-      
-  }
+  };
   render() {
+    const checkProgressBtn = {
+      margin: "10px",
+    };
+
     return (
-      <Button onClick={this.goalUpdateModal}>
-        <p>Goal:</p>
+      <Button
+        variant="contained"
+        color="secondary"
+        style={checkProgressBtn}
+        onClick={this.goalUpdateModal}
+      >
+        <AlarmOnIcon />
+        &nbsp; Check Goal Progress
       </Button>
     );
   }
