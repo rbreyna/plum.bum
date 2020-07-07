@@ -1,17 +1,7 @@
 import React, { Component } from "react";
-import {
-  Button,
-  Col,
-  Row,
-  FormControl,
-  InputGroup,
-  Form,
-} from "react-bootstrap";
+import { Col, Row, FormControl, InputGroup, Form } from "react-bootstrap";
 import "../../pages/Dashboard.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faSave } from "@fortawesome/free-solid-svg-icons";
 import apiEntry from "../../utils/apiEntry";
-import GoalReached from "../WritingGoal/GoalReached";
 import SaveButton from "./SaveButton";
 import DisplaySessionCount from "./DisplaySessionCount";
 
