@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Fab from "@material-ui/core/Fab";
-import SaveIcon from "@material-ui/icons/Save";
+import CreateIcon from "@material-ui/icons/Create";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,9 +15,9 @@ const useStyles = makeStyles((theme) => ({
   fab: {
     margin: 0,
     top: "auto",
-    right: 30,
+    right: "auto",
     bottom: 50,
-    left: "auto",
+    left: 30,
     position: "fixed",
     "&:focus": {
       outline: "none",
@@ -30,9 +30,14 @@ export default function SaveButton(props) {
 
   return (
     <div className={classes.root}>
-      <Fab className={classes.fab} variant="extended" color="secondary">
-        <SaveIcon className={classes.extendedIcon} />
-        Save
+      <Fab
+        wordCount={props.wordCount}
+        className={classes.fab}
+        variant="extended"
+        color="secondary"
+      >
+        <CreateIcon className={classes.extendedIcon} />
+        Current Word Count: &nbsp; {props.wordCount}
       </Fab>
     </div>
   );

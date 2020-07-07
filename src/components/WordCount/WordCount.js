@@ -13,6 +13,7 @@ import { faEdit, faSave } from "@fortawesome/free-solid-svg-icons";
 import apiEntry from "../../utils/apiEntry";
 import GoalReached from "../WritingGoal/GoalReached";
 import SaveButton from "./SaveButton";
+import DisplaySessionCount from "./DisplaySessionCount";
 
 export default class WordCount extends Component {
   constructor(props) {
@@ -38,6 +39,8 @@ export default class WordCount extends Component {
 
   handleSave = (event) => {
     event.preventDefault();
+
+    console.log("Save FAB clicked.");
 
     const newEntry = {
       auth0_id: localStorage.getItem("id"),
@@ -76,7 +79,7 @@ export default class WordCount extends Component {
                 <br></br>
                 <InputGroup id="passage-title" sm={12}>
                   <InputGroup.Prepend>
-                    <InputGroup.Text>Name of Passage</InputGroup.Text>
+                    <InputGroup.Text>Title | Chapter</InputGroup.Text>
                   </InputGroup.Prepend>
                   <FormControl
                     id="title"
@@ -103,10 +106,9 @@ export default class WordCount extends Component {
           </Row>
           <Row>
             <Col sm={4}>
-              <h3>
-                <FontAwesomeIcon icon={faEdit} /> :{" "}
-                {this.countWords(this.state.entryBody)}
-              </h3>
+              <DisplaySessionCount
+                wordCount={this.countWords(this.state.entryBody)}
+              />
             </Col>
             <Col sm={4}>
               <div
@@ -115,7 +117,7 @@ export default class WordCount extends Component {
                 onClick={this.handleSave}
                 /*disabled={!this.state.formValid}*/
               >
-                <SaveButton />
+                <SaveButton id="btns" onClick={this.handleSave} />
                 <>
                   {/*when save btn is clicked need to goto GoalReached.js so modal pops up*/}
                   <GoalReached />
