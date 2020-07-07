@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import apiEntry from "../../utils/apiEntry";
-import { Container, Button ,FormControl} from "react-bootstrap";
-import "./PopulateEntries.css";
+import CreateNewEntry from "./CreateNewEntry";
+
+import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
+import CreateIcon from "@material-ui/icons/Create";
+import VisibilityIcon from "@material-ui/icons/Visibility";
 
 class PopulateEntries extends Component {
   constructor(props) {
     super(props);
     this.state = {
       entries: [],
-      show: false
+      show: false,
     };
   }
-
 
   componentDidMount() {
     this.loadEntries();
@@ -40,28 +43,64 @@ class PopulateEntries extends Component {
   };
 
   render() {
+    const myWorkHeader = {
+      textAlign: "left",
+      marginBottom: "3%",
+    };
+
+    const myWork = {
+      textAlign: "left",
+    };
+
+    const entryReturn = {
+      backgroundColor: "#f8f9fa",
+      padding: "3%",
+    };
+
+    const buttonView = {
+      color: "white",
+      backgroundColor: "#88498f",
+    };
+
     return (
-      <Container className="PopulateEntries" fluid>
-        <div>
+      <Container className="PopulateEntries">
+        <div style={myWorkHeader}>
           <h1>My Work</h1>
+          <CreateNewEntry />
         </div>
-        <div>
+        <div style={myWork}>
           {this.state.entries.map((entry) => {
             return (
-              <div key={entry._id}>
-                {console.log(entry)}
-                <p>
-                  {entry.title} &nbsp;
+              <>
+                <div style={entryReturn} key={entry._id}>
+                  {console.log(entry)}
+                  <h3>{entry.title}</h3>
                   {/* This "Edit" button will allow the user to edit a particular chapter/entry */}
-                  <Button >Edit</Button> &nbsp;
-                  <Button>View</Button>
-                </p>
-
-                <p>Date Created: {entry.date}</p>
-                <p>Words: {entry.entryWords}</p>
-
-                <br></br>
-              </div>
+                  <Button variant="contained" color="secondary">
+                    <CreateIcon />
+                    &nbsp; Edit
+                  </Button>{" "}
+                  &nbsp;
+                  <Button variant="contained" style={buttonView}>
+                    <VisibilityIcon />
+                    &nbsp; View
+                  </Button>
+                  <br></br>
+                  <br></br>
+                  <p>
+                    <strong>Date Created:</strong>{" "}
+                    {entry.date.substring(0, entry.date.indexOf("T"))}
+                  </p>
+                  <p>
+                    <strong>Words:</strong> {entry.entryWords}
+                  </p>
+                </div>
+                <div>
+                  &nbsp;
+                  <p>.............</p>
+                  &nbsp;
+                </div>
+              </>
             );
           })}
         </div>
