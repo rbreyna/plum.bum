@@ -97,7 +97,9 @@ class PopulateEntries extends Component {
                 </div>
                 <div>
                   &nbsp;
-                  <p>.............</p>
+                  <center>
+                    <p>. . . . . . . . . . . . .</p>
+                  </center>
                   &nbsp;
                 </div>
               </>
