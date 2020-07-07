@@ -5,7 +5,7 @@ class WritingStreak extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      streakLenght: 0,
+      streakLength: 0,
     };
   }
 
@@ -20,13 +20,17 @@ class WritingStreak extends Component {
         console.log(entries.data, "streaks");
         console.log(entries.data.length, "streak");
         this.setState({
-          streakLenght: entries.data.length,
+          streakLength: entries.data.length,
         });
       })
       .catch((err) => console.log(err));
   };
   render() {
-    return <>{this.state.streakLenght} days</>;
+    return (
+      <div>
+        <p>{this.state.streakLength}</p>
+      </div>
+    );
   }
 }
 

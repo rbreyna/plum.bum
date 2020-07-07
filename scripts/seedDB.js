@@ -28,23 +28,35 @@ const entrySeed = [
 
 const userSeed = [
   {
+    name: "Jane Doe",
     email: "testUser@testuser.test",
-    password: "potato",
     goal: 5000,
+    goalDate: "6/26/2020",
+    dailyWordCount: 500,
+    password: "Potato123!",
     image: "../public/assets/images/avatar1.png",
+    auth0_id: 1,
   },
   {
+    name: "Timmy Smith",
     email: "testUser123@testuser.test",
-    password: "hello*password",
     goal: 20000,
+    goalDate: "6/27/2020",
+    dailyWordCount: 1200,
+    password: "Hello*password123!",
     image: "../public/assets/images/avatar2.png",
+    auth0_id: 2,
   },
   {
+    name: "Javier Muniz",
     email: "testUser1231233@testuser.test",
+    goal: 10000,
+    goalDate: "8/25/2020",
+    dailyWordCount: 700,
     name: "June McTavish",
     password: "23423*12321",
-    goal: 10000,
     image: "../public/assets/images/avatar2.png",
+    auth0_id: 3,
   },
 ];
 

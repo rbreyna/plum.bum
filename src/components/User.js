@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Image, Modal, Form } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import apiUser from "../utils/apiUser";
 
 class User extends Component {
   constructor(props) {
@@ -26,12 +27,59 @@ class User extends Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.data !== this.props.data) {
+      apiUser
+        .findUser(this.state.id)
+        .then((res) => {
+          console.log("User found!");
+          console.log(res);
+          this.setState({
+            name: res.data[0].name,
+            email: res.data[0].email,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+
   handleChange(event) {
     const value = event.target.value;
     this.setState({ [event.target.id]: value });
   }
 
-  updateUserInfo() {}
+  updateUserInfo() {
+    apiUser
+      .updateUser(this.state.id, {
+        $set: {
+          name: this.state.name,
+          email: this.state.email,
+        },
+      })
+      .then((res) => {
+        console.log("User updated!");
+        console.log(res);
+      })
+      .catch((err) => {
+        throw err;
+      });
+
+    apiUser
+      .findUser(this.state.id)
+      .then((res) => {
+        console.log("User found!");
+        console.log(res);
+        this.setState({
+          name: res.data[0].name,
+          email: res.data[0].email,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   render() {
     const personalInfo = {

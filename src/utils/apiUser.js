@@ -12,11 +12,9 @@ export default {
   // Updates a user with a given id
   updateUser: function (id, userData) {
     return axios.put("/api/user/" + id, userData);
-  }, 
+  },
 
   // saveUserGoal: function (goalData) {
   //   return axios.post("/api/user/goal", goalData)
   // }
-
 };
-

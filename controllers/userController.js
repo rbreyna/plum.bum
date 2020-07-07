@@ -24,7 +24,7 @@ module.exports = {
 
   //Update an specific user
   updateUser: function (req, res) {
-    User.findOneAndUpdate({ auth0_id: req.params.id }, req.body)
+    User.findOneAndUpdate({ auth0_id: req.params.id }, req.body, { new: true })
       .then((dbModel) => res.json(dbModel))
       .catch((err) => res.status(422).json(err));
   },

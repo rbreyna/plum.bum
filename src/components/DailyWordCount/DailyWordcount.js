@@ -6,7 +6,7 @@ export default class DailyWordcount extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dayliWordCount: 0,
+      dailyWordCount: 0,
     };
   }
 
@@ -42,13 +42,13 @@ export default class DailyWordcount extends Component {
         }
 
         this.setState({
-          dayliWordCount: this.getArraySum(entriesbydate),
+          dailyWordCount: this.getArraySum(entriesbydate),
         });
       })
       .catch((err) => console.log(err));
   };
 
   render() {
-    return <div>{this.state.dayliWordCount}</div>;
+    return <div>{this.state.dailyWordCount}</div>;
   }
 }
