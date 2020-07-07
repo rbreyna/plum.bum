@@ -6,7 +6,6 @@ import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import CreateIcon from "@material-ui/icons/Create";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import "./PopulateEntries.css";
 
 class PopulateEntries extends Component {
   constructor(props) {
