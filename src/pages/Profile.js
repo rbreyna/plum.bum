@@ -6,12 +6,6 @@ import apiUser from "../utils/apiUser";
 export default function Profile() {
   const { isLoading, user } = useAuth0();
 
-  /*   let name = user ? user.name : null;
-  let email = "";
-
-  const picture = user ? user.picture : null;
-  const id = user ? user.sub.split("|")[1] : null; */
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [picture, setPicture] = useState("");
