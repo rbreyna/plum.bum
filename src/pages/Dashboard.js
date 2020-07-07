@@ -9,6 +9,7 @@ import HighestWordCount from "../components/HighestWordCount/highestWordCount";
 import WritingStreak from "../components/WritingStreak/WritingStreak";
 import apiUser from "../utils/apiUser";
 import GoalReached from "../components/WritingGoal/GoalReached.js";
+import DashboardUI from "../components/DashboardUI";
 
 function Dashboard() {
   const { isLoading, user } = useAuth0();
@@ -42,11 +43,7 @@ function Dashboard() {
             <h1>{user.name}'s Dashboard</h1>
             <Container>
               <Image src={picture} width={150} height={150} roundedCircle />
-              <DayliWordCount />
-              <WritingStreak />
-              <HighestWordCount />
-              <WeeklyWordCount />
-
+              <DashboardUI />
               <div style={goalDiv}>
                 <WritingGoal
                   show={modalShow}

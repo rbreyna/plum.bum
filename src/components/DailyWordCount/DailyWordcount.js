@@ -49,10 +49,6 @@ export default class DailyWordcount extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <p>Daily Word Count: {this.state.dayliWordCount}</p>
-      </div>
-    );
+    return <div>{this.state.dayliWordCount}</div>;
   }
 }
