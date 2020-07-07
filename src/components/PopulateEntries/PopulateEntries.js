@@ -6,6 +6,7 @@ import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import CreateIcon from "@material-ui/icons/Create";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import MenuBookIcon from "@material-ui/icons/MenuBook";
 
 class PopulateEntries extends Component {
   constructor(props) {
@@ -43,18 +44,18 @@ class PopulateEntries extends Component {
   };
 
   render() {
-    const myWorkHeader = {
-      textAlign: "left",
-      marginBottom: "3%",
-    };
-
     const myWork = {
       textAlign: "left",
     };
 
     const entryReturn = {
       backgroundColor: "#f8f9fa",
-      padding: "3%",
+      padding: "2.5%",
+    };
+
+    const buttonDiv = {
+      marginTop: "30px",
+      marginBottom: "30px",
     };
 
     const buttonEdit = {
@@ -71,6 +72,10 @@ class PopulateEntries extends Component {
       },
     };
 
+    const spacerDiv = {
+      height: "20px",
+    };
+
     return (
       <Container className="PopulateEntries">
         <CreateNewEntry />
@@ -80,23 +85,29 @@ class PopulateEntries extends Component {
               <>
                 <div style={entryReturn} key={entry._id}>
                   {console.log(entry)}
-                  <h3>{entry.title}</h3>
+                  <h3>
+                    <MenuBookIcon fontSize="large" />
+                    &nbsp;
+                    <strong>{entry.title}</strong>
+                  </h3>
                   {/* This "Edit" button will allow the user to edit a particular chapter/entry */}
-                  <Button
-                    style={buttonEdit}
-                    variant="contained"
-                    color="secondary"
-                  >
-                    <CreateIcon />
-                    &nbsp; Edit
-                  </Button>{" "}
-                  &nbsp;
-                  <Button variant="contained" style={buttonView}>
-                    <VisibilityIcon />
-                    &nbsp; View
-                  </Button>
-                  <br></br>
-                  <br></br>
+
+                  <div style={buttonDiv}>
+                    <Button
+                      style={buttonEdit}
+                      variant="contained"
+                      color="secondary"
+                    >
+                      <CreateIcon />
+                      &nbsp; Edit
+                    </Button>{" "}
+                    &nbsp; &nbsp;
+                    <Button variant="contained" style={buttonView}>
+                      <VisibilityIcon />
+                      &nbsp; View
+                    </Button>
+                  </div>
+
                   <p>
                     <strong>Date Created:</strong>{" "}
                     {entry.date.substring(0, entry.date.indexOf("T"))}
@@ -105,13 +116,7 @@ class PopulateEntries extends Component {
                     <strong>Words:</strong> {entry.entryWords}
                   </p>
                 </div>
-                <div>
-                  {/* &nbsp; */}
-                  <center>
-                    <p>. . . . . . . . . . . . .</p>
-                  </center>
-                  &nbsp;
-                </div>
+                <div style={spacerDiv}></div>
               </>
             );
           })}
