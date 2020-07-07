@@ -11,6 +11,9 @@ export default createMuiTheme({
     common: {
       plumTeal: `${plumTeal}`,
       plumPlum: `${plumPlum}`,
+      plumDarkTeal: `${plumDarkTeal}`,
+      plumLightOrange: `${plumLightOrange}`,
+      plumLightPeach: `${plumLightPeach}`,
     },
     primary: {
       main: `${plumTeal}`,

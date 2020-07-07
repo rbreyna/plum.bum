@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import apiEntry from "../../utils/apiEntry";
 import apiUser from "../../utils/apiUser";
-import { Modal } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import AlarmOnIcon from "@material-ui/icons/AlarmOn";
 

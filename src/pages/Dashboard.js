@@ -1,25 +1,13 @@
 import React from "react";
 import "./Dashboard.css";
-import { Container, Col, Row, Image } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 import { useAuth0 } from "../contexts/auth0-context";
 import { WritingGoal } from "../components/WritingGoal/WritingGoal.js";
 import WordCount from "../components/WordCount/WordCount";
 import apiUser from "../utils/apiUser";
 import GoalReached from "../components/WritingGoal/GoalReached.js";
 import DashboardUI from "../components/DashboardUI";
-import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-}));
 
 function Dashboard() {
   const { isLoading, user } = useAuth0();
@@ -38,13 +26,6 @@ function Dashboard() {
         console.log(err);
       });
   };
-  const id = user ? user.sub.split("|")[1] : null;
-
-  const classes = useStyles();
-
-  // const statsDiv = {
-  //   marginBottom: "10px",
-  // };
 
   const goalDiv = {
     marginBottom: "15px",
