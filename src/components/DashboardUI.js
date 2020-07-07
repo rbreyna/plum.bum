@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     maxWidth: 360,
+    marginBottom: "40px",
     backgroundColor: theme.palette.secondary,
   },
   listText: {

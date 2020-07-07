@@ -3,6 +3,7 @@ import apiEntry from "../../utils/apiEntry";
 import apiUser from "../../utils/apiUser";
 import { Modal } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
+import AlarmOnIcon from "@material-ui/icons/AlarmOn";
 
 export default class GoalReached extends Component {
   constructor(props) {
@@ -150,7 +151,8 @@ export default class GoalReached extends Component {
         style={checkProgressBtn}
         onClick={this.goalUpdateModal}
       >
-        Check Goal Progress
+        <AlarmOnIcon />
+        &nbsp; Check Goal Progress
       </Button>
     );
   }

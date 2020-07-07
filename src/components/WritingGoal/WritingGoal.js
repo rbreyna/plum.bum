@@ -3,6 +3,8 @@ import "./WritingGoal.css";
 import { Modal, Row, Col, Form } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import apiUser from "../../utils/apiUser";
+import StarsIcon from "@material-ui/icons/Stars";
+
 // import DatePicker from 'react-datepicker';
 // import 'react-datepicker/dist/react-datepicker.css';
 
@@ -57,7 +59,8 @@ export class WritingGoal extends Component {
           variant="contained"
           onClick={() => this.setState({ show: true })}
         >
-          Set A Writing Goal
+          <StarsIcon />
+          &nbsp; Set A Writing Goal
         </Button>
         <Modal
           show={this.state.show}
