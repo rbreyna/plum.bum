@@ -44,8 +44,9 @@ class User extends Component {
     };
 
     const profilePicture = {
-      marginTop: "20px",
+      marginTop: "10px",
       marginRight: "30px",
+      marginBottom: "30px",
     };
 
     const headerStyles = {
@@ -73,7 +74,6 @@ class User extends Component {
           </Grid>
           <Grid item xs={12} sm={4}>
             <div style={personalInfo}>
-              <h3>Personal Info</h3>
               <h4>Name</h4>
               <p>{this.state.name}</p>
               <h4>Email</h4>
