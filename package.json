@@ -32,6 +32,9 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "dev-server": "nodemon server.js",
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
@@ -40,8 +43,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "seed": "node scripts/seedDB.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix src && npm run build --prefix src"
+    "seed": "node scripts/seedDB.js"
   },
   "keywords": [],
   "author": "",
