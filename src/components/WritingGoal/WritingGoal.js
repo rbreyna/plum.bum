@@ -9,19 +9,14 @@ export class WritingGoal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      wordGoal: 0,
-      goalSetDate: Date.now(),
-      dateSetGoal: Date.now(),
+      goal: 0,
+      goalDate: "",
+      startGoalDate: "",
       todaysDate: Date.now(),
       show: false,
     };
     this.handleChange = this.handleChange.bind(this);
   }
-
-  onChange = (dateSetGoal) => {
-    this.setState({ dateSetGoal: dateSetGoal });
-    console.log(dateSetGoal);
-  };
 
   handleChange(event) {
     const value = event.target.value;
@@ -30,9 +25,9 @@ export class WritingGoal extends Component {
   }
   handleSave = () => {
     const userGoal = {
-      goal: this.state.wordGoal,
-      goalDate: this.state.goalSetDate,
-      startGoalDate: this.state.dateSetGoal,
+      goal: this.state.goal,
+      goalDate: this.state.goalDate,
+      startGoalDate: this.state.startGoalDate,
     };
     apiUser.updateUser(localStorage.getItem("id"), userGoal).then((User) => {
       console.log(User);
@@ -66,7 +61,8 @@ export class WritingGoal extends Component {
           centered
         >
           <div className="modal-container">
-            <Form onSubmit={this.handleSubmit}>
+            <Form >
+
               <Modal.Header closeButton>
                 <Modal.Title
                   style={{ fontFamily: "Ribeye Marrow", fontSize: "3rem" }}
@@ -80,7 +76,7 @@ export class WritingGoal extends Component {
                   <div className="modalImage">
                     <Row>
                       <Col sm={6}>
-                        <Form.Group controlId="wordGoal">
+                        <Form.Group controlId="goal">
                           <Form.Label
                             style={{
                               fontFamily: "Montserrat Alternates",
@@ -92,8 +88,8 @@ export class WritingGoal extends Component {
                           <Form.Control
                             type="number"
                             name="words"
-                            placeholder={this.state.wordGoal}
-                            value={this.state.wordGoal}
+                            placeholder={this.state.goal}
+                            value={this.state.goal}
                             onChange={this.handleChange}
                           />
                         </Form.Group>
@@ -101,7 +97,7 @@ export class WritingGoal extends Component {
                     </Row>
                     <Row>
                       <Col sm={6}>
-                        <Form.Group controlId="dateSetGoal">
+                        <Form.Group controlId="startGoalDate">
                           <Form.Label
                             style={{
                               fontFamily: "Montserrat Alternates",
@@ -113,8 +109,8 @@ export class WritingGoal extends Component {
                           <Form.Control
                             type="Date"
                             name="date"
-                            placeholder={this.state.dateSetGoal}
-                            value={this.state.dateSetGoal}
+                            placeholder={this.state.startGoalDate}
+                            value={this.state.startGoalDate}
                             onChange={this.handleChange}
                             min={new Date().toISOString().split("T")[0]}
                           />
@@ -123,7 +119,7 @@ export class WritingGoal extends Component {
                     </Row>
                     <Row>
                       <Col sm={6}>
-                        <Form.Group controlId="goalSetDate">
+                        <Form.Group controlId="goalDate">
                           <Form.Label
                             style={{
                               fontFamily: "Montserrat Alternates",
@@ -135,8 +131,8 @@ export class WritingGoal extends Component {
                           <Form.Control
                             type="Date"
                             name="date"
-                            placeholder={this.state.goalSetDate}
-                            value={this.state.goalSetDate}
+                            placeholder={this.state.goalDate}
+                            value={this.state.goalDate}
                             onChange={this.handleChange}
                             min={new Date().toISOString().split("T")[0]}
                           />
