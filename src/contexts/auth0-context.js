@@ -18,8 +18,8 @@ export class Auth0Provider extends Component {
 
   //Create a config property to store our credentials for Auth0 (Domain and ClientID)
   config = {
-    domain: process.env.REACT_APP_AUTH0_DOMAIN,
-    client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
+    domain: "dev-cmuysyr5.us.auth0.com",
+    client_id: "0o3vEp9hsWgV0kWqiYK7GPKEDGyGPWUI",
     redirect_uri: window.location.origin,
   };
 

@@ -5,8 +5,8 @@ import Button from "@material-ui/core/Button";
 import apiUser from "../../utils/apiUser";
 import StarsIcon from "@material-ui/icons/Stars";
 
-// import DatePicker from 'react-datepicker';
-// import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export class WritingGoal extends Component {
   constructor(props) {
@@ -21,9 +21,9 @@ export class WritingGoal extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  onChange = (goalSetDate) => {
-    this.setState({ goalSetDate: goalSetDate });
-    console.log(goalSetDate);
+  onChange = (dateSetGoal) => {
+    this.setState({ dateSetGoal: dateSetGoal });
+    console.log(dateSetGoal);
   };
 
   handleChange(event) {
@@ -49,10 +49,10 @@ export class WritingGoal extends Component {
       margin: "10px",
     };
 
-    return (
-      //You must validate form because the user can not select a day before today
-      //Example: if today is july 4 the user can not select july 3
+    //You must validate form because the user can not select a day before today
+    //Example: if today is july 4 the user can not select july 3
 
+    return (
       <>
         <Button
           style={setGoalBtn}
@@ -122,6 +122,7 @@ export class WritingGoal extends Component {
                             placeholder={this.state.dateSetGoal}
                             value={this.state.dateSetGoal}
                             onChange={this.handleChange}
+                            min={new Date().toISOString().split("T")[0]}
                           />
                         </Form.Group>
                       </Col>
@@ -143,18 +144,11 @@ export class WritingGoal extends Component {
                             placeholder={this.state.goalSetDate}
                             value={this.state.goalSetDate}
                             onChange={this.handleChange}
+                            min={new Date().toISOString().split("T")[0]}
                           />
                         </Form.Group>
                       </Col>
                     </Row>
-                    {/* <Row>
-                  <DatePicker
-                  dateFormat="yyyy-MM-dd"
-                  selected={this.state.goalSetDate}
-                  onChange={this.onChange}
-                  minDate= {Date.now()}
-                  /> 
-                  </Row> */}
                   </div>
                 </div>
               </Modal.Body>

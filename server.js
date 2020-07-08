@@ -21,10 +21,10 @@ app.use("/api", require("./routes/apiDate"));
 
 //Serve static folder
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("src/build"));
+  app.use(express.static("build"));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "src", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "build", "index.html"));
   });
 }
 
@@ -35,7 +35,7 @@ mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
-  useFindAndModify:false
+  useFindAndModify: false,
 });
 
 console.log("DB Connected");
