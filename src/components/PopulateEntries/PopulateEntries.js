@@ -8,6 +8,7 @@ import CreateIcon from "@material-ui/icons/Create";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import GetAppRounded from "@material-ui/icons/GetAppRounded";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
@@ -67,7 +68,7 @@ class PopulateEntries extends Component {
       }
     );
     element.href = URL.createObjectURL(file);
-    element.download = "myFile.txt";
+    element.download = title + ".txt";
     document.body.appendChild(element); // Required for this to work in FireFox
     element.click();
   };
@@ -96,6 +97,14 @@ class PopulateEntries extends Component {
     const buttonDownload = {
       color: "white",
       backgroundColor: "#88498f",
+      "&:focus": {
+        outline: "none",
+      },
+    };
+
+    const buttonDelete = {
+      color: "white",
+      backgroundColor: "#ffaaa5",
       "&:focus": {
         outline: "none",
       },
@@ -159,6 +168,15 @@ class PopulateEntries extends Component {
                           >
                             <GetAppRounded />
                             &nbsp; Download
+                          </Button>
+                          &nbsp; &nbsp;
+                          <Button
+                            variant="contained"
+                            style={buttonDelete}
+                            // value={(entry.title, entry.entryBody)}
+                            // id={entry._id}
+                          >
+                            <HighlightOffIcon />
                           </Button>
                         </div>
 
