@@ -31,11 +31,10 @@ function Dashboard() {
     apiUser
       .findUser(id)
       .then((res) => {
+        console.log(res);
         setUser({
           name: res.data.name,
-          email: res.data.email,
           picture: res.data.image,
-          id: res.data.auth0_id,
         });
       })
       .catch((err) => {
@@ -56,39 +55,29 @@ function Dashboard() {
 
   return (
     <>
-      <div>
-        <>
-          <h1 style={headerStyles}>{dbUser.name}'s Dashboard</h1>
-          <Container>
-            <div>
-              <Grid container spacing={3}>
-                <Grid item xs={12} sm={6}>
-                  <Image
-                    src={dbUser.picture}
-                    width={320}
-                    height={320}
-                    roundedCircle
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <DashboardUI />
-                </Grid>
-              </Grid>
-            </div>
-            <div style={goalDiv}>
-              <WritingGoal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
+      <h1 style={headerStyles}>{dbUser.name}'s Dashboard</h1>
+      <Container>
+        <div>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6}>
+              <Image
+                src={dbUser.picture}
+                width={320}
+                height={320}
+                roundedCircle
               />
-              <GoalReached
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-              />
-            </div>
-            <WordCount />
-          </Container>
-        </>
-      </div>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <DashboardUI />
+            </Grid>
+          </Grid>
+        </div>
+        <div style={goalDiv}>
+          <WritingGoal show={modalShow} onHide={() => setModalShow(false)} />
+          <GoalReached show={modalShow} onHide={() => setModalShow(false)} />
+        </div>
+        <WordCount />
+      </Container>
     </>
   );
 }
