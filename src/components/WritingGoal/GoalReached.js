@@ -29,7 +29,7 @@ export default class GoalReached extends Component {
     return text.split(/\s+|--+/).filter((word) => word.length > 0).length;
   };
 
-  //Allow calculate Total
+  //Calculate Total words
   getArraySum = (a) => {
     var total = 0;
     for (var i in a) {
@@ -38,7 +38,7 @@ export default class GoalReached extends Component {
     return total;
   };
 
-  //When user reach the goal reset values into the database
+  //When user reachs their goal then reset the values
   ResetGoalData = () => {
     const userGoal = {
       goal: 0,
@@ -50,10 +50,7 @@ export default class GoalReached extends Component {
     });
   };
 
-  //Get entries from the database  between startgoalDate date and goalDate (When user save data from writing goal that function
-  //must calclate total words using that info)
-  //Take a look to console(inspect the app) of that way you can understand the mongodb result
-
+  //To calculate total words Get entries from the database  between startgoalDate date and goalDate
   GetGoalInfo = () => {
     apiUser
       .findUser(localStorage.getItem("id"))
@@ -74,16 +71,9 @@ export default class GoalReached extends Component {
           entriesbydate.push(this.countWords(entries.data[i].entryBody));
           console.log("words", entriesbydate);
         }
-
-        //Calculate Total words betwen startGoalDate and GoalDate
-        //With that value you can compare the goal
         this.setState({
           totalWords: this.getArraySum(entriesbydate),
         });
-        console.log(" totalwords - 1 ", this.state.totalWords);
-        console.log(" Goal - 1", this.state.goal);
-        console.log(" GoalDate - 1", this.state.goalDate);
-        console.log(" StartGoalDate - 1", this.state.startGoalDate);
       } else {
         this.setState({ message: "No data Found" });
       }
@@ -92,13 +82,8 @@ export default class GoalReached extends Component {
 
   goalUpdateModal = () => {
     let goalsDate = new Date(this.state.goalDate);
-    console.log("goalsDate", goalsDate);
     let goalDate = goalsDate.toISOString().split("T")[0];
     let todaysDate = new Date().toISOString().split("T")[0];
-    console.log("goalDate", goalDate);
-    console.log("todaysDate", todaysDate);
-    console.log("totalWords", this.state.totalWords);
-    console.log("goal", this.state.goal);
 
     if (goalDate === todaysDate && this.state.totalWords >= this.state.goal) {
       this.setState({ showModal1: true });
@@ -149,10 +134,13 @@ export default class GoalReached extends Component {
             this.setState({ showModal1: false });
           }}
         >
-          <Modal.Header style={modalHeaderStyle} closeButton> AWESOME!! </Modal.Header>
+          <Modal.Header style={modalHeaderStyle} closeButton>
+            {" "}
+            AWESOME!!{" "}
+          </Modal.Header>
           <Modal.Body style={modalStyle}>
-            Congrats! You have reached your goal! Click Writing Goal To Set a
-            New Goal.
+            Congrats! You have reached your goal! <br /> Click Writing Goal To
+            Set a New Goal.
           </Modal.Body>
         </Modal>
 
@@ -162,7 +150,9 @@ export default class GoalReached extends Component {
             this.setState({ showModal2: false });
           }}
         >
-          <Modal.Header style={modalHeaderStyle}  closeButton>Don't Be Discouraged</Modal.Header>
+          <Modal.Header style={modalHeaderStyle} closeButton>
+            Don't Be Discouraged
+          </Modal.Header>
           <Modal.Body style={modalStyle}>
             O You Can Do It!!! Reset your Goal!
           </Modal.Body>
@@ -174,7 +164,9 @@ export default class GoalReached extends Component {
             this.setState({ showModal3: false });
           }}
         >
-          <Modal.Header style={modalHeaderStyle}  closeButton>Your Head Of Your Game!!!!</Modal.Header>
+          <Modal.Header style={modalHeaderStyle} closeButton>
+            Your Head Of Your Game!!!!
+          </Modal.Header>
           <Modal.Body style={modalStyle}>
             WOW!!! you have reached your goal before the goal date!
           </Modal.Body>
@@ -186,10 +178,12 @@ export default class GoalReached extends Component {
             this.setState({ showModal4: false });
           }}
         >
-          <Modal.Header style={modalHeaderStyle} closeButton>Keep On Writing....</Modal.Header>
+          <Modal.Header style={modalHeaderStyle} closeButton>
+            Keep On Writing....
+          </Modal.Header>
           <Modal.Body style={modalStyle}>
-            You still have 'TIME' to reach your goal! Words written so far:{" "}
-            {this.state.totalWords}
+            You still have 'TIME' to reach your goal! <br /> Words written so
+            far: {this.state.totalWords}
           </Modal.Body>
         </Modal>
       </>
