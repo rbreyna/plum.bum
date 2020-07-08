@@ -91,19 +91,16 @@ export default class GoalReached extends Component {
     this.setState({ show: !this.state.show });
   }
 
-  goalUpdateModal = ()=> {
-    let goalsDate = new Date(this.state.goalDate)
-    console.log("goalsDate", goalsDate)
-    let goalDate = (goalsDate.toISOString().split("T")[0])
-    let todaysDate = (new Date().toISOString().split("T")[0])
-    console.log("goalDate", goalDate)
-    console.log("todaysDate", todaysDate)
-    console.log("totalWords", this.state.totalWords)
-    console.log("goal", this.state.goal)
-    if (
-      goalDate === todaysDate &&
-      this.state.totalWords >= this.state.goal
-    ) {
+  goalUpdateModal = () => {
+    let goalsDate = new Date(this.state.goalDate);
+    console.log("goalsDate", goalsDate);
+    let goalDate = goalsDate.toISOString().split("T")[0];
+    let todaysDate = new Date().toISOString().split("T")[0];
+    console.log("goalDate", goalDate);
+    console.log("todaysDate", todaysDate);
+    console.log("totalWords", this.state.totalWords);
+    console.log("goal", this.state.goal);
+    if (goalDate === todaysDate && this.state.totalWords >= this.state.goal) {
       return (
         // <Modal show={this.state.show} onHide={() => this.handleModal()}>
         //   <Modal.Header closeButton>{/* GOAL: */}</Modal.Header>
@@ -150,7 +147,10 @@ export default class GoalReached extends Component {
       //   // </Modal>
       //   // alert("WOW!!! you have reached your goal before the goal date!")
       // );
-      alert("You still have 'TIME' to reach your goal!  Words written so far: " + this.state.totalWords)
+      alert(
+        "You still have 'TIME' to reach your goal!  Words written so far: " +
+          this.state.totalWords
+      );
     }
   };
   render() {
