@@ -7,6 +7,8 @@ import Button from "@material-ui/core/Button";
 import CreateIcon from "@material-ui/icons/Create";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
+import GetAppRounded from "@material-ui/icons/GetAppRounded";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
@@ -26,6 +28,7 @@ class PopulateEntries extends Component {
   componentDidMount() {
     this.loadEntries();
   }
+
   countEntryWords = (entry) => {
     let entryBodyString = entry.entryBody;
     let arrayCount = [];
@@ -49,6 +52,27 @@ class PopulateEntries extends Component {
       .catch((err) => console.log(err));
   };
 
+  handleEntryEdit = (event, id) => {
+    event.preventDefault();
+    var currentEntry = this.state.entries;
+    console.log(currentEntry);
+    // window.location.href = "/dashboard?id=" + currentEntry.id;
+  };
+
+  downloadTxtFile = (id, title, words, text) => {
+    const element = document.createElement("a");
+    const file = new Blob(
+      ["Title: ", title, "\n", "\n", "Total Words: ", words, "\n", "\n", text],
+      {
+        type: "text/plain",
+      }
+    );
+    element.href = URL.createObjectURL(file);
+    element.download = title + ".txt";
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+  };
+
   render() {
     const myWork = {
       textAlign: "left",
@@ -70,9 +94,17 @@ class PopulateEntries extends Component {
       },
     };
 
-    const buttonView = {
+    const buttonDownload = {
       color: "white",
       backgroundColor: "#88498f",
+      "&:focus": {
+        outline: "none",
+      },
+    };
+
+    const buttonDelete = {
+      color: "white",
+      backgroundColor: "#ffaaa5",
       "&:focus": {
         outline: "none",
       },
@@ -90,7 +122,7 @@ class PopulateEntries extends Component {
             return (
               <>
                 <div style={entryReturn} key={entry._id}>
-                  {console.log(entry)}
+                  {/* {console.log(entry)} */}
                   <Accordion>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
@@ -113,14 +145,38 @@ class PopulateEntries extends Component {
                             style={buttonEdit}
                             variant="contained"
                             color="secondary"
+                            onClick={this.handleEntryEdit}
+                            id={entry._id}
                           >
                             <CreateIcon />
                             &nbsp; Edit
                           </Button>{" "}
                           &nbsp; &nbsp;
-                          <Button variant="contained" style={buttonView}>
-                            <VisibilityIcon />
-                            &nbsp; View
+                          <Button
+                            variant="contained"
+                            style={buttonDownload}
+                            value={(entry.title, entry.entryBody)}
+                            id={entry._id}
+                            onClick={() =>
+                              this.downloadTxtFile(
+                                entry._id,
+                                entry.title,
+                                entry.entryWords,
+                                entry.entryBody
+                              )
+                            }
+                          >
+                            <GetAppRounded />
+                            &nbsp; Download
+                          </Button>
+                          &nbsp; &nbsp;
+                          <Button
+                            variant="contained"
+                            style={buttonDelete}
+                            // value={(entry.title, entry.entryBody)}
+                            // id={entry._id}
+                          >
+                            <HighlightOffIcon />
                           </Button>
                         </div>
 
