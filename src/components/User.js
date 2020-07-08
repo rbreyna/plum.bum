@@ -7,77 +7,50 @@ import apiUser from "../utils/apiUser";
 class User extends Component {
   constructor(props) {
     super(props);
+
+    //Set state to the props passed from the dbUser object prop so that
+    //information can be rendered to the screen
     this.state = {
-      name: "",
-      email: "",
-      picture: "",
-      id: "",
+      name: props.dbUser.name,
+      email: props.dbUser.email,
+      picture: props.dbUser.picture,
+      id: props.dbUser.id,
       show: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    this.setState({
-      name: this.props.name,
-      email: this.props.email,
-      picture: this.props.picture,
-      id: this.props.id,
-    });
-  }
-
+  //Auth0 passes null values on mount, once the object is loaded and passed,
+  //the updated props can be rendered to the screen
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.data !== this.props.data) {
-      apiUser
-        .findUser(this.state.id)
-        .then((res) => {
-          console.log("User found!");
-          console.log(res);
-          this.setState({
-            name: res.data[0].name,
-            email: res.data[0].email,
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    if (prevProps !== this.props) {
+      this.setState({
+        name: this.props.dbUser.name,
+        email: this.props.dbUser.email,
+        picture: this.props.dbUser.picture,
+        id: this.props.dbUser.id,
+      });
     }
   }
 
+  //Update state when model is edited
   handleChange(event) {
     const value = event.target.value;
     this.setState({ [event.target.id]: value });
   }
 
+  //When save button is clicked in model, the values are updated in the record using the ID
   updateUserInfo() {
     apiUser
-      .updateUser(this.state.id, {
+      .updateUser(this.props.dbUser.id, {
         $set: {
           name: this.state.name,
           email: this.state.email,
         },
       })
-      .then((res) => {
-        console.log("User updated!");
-        console.log(res);
-      })
       .catch((err) => {
         throw err;
-      });
-
-    apiUser
-      .findUser(this.state.id)
-      .then((res) => {
-        console.log("User found!");
-        console.log(res);
-        this.setState({
-          name: res.data[0].name,
-          email: res.data[0].email,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
       });
   }
 
@@ -105,6 +78,7 @@ class User extends Component {
 
     return (
       <>
+        {/*User information rendered onto the screen */}
         <h1 style={headerStyles}>{this.state.name}'s Profile</h1>
 
         <Grid container spacing={1}>
@@ -138,6 +112,8 @@ class User extends Component {
           >
             Update Profile
           </Button>
+
+          {/* Modal that allows user to update their name and email*/}
           <Modal
             show={this.state.show}
             onHide={() => {
