@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import apiEntry from "../../utils/apiEntry";
 import apiUser from "../../utils/apiUser";
-// import { Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import AlarmOnIcon from "@material-ui/icons/AlarmOn";
 
@@ -13,7 +13,10 @@ export default class GoalReached extends Component {
       goal: 0,
       goalDate: "",
       startGoalDate: "",
-      show: false,
+      showModal1: false,
+      showModal2: false,
+      showModal3: false,
+      showModal4: false,
     };
   }
 
@@ -77,19 +80,15 @@ export default class GoalReached extends Component {
         this.setState({
           totalWords: this.getArraySum(entriesbydate),
         });
-        console.log(" totalwords ", this.state.totalWords);
-        console.log(" Goal ", this.state.goal);
-        console.log(" GoalDate ", this.state.goalDate);
-        console.log(" StartGoalDate ", this.state.startGoalDate);
+        console.log(" totalwords - 1 ", this.state.totalWords);
+        console.log(" Goal - 1", this.state.goal);
+        console.log(" GoalDate - 1", this.state.goalDate);
+        console.log(" StartGoalDate - 1", this.state.startGoalDate);
       } else {
         this.setState({ message: "No data Found" });
       }
     });
   };
-
-  handleModal() {
-    this.setState({ show: !this.state.show });
-  }
 
   goalUpdateModal = () => {
     let goalsDate = new Date(this.state.goalDate);
@@ -100,74 +99,100 @@ export default class GoalReached extends Component {
     console.log("todaysDate", todaysDate);
     console.log("totalWords", this.state.totalWords);
     console.log("goal", this.state.goal);
+
     if (goalDate === todaysDate && this.state.totalWords >= this.state.goal) {
-      return (
-        // <Modal show={this.state.show} onHide={() => this.handleModal()}>
-        //   <Modal.Header closeButton>{/* GOAL: */}</Modal.Header>
-        //   <Modal.Body>
-        //     Congrats! You have reached your goal! Click Writing Goal To Set a
-        //     New Goal.
-        //   </Modal.Body>
-        // </Modal>
-        alert(
-          "Congrats! You have reached your goal! You can keep writing or set a new goal."
-        )
-      );
+      this.setState({ showModal1: true });
     } else if (
       goalDate === todaysDate &&
       this.state.totalWords < this.state.goal
     ) {
-      return (
-        // <Modal show={this.state.show} onHide={() => this.handleModal()}>
-        //   <Modal.Header closeButton>{/* GOAL: */}</Modal.Header>
-        //   <Modal.Body>Reset your Goal!</Modal.Body>
-        // </Modal>
-        alert("O You Can Do It!!!  Reset Your Goal")
-      );
+      this.setState({ showModal2: true });
     } else if (
       goalDate !== todaysDate &&
       this.state.totalWords >= this.state.goal
     ) {
-      return (
-        // <Modal show={this.state.show} onHide={() => this.handleModal()}>
-        //   <Modal.Header closeButton>{/* GOAL: */}</Modal.Header>
-        //   <Modal.Body>
-        //     WOW!!! you have reached your goal before the goal date!
-        //   </Modal.Body>
-        // </Modal>
-        alert("WOW!!! you have reached your goal before the goal date!")
-      );
+      this.setState({ showModal3: true });
     } else {
-      // return (
-      //   // <Modal show={this.state.show} onHide={() => this.handleModal()}>
-      //   //   <Modal.Header closeButton>{/* GOAL: */}</Modal.Header>
-      //   //   <Modal.Body>
-      //   //   You still have 'TIME' to reach your goal!  Words written so far: " + (this.state.totalWords)
-      //   //   </Modal.Body>
-      //   // </Modal>
-      //   // alert("WOW!!! you have reached your goal before the goal date!")
-      // );
-      alert(
-        "You still have 'TIME' to reach your goal!  Words written so far: " +
-          this.state.totalWords
-      );
+      this.setState({ showModal4: true });
     }
   };
+
   render() {
     const checkProgressBtn = {
       margin: "10px",
     };
 
+    const modalStyle = {
+      backgroundColor: "#ffd3b6",
+      fontFamily: "Ribeye Marrow",
+    };
+    const modalHeaderStyle = {
+      fontFamily: "Ribeye Marrow",
+      fontSize: "2rem",
+    };
+
     return (
-      <Button
-        variant="contained"
-        color="secondary"
-        style={checkProgressBtn}
-        onClick={this.goalUpdateModal}
-      >
-        <AlarmOnIcon />
-        &nbsp; Check Goal Progress
-      </Button>
+      <>
+        <Button
+          variant="contained"
+          color="secondary"
+          style={checkProgressBtn}
+          onClick={this.goalUpdateModal}
+        >
+          <AlarmOnIcon />
+          &nbsp; Check Goal Progress
+        </Button>
+
+        <Modal
+          show={this.state.showModal1}
+          onHide={() => {
+            this.setState({ showModal1: false });
+          }}
+        >
+          <Modal.Header style={modalHeaderStyle} closeButton> AWESOME!! </Modal.Header>
+          <Modal.Body style={modalStyle}>
+            Congrats! You have reached your goal! Click Writing Goal To Set a
+            New Goal.
+          </Modal.Body>
+        </Modal>
+
+        <Modal
+          show={this.state.showModal2}
+          onHide={() => {
+            this.setState({ showModal2: false });
+          }}
+        >
+          <Modal.Header style={modalHeaderStyle}  closeButton>Don't Be Discouraged</Modal.Header>
+          <Modal.Body style={modalStyle}>
+            O You Can Do It!!! Reset your Goal!
+          </Modal.Body>
+        </Modal>
+
+        <Modal
+          show={this.state.showModal3}
+          onHide={() => {
+            this.setState({ showModal3: false });
+          }}
+        >
+          <Modal.Header style={modalHeaderStyle}  closeButton>Your Head Of Your Game!!!!</Modal.Header>
+          <Modal.Body style={modalStyle}>
+            WOW!!! you have reached your goal before the goal date!
+          </Modal.Body>
+        </Modal>
+
+        <Modal
+          show={this.state.showModal4}
+          onHide={() => {
+            this.setState({ showModal4: false });
+          }}
+        >
+          <Modal.Header style={modalHeaderStyle} closeButton>Keep On Writing....</Modal.Header>
+          <Modal.Body style={modalStyle}>
+            You still have 'TIME' to reach your goal! Words written so far:{" "}
+            {this.state.totalWords}
+          </Modal.Body>
+        </Modal>
+      </>
     );
   }
 }
