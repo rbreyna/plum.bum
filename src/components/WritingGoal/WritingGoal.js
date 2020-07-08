@@ -49,10 +49,10 @@ export class WritingGoal extends Component {
       margin: "10px",
     };
 
-    return (
-      //You must validate form because the user can not select a day before today
-      //Example: if today is july 4 the user can not select july 3
+    //You must validate form because the user can not select a day before today
+    //Example: if today is july 4 the user can not select july 3
 
+    return (
       <>
         <Button
           style={setGoalBtn}
