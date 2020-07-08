@@ -32,6 +32,9 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "dev-server": "nodemon server.js",
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
