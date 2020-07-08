@@ -40,7 +40,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "seed": "node scripts/seedDB.js"
+    "seed": "node scripts/seedDB.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix src && npm run build --prefix src"
   },
   "keywords": [],
   "author": "",
