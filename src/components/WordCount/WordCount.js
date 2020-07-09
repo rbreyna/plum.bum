@@ -54,16 +54,27 @@ export default class WordCount extends Component {
       });
     }
   };
+
   render() {
     const camo = {
       backgroundColor: "#a8e6cf",
+    };
+
+    const formTextStyle = {
+      border: "#a8e6cf 1px solid",
+      fontFamily: "Montserrat Alternates",
+      fontSize: "1.2rem",
+      color: "black",
+      "&:focus": {
+        outline: "black",
+      },
     };
 
     return (
       <div className="wordcount">
         <Form>
           <Row className="fluid" id="row-2">
-            <Col className="content dash3" sm={12}>
+            <Col sm={12}>
               <InputGroup>
                 <br></br>
                 <InputGroup id="passage-title" sm={12}>
@@ -72,6 +83,7 @@ export default class WordCount extends Component {
                       style={{
                         color: "black",
                         fontFamily: "Montserrat Alternates",
+                        fontSize: "1.2rem",
                         backgroundColor: "#ffd3b6",
                       }}
                     >
@@ -79,6 +91,7 @@ export default class WordCount extends Component {
                     </InputGroup.Text>
                   </InputGroup.Prepend>
                   <FormControl
+                    style={formTextStyle}
                     id="title"
                     value={this.state.title}
                     placeholder="Enter the name of your chapter or title of your project"
@@ -90,11 +103,12 @@ export default class WordCount extends Component {
                   <br></br>
                 </InputGroup>
                 <FormControl
+                  style={formTextStyle}
                   id="entryBody"
                   value={this.state.entryBody}
                   name="bodyEntry"
                   type="text"
-                  placeholder="''This is how you do it: you sit down at the keyboard and you put one word after another until it's done. It's that easy, and that hard.''  -  Neil Gaiman "
+                  placeholder="This is how you do it: you sit down at the keyboard and you put one word after another until it's done. It's that easy, and that hard.  -   Neil Gaiman"
                   className="form-control"
                   onChange={this.handleChange}
                   as="textarea"
