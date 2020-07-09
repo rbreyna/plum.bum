@@ -17,6 +17,7 @@ export default class GoalReached extends Component {
       showModal2: false,
       showModal3: false,
       showModal4: false,
+      showModal5: false,
     };
   }
 
@@ -84,23 +85,31 @@ export default class GoalReached extends Component {
     let goalDate = goalsDate.toISOString().split("T")[0];
     let todaysDate = new Date().toISOString().split("T")[0];
 
-    if (goalDate === todaysDate && this.state.totalWords >= this.state.goal) {
+    if (
+      this.state.goal !== 0 &&
+      goalDate === todaysDate &&
+      this.state.totalWords >= this.state.goal
+    ) {
       this.setState({ showModal1: true });
       this.ResetGoalData();
     } else if (
+      this.state.goal !== 0 &&
       goalDate === todaysDate &&
       this.state.totalWords < this.state.goal
     ) {
       this.setState({ showModal2: true });
       this.ResetGoalData();
     } else if (
+      this.state.goal !== 0 &&
       goalDate !== todaysDate &&
       this.state.totalWords >= this.state.goal
     ) {
       this.setState({ showModal3: true });
       this.ResetGoalData();
-    } else {
+    } else if (this.state.goal === 0) {
       this.setState({ showModal4: true });
+    } else {
+      this.setState({ showModal5: true });
     }
   };
 
@@ -181,6 +190,21 @@ export default class GoalReached extends Component {
           show={this.state.showModal4}
           onHide={() => {
             this.setState({ showModal4: false });
+          }}
+        >
+          <Modal.Header style={modalHeaderStyle} closeButton>
+            Uh-oh!!
+          </Modal.Header>
+          <Modal.Body style={modalStyle}>
+            You have to create a goal before <br />
+            checking your goal progress!
+          </Modal.Body>
+        </Modal>
+
+        <Modal
+          show={this.state.showModal5}
+          onHide={() => {
+            this.setState({ showModal5: false });
           }}
         >
           <Modal.Header style={modalHeaderStyle} closeButton>
