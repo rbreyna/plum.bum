@@ -125,7 +125,9 @@ export default class GoalReached extends Component {
     const modalStyle = {
       backgroundColor: "#ffd3b6",
       fontFamily: "Ribeye Marrow",
+      fontSize: "1.25rem",
     };
+
     const modalHeaderStyle = {
       fontFamily: "Ribeye Marrow",
       fontSize: "2rem",
@@ -149,10 +151,13 @@ export default class GoalReached extends Component {
             this.setState({ showModal1: false });
           }}
         >
-          <Modal.Header style={modalHeaderStyle} closeButton> AWESOME!! </Modal.Header>
+          <Modal.Header style={modalHeaderStyle} closeButton>
+            {" "}
+            AWESOME!!{" "}
+          </Modal.Header>
           <Modal.Body style={modalStyle}>
-            Congrats! You have reached your goal! Click Writing Goal To Set a
-            New Goal.
+            Congrats! You've reached your goal! You can set a new goal at any
+            time.
           </Modal.Body>
         </Modal>
 
@@ -162,7 +167,9 @@ export default class GoalReached extends Component {
             this.setState({ showModal2: false });
           }}
         >
-          <Modal.Header style={modalHeaderStyle}  closeButton>Don't Be Discouraged</Modal.Header>
+          <Modal.Header style={modalHeaderStyle} closeButton>
+            Don't Be Discouraged
+          </Modal.Header>
           <Modal.Body style={modalStyle}>
             O You Can Do It!!! Reset your Goal!
           </Modal.Body>
@@ -174,7 +181,9 @@ export default class GoalReached extends Component {
             this.setState({ showModal3: false });
           }}
         >
-          <Modal.Header style={modalHeaderStyle}  closeButton>Your Head Of Your Game!!!!</Modal.Header>
+          <Modal.Header style={modalHeaderStyle} closeButton>
+            Your Head Of Your Game!!!!
+          </Modal.Header>
           <Modal.Body style={modalStyle}>
             WOW!!! you have reached your goal before the goal date!
           </Modal.Body>
@@ -186,7 +195,9 @@ export default class GoalReached extends Component {
             this.setState({ showModal4: false });
           }}
         >
-          <Modal.Header style={modalHeaderStyle} closeButton>Keep On Writing....</Modal.Header>
+          <Modal.Header style={modalHeaderStyle} closeButton>
+            Keep On Writing....
+          </Modal.Header>
           <Modal.Body style={modalStyle}>
             You still have 'TIME' to reach your goal! Words written so far:{" "}
             {this.state.totalWords}

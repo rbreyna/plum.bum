@@ -59,6 +59,12 @@ export default class WordCount extends Component {
       backgroundColor: "#a8e6cf",
     };
 
+    const formStyle = {
+      fontFamily: "Montserrat Alternates",
+      fontSize: "1.2rem",
+      color: "black",
+    };
+
     return (
       <div className="wordcount">
         <Form>
@@ -72,6 +78,7 @@ export default class WordCount extends Component {
                       style={{
                         color: "black",
                         fontFamily: "Montserrat Alternates",
+                        fontSize: "1.2rem",
                         backgroundColor: "#ffd3b6",
                       }}
                     >
@@ -79,6 +86,7 @@ export default class WordCount extends Component {
                     </InputGroup.Text>
                   </InputGroup.Prepend>
                   <FormControl
+                    style={formStyle}
                     id="title"
                     value={this.state.title}
                     placeholder="Enter the name of your chapter or title of your project"
@@ -90,6 +98,7 @@ export default class WordCount extends Component {
                   <br></br>
                 </InputGroup>
                 <FormControl
+                  style={formStyle}
                   id="entryBody"
                   value={this.state.entryBody}
                   name="bodyEntry"
