@@ -85,7 +85,6 @@ function Navigation() {
           {/* if there is no user. show the login button */}
           {!isLoading && !user && (
             <>
-              <Nav.Link href="/about">About</Nav.Link>
               <Nav.Link
                 onClick={(...p) => {
                   console.log(p);
