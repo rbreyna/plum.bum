@@ -84,7 +84,7 @@ export default class WordCount extends Component {
                         color: "black",
                         fontFamily: "Montserrat Alternates",
                         fontSize: "1.2rem",
-                        backgroundColor: "#ffd3b6",
+                        backgroundColor: "#dcedc1",
                       }}
                     >
                       Title | Chapter

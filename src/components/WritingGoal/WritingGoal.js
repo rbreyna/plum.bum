@@ -29,11 +29,8 @@ export class WritingGoal extends Component {
       goalDate: this.state.goalDate,
       startGoalDate: this.state.startGoalDate,
     };
-    apiUser.updateUser(localStorage.getItem("id"), userGoal).then((User) => {
-      
-    });
+    apiUser.updateUser(localStorage.getItem("id"), userGoal).then((User) => {});
     window.location.reload();
-    
   };
 
   render() {
