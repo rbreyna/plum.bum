@@ -24,7 +24,7 @@ Shayda Bakhshi
 
 # Technologies Used
 
-React
+MERN Stack
 
 React-Bootstrap
 
