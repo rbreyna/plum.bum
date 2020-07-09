@@ -54,7 +54,9 @@ function Dashboard() {
 
   return (
     <>
-      <h1 style={headerStyles}>{dbUser.name}'s Dashboard</h1>
+      <h1 style={headerStyles}>
+        {dbUser.name ? `${dbUser.name}'s Dashboard` : ""}
+      </h1>
       <Container>
         <div>
           <Grid container spacing={3}>
