@@ -8,7 +8,7 @@ const userSchema = new Schema({
   },
   email: {
     type: String,
-    unique: true,
+    default: "No Email",
   },
   goal: {
     type: Number,
@@ -16,14 +16,15 @@ const userSchema = new Schema({
   },
   goalDate: {
     type: Date,
-   
+    default: Date.now(),
   },
   startGoalDate: {
     type: Date,
+    default: Date.now(),
   },
   dailyWordCount: {
     type: String,
-    default: 0
+    default: 0,
   },
 
   image: {

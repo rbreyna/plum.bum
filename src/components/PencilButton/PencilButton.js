@@ -27,7 +27,6 @@ function PencilButton(props) {
 
   return (
     <div className="PencilButton-div">
-      {/* if there is no user. show the login button */}
       {!isLoading && !user && (
         <>
           <Image
@@ -35,7 +34,6 @@ function PencilButton(props) {
             src={props.src}
             alt={props.alt}
             onClick={(...p) => {
-              console.log(p);
               loginWithRedirect(...p);
             }}
           />

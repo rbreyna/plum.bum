@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
   fab: {
+    zIndex: 1600,
     margin: 0,
     top: "auto",
     right: 30,
