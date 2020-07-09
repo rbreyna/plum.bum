@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import apiUser from "../utils/apiUser";
+
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
@@ -29,6 +31,36 @@ const useStyles = makeStyles((theme) => ({
 
 function Navigation() {
   const { isLoading, user, loginWithRedirect, logout } = useAuth0();
+
+  const [dbUser, setUser] = useState({});
+
+  //Grab ID from Auth0 user to make queries to the database
+  const userID = user ? user.sub.split("|")[1] : null;
+
+  //When an ID is found, a query is made to MongoDB to grab the record for that user
+  useEffect(() => {
+    if (userID) {
+      loadUserInfo(userID);
+    }
+    return () => {};
+  }, [user, userID, dbUser]);
+
+  //API call to grab record
+  const loadUserInfo = (id) => {
+    apiUser
+      .findUser(id)
+      .then((res) => {
+        console.log(res);
+        setUser({
+          name: res.data.name,
+          picture: res.data.image,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const picture = user ? user.picture : null;
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -68,7 +100,7 @@ function Navigation() {
           {!isLoading && user && (
             <>
               <Navbar.Text style={{ fontFamily: "Montserrat Alternates" }}>
-                Hello, {user.name}!
+                {dbUser.name ? `Hello, ${dbUser.name}!` : ""}
               </Navbar.Text>
               &nbsp;
               <Button
