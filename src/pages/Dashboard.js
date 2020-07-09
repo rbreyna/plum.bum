@@ -8,7 +8,7 @@ import GoalReached from "../components/WritingGoal/GoalReached.js";
 import DashboardUI from "../components/DashboardUI";
 import Grid from "@material-ui/core/Grid";
 
-function Dashboard() {
+function Dashboard(props) {
   const { user } = useAuth0();
   const [dbUser, setUser] = useState({});
 
@@ -30,7 +30,6 @@ function Dashboard() {
     apiUser
       .findUser(id)
       .then((res) => {
-        console.log(res);
         setUser({
           name: res.data.name,
           picture: res.data.image,

@@ -17,8 +17,8 @@ class WritingStreak extends Component {
     apiEntry
       .getStreak(localStorage.getItem("id"))
       .then((entries) => {
-        console.log(entries.data, "streaks");
-        console.log(entries.data.length, "streak");
+        /*         console.log(entries.data, "streaks");
+        console.log(entries.data.length, "streak"); */
         this.setState({
           streakLength: entries.data.length,
         });
@@ -26,7 +26,7 @@ class WritingStreak extends Component {
       .catch((err) => console.log(err));
   };
   render() {
-    return <div>{this.state.streakLength} days</div>;
+    return <>{this.state.streakLength} days</>;
   }
 }
 
