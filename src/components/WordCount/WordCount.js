@@ -72,7 +72,7 @@ export default class WordCount extends Component {
     };
 
     return (
-      <div className="wordcount">
+      <>
         <Form>
           <Row className="fluid" id="row-2">
             <Col sm={12}>
@@ -136,7 +136,7 @@ export default class WordCount extends Component {
             </Col>
           </Row>
         </Form>
-      </div>
+      </>
     );
   }
 }
