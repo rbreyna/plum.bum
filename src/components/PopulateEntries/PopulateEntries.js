@@ -152,7 +152,6 @@ class PopulateEntries extends Component {
   };
 
   render() {
-    console.log(this.state.entries);
     const myWork = {
       textAlign: "left",
     };
