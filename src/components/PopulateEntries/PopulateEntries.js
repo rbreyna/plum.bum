@@ -58,10 +58,24 @@ class PopulateEntries extends Component {
     // window.location.href = "/dashboard?id=" + currentEntry.id;
   };
 
-  downloadTxtFile = (id, title, words, text) => {
+  downloadTxtFile = (id, title, date, words, text) => {
     const element = document.createElement("a");
     const file = new Blob(
-      ["Title: ", title, "\n", "\n", "Total Words: ", words, "\n", "\n", text],
+      [
+        "Title: ",
+        title,
+        "\n",
+        "\n",
+        "Date Written: ",
+        date,
+        "\n",
+        "\n",
+        "Total Words: ",
+        words,
+        "\n",
+        "\n",
+        text,
+      ],
       {
         type: "text/plain",
       }
@@ -160,6 +174,10 @@ class PopulateEntries extends Component {
                               this.downloadTxtFile(
                                 entry._id,
                                 entry.title,
+                                entry.date.substring(
+                                  0,
+                                  entry.date.indexOf("T")
+                                ),
                                 entry.entryWords,
                                 entry.entryBody
                               )
