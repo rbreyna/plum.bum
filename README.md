@@ -12,32 +12,29 @@ That's where **plum.bum** comes in.
 
 Simple. Sign up, log in, and start writing.
 
+---
 
-# Team Members
+## Team Members
+
 Idalmys Maza
-
 Rashida zakvi
-
 Roy Reyna
-
 Shayda Bakhshi
 
-# Technologies Used
+## Technologies Used
 
 MERN Stack
-
 React-Bootstrap
-
 Moment
-
 Axios
-
 Material-UI
-
 MongoDB
-
 Auth0
 
-# Demo
+---
 
-Here's the link: https://plum-bum-app.herokuapp.com/
+## Demo
+
+Try it out here: https://plum-bum-app.herokuapp.com/
+
+You can also [view the **plum.bum** project presentation](https://docs.google.com/presentation/d/1Exr7nh_f4RVTwdmDoqSir09hhyR-m78po4opHTXSprE/edit?usp=sharing).
