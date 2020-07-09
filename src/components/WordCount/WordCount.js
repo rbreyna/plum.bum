@@ -11,6 +11,7 @@ export default class WordCount extends Component {
       title: "",
       entryBody: "",
       wordCount: 0,
+      entryID: "",
     };
     this.handleChange = this.handleChange.bind(this);
   }

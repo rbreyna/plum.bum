@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 import apiEntry from "../../utils/apiEntry";
 import CreateNewEntry from "./CreateNewEntry";
+import {
+  Modal,
+  Col,
+  Row,
+  FormControl,
+  InputGroup,
+  Form,
+} from "react-bootstrap";
+import DisplaySessionCount from "../WordCount/DisplaySessionCount";
+import SaveButton from "../WordCount/SaveButton";
 
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
@@ -21,7 +31,12 @@ class PopulateEntries extends Component {
     this.state = {
       entries: [],
       show: false,
+      entryBody: "",
+      entryTitle: "",
+      entryID: "",
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +49,11 @@ class PopulateEntries extends Component {
     arrayCount = entryBodyString.split(" ");
     let entryWords = arrayCount.length;
     return entryWords;
+  };
+
+  // Count Words
+  countWords = (text) => {
+    return text.split(/\s+|--+/).filter((word) => word.length > 0).length;
   };
 
   loadEntries = () => {
@@ -53,9 +73,54 @@ class PopulateEntries extends Component {
 
   handleEntryEdit = (event, id) => {
     event.preventDefault();
-    var currentEntry = this.state.entries;
-    console.log(currentEntry);
-    // window.location.href = "/dashboard?id=" + currentEntry.id;
+
+    apiEntry
+      .findbyEntry_id(id)
+      .then((res) => {
+        console.log(res);
+        this.setState({
+          show: true,
+          entryBody: res.data.entryBody,
+          entryTitle: res.data.title,
+          entryID: id,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  handleEditSave = (event) => {
+    event.preventDefault();
+    console.log(this.state);
+    const updatedEntry = {
+      title: this.state.entryTitle,
+      entryBody: this.state.entryBody,
+    };
+
+    console.log(updatedEntry);
+    apiEntry
+      .updateEntry(this.state.entryID, updatedEntry)
+      .then()
+      .catch((err) => console.log(err));
+
+    window.location.reload();
+  };
+
+  handleChange(event) {
+    const value = event.target.value;
+    this.setState({ [event.target.id]: value });
+  }
+
+  deleteEntry = (event, id) => {
+    event.preventDefault();
+
+    apiEntry
+      .deleteEntry(id)
+      .then((res) => console.log("entry deleted"))
+      .catch((err) => console.log(err));
+
+    window.location.reload();
   };
 
   downloadTxtFile = (id, title, date, words, text) => {
@@ -87,6 +152,7 @@ class PopulateEntries extends Component {
   };
 
   render() {
+    console.log(this.state.entries);
     const myWork = {
       textAlign: "left",
     };
@@ -127,92 +193,197 @@ class PopulateEntries extends Component {
       backgroundColor: "#dcedc1",
     };
 
-    return (
-      <Container className="PopulateEntries">
-        <CreateNewEntry />
-        <div style={myWork}>
-          {this.state.entries.map((entry) => {
-            return (
-              <>
-                <div style={entryReturn} key={entry._id}>
-                  {/* {console.log(entry)} */}
-                  <Accordion>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      aria-controls="panel1a-content"
-                      id="panel1a-header"
-                      style={accordionStyle}
-                    >
-                      <Typography>
-                        <h4>
-                          <MenuBookIcon fontSize="large" />
-                          &nbsp;
-                          <strong>{entry.title}</strong>
-                        </h4>
-                      </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Typography>
-                        <div style={buttonDiv}>
-                          <Button
-                            style={buttonEdit}
-                            variant="contained"
-                            color="secondary"
-                            onClick={this.handleEntryEdit}
-                            id={entry._id}
-                          >
-                            <CreateIcon />
-                            &nbsp; Edit
-                          </Button>{" "}
-                          &nbsp; &nbsp;
-                          <Button
-                            variant="contained"
-                            style={buttonDownload}
-                            value={(entry.title, entry.entryBody)}
-                            id={entry._id}
-                            onClick={() =>
-                              this.downloadTxtFile(
-                                entry._id,
-                                entry.title,
-                                entry.date.substring(
-                                  0,
-                                  entry.date.indexOf("T")
-                                ),
-                                entry.entryWords,
-                                entry.entryBody
-                              )
-                            }
-                          >
-                            <GetAppRounded />
-                            &nbsp; Download
-                          </Button>
-                          &nbsp; &nbsp;
-                          <Button
-                            variant="contained"
-                            style={buttonDelete}
-                            // value={(entry.title, entry.entryBody)}
-                            // id={entry._id}
-                          >
-                            <HighlightOffIcon />
-                          </Button>
-                        </div>
+    const formTextStyle = {
+      border: "#a8e6cf 1px solid",
+      fontFamily: "Montserrat Alternates",
+      fontSize: "1.2rem",
+      color: "black",
+      "&:focus": {
+        outline: "black",
+      },
+    };
 
-                        <p>
-                          <strong>Date Created:</strong>{" "}
-                          {entry.date.substring(0, entry.date.indexOf("T"))}
-                        </p>
-                        <p>
-                          <strong>Words:</strong> {entry.entryWords}
-                        </p>
-                      </Typography>
-                    </AccordionDetails>
-                  </Accordion>
-                </div>
-              </>
-            );
-          })}
-        </div>
-      </Container>
+    const camo = {
+      backgroundColor: "#a8e6cf",
+    };
+
+    return (
+      <>
+        <Container className="PopulateEntries">
+          <CreateNewEntry />
+          <div style={myWork}>
+            {this.state.entries.map((entry) => {
+              return (
+                <>
+                  <div style={entryReturn} key={entry._id}>
+                    <Accordion>
+                      <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        style={accordionStyle}
+                      >
+                        <Typography>
+                          <h4>
+                            <MenuBookIcon fontSize="large" />
+                            &nbsp;
+                            <strong>{entry.title}</strong>
+                          </h4>
+                        </Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <Typography>
+                          <div style={buttonDiv}>
+                            <Button
+                              style={buttonEdit}
+                              variant="contained"
+                              color="secondary"
+                              id={entry._id}
+                              onClick={(event) => {
+                                this.handleEntryEdit(event, entry._id);
+                              }}
+                            >
+                              <CreateIcon />
+                              &nbsp; Edit
+                            </Button>{" "}
+                            &nbsp; &nbsp;
+                            <Button
+                              variant="contained"
+                              style={buttonDownload}
+                              value={(entry.title, entry.entryBody)}
+                              id={entry._id}
+                              onClick={() =>
+                                this.downloadTxtFile(
+                                  entry._id,
+                                  entry.title,
+                                  entry.date.substring(
+                                    0,
+                                    entry.date.indexOf("T")
+                                  ),
+                                  entry.entryWords,
+                                  entry.entryBody
+                                )
+                              }
+                            >
+                              <GetAppRounded />
+                              &nbsp; Download
+                            </Button>
+                            &nbsp; &nbsp;
+                            <Button
+                              variant="contained"
+                              style={buttonDelete}
+                              id={entry._id}
+                              onClick={(event) =>
+                                this.deleteEntry(event, entry._id)
+                              }
+                            >
+                              <HighlightOffIcon />
+                              &nbsp; Delete
+                            </Button>
+                            <p>
+                              <strong>Date Created:</strong>{" "}
+                              {entry.date.substring(0, entry.date.indexOf("T"))}
+                            </p>
+                            <p>
+                              <strong>Words:</strong> {entry.entryWords}
+                            </p>
+                          </div>
+                        </Typography>
+                      </AccordionDetails>
+                    </Accordion>
+                  </div>
+                </>
+              );
+            })}
+          </div>
+        </Container>
+
+        <Modal
+          size="lg"
+          show={this.state.show}
+          onHide={() => {
+            this.setState({ show: false });
+          }}
+        >
+          <Modal.Header closeButton>
+            <h1>Edit Entry</h1>
+          </Modal.Header>
+
+          <Modal.Body>
+            <Form>
+              <Row className="fluid" id="row-2">
+                <Col sm={12}>
+                  <InputGroup>
+                    <br></br>
+                    <InputGroup id="passage-title" sm={12}>
+                      <InputGroup.Prepend>
+                        <InputGroup.Text
+                          style={{
+                            color: "black",
+                            fontFamily: "Montserrat Alternates",
+                            fontSize: "1.2rem",
+                            backgroundColor: "#dcedc1",
+                          }}
+                        >
+                          Title | Chapter
+                        </InputGroup.Text>
+                      </InputGroup.Prepend>
+                      <FormControl
+                        style={formTextStyle}
+                        id="entryTitle"
+                        value={this.state.entryTitle}
+                        name="title"
+                        type="text"
+                        className="form-control"
+                        onChange={this.handleChange}
+                      />
+                      <br></br>
+                    </InputGroup>
+                    <FormControl
+                      style={formTextStyle}
+                      id="entryBody"
+                      value={this.state.entryBody}
+                      name="bodyEntry"
+                      type="text"
+                      className="form-control"
+                      onChange={this.handleChange}
+                      as="textarea"
+                      aria-label="With textarea"
+                    />
+                  </InputGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col sm={4}>
+                  {/*                   <DisplaySessionCount
+                    wordCount={this.countWords(this.state.entryBody)}
+                  /> */}
+                </Col>
+                <Col sm={4}>
+                  <div
+                    style={camo}
+                    id="btns"
+                    onClick={this.handleSave}
+                    /*disabled={!this.state.formValid}*/
+                  >
+                    <SaveButton />
+                  </div>
+                </Col>
+              </Row>
+            </Form>
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.handleEditSave}
+            >
+              Save
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
     );
   }
 }
