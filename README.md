@@ -17,18 +17,27 @@ Simple. Sign up, log in, and start writing.
 ## Team Members
 
 Idalmys Maza
-Rashida zakvi
+
+Rashida Zakvi
+
 Roy Reyna
+
 Shayda Bakhshi
 
 ## Technologies Used
 
 MERN Stack
+
 React-Bootstrap
+
 Moment
+
 Axios
+
 Material-UI
+
 MongoDB
+
 Auth0
 
 ---
