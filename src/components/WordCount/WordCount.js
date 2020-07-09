@@ -108,7 +108,7 @@ export default class WordCount extends Component {
                   value={this.state.entryBody}
                   name="bodyEntry"
                   type="text"
-                  placeholder="''This is how you do it: you sit down at the keyboard and you put one word after another until it's done. It's that easy, and that hard.''  -  Neil Gaiman "
+                  placeholder="This is how you do it: you sit down at the keyboard and you put one word after another until it's done. It's that easy, and that hard.  -   Neil Gaiman"
                   className="form-control"
                   onChange={this.handleChange}
                   as="textarea"
