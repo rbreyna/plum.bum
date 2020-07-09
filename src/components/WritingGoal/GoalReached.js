@@ -42,8 +42,8 @@ export default class GoalReached extends Component {
   ResetGoalData = () => {
     const userGoal = {
       goal: 0,
-      goalDate: "",
-      startGoalDate: "",
+      goalDate: Date.now(),
+      startGoalDate: Date.now(),
     };
     apiUser.updateUser(localStorage.getItem("id"), userGoal).then((User) => {
       console.log(User);
@@ -87,16 +87,19 @@ export default class GoalReached extends Component {
 
     if (goalDate === todaysDate && this.state.totalWords >= this.state.goal) {
       this.setState({ showModal1: true });
+      this.ResetGoalData();
     } else if (
       goalDate === todaysDate &&
       this.state.totalWords < this.state.goal
     ) {
       this.setState({ showModal2: true });
+      this.ResetGoalData();
     } else if (
       goalDate !== todaysDate &&
       this.state.totalWords >= this.state.goal
     ) {
       this.setState({ showModal3: true });
+      this.ResetGoalData();
     } else {
       this.setState({ showModal4: true });
     }

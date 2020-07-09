@@ -33,7 +33,11 @@ export class WritingGoal extends Component {
       console.log(User);
     });
     window.location.reload();
+    console.log("todaynow ", this.state.startGoalDate)
   };
+
+
+
   render() {
     const setGoalBtn = {
       color: "white",
