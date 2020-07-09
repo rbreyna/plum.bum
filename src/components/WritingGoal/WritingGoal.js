@@ -30,10 +30,12 @@ export class WritingGoal extends Component {
       startGoalDate: this.state.startGoalDate,
     };
     apiUser.updateUser(localStorage.getItem("id"), userGoal).then((User) => {
-      console.log(User);
+      
     });
     window.location.reload();
+    
   };
+
   render() {
     const setGoalBtn = {
       color: "white",
