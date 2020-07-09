@@ -33,12 +33,11 @@ export default class DailyWordcount extends Component {
     apiEntry
       .findEntriesbydate(localStorage.getItem("id"))
       .then((entries) => {
-        console.log(entries.data);
         let entriesbydate = [];
 
         for (var i = 0; i < entries.data.length; i++) {
           entriesbydate.push(this.countWords(entries.data[i].entryBody));
-          console.log("words", entriesbydate);
+          //console.log("words", entriesbydate);
         }
 
         this.setState({
