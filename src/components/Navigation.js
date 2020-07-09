@@ -50,7 +50,6 @@ function Navigation() {
     apiUser
       .findUser(id)
       .then((res) => {
-        console.log(res);
         setUser({
           name: res.data.name,
           picture: res.data.image,
