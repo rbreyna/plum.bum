@@ -71,7 +71,6 @@ function Projects() {
           <Grid item xs={12}>
             <div className={classes.headerDiv}>
               <h1 className={classes.headerText}>
-                &nbsp; &nbsp;
                 {dbUser.name ? `${dbUser.name}'s Projects` : ""}
               </h1>
               <Image
