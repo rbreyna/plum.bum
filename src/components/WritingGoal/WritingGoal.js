@@ -61,8 +61,7 @@ export class WritingGoal extends Component {
           centered
         >
           <div className="modal-container">
-            <Form >
-
+            <Form>
               <Modal.Header closeButton>
                 <Modal.Title
                   style={{ fontFamily: "Ribeye Marrow", fontSize: "3rem" }}
@@ -143,7 +142,6 @@ export class WritingGoal extends Component {
                 </div>
               </Modal.Body>
               <Modal.Footer>
-                {/* roy is working to save the data to the database */}
                 <Button
                   variant="contained"
                   color="primary"
