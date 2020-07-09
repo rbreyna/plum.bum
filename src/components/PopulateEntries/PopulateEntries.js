@@ -223,16 +223,16 @@ class PopulateEntries extends Component {
                         id="panel1a-header"
                         style={accordionStyle}
                       >
-                        <Typography>
+                        <div>
                           <h4>
                             <MenuBookIcon fontSize="large" />
                             &nbsp;
                             <strong>{entry.title}</strong>
                           </h4>
-                        </Typography>
+                        </div>
                       </AccordionSummary>
                       <AccordionDetails>
-                        <Typography>
+                        <div>
                           <div style={buttonDiv}>
                             <Button
                               style={buttonEdit}
@@ -280,15 +280,15 @@ class PopulateEntries extends Component {
                               <HighlightOffIcon />
                               &nbsp; Delete
                             </Button>
-                            <p>
-                              <strong>Date Created:</strong>{" "}
-                              {entry.date.substring(0, entry.date.indexOf("T"))}
-                            </p>
-                            <p>
-                              <strong>Words:</strong> {entry.entryWords}
-                            </p>
                           </div>
-                        </Typography>
+                          <p>
+                            <strong>Date Created:</strong>{" "}
+                            {entry.date.substring(0, entry.date.indexOf("T"))}
+                          </p>
+                          <p>
+                            <strong>Words:</strong> {entry.entryWords}
+                          </p>
+                        </div>
                       </AccordionDetails>
                     </Accordion>
                   </div>
