@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./Dashboard.css";
 import { Container, Image } from "react-bootstrap";
 import { useAuth0 } from "../contexts/auth0-context";
 import { WritingGoal } from "../components/WritingGoal/WritingGoal.js";

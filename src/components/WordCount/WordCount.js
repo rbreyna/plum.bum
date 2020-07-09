@@ -54,22 +54,27 @@ export default class WordCount extends Component {
       });
     }
   };
+
   render() {
     const camo = {
       backgroundColor: "#a8e6cf",
     };
 
-    const formStyle = {
+    const formTextStyle = {
+      border: "#a8e6cf 1px solid",
       fontFamily: "Montserrat Alternates",
       fontSize: "1.2rem",
       color: "black",
+      "&:focus": {
+        outline: "black",
+      },
     };
 
     return (
       <div className="wordcount">
         <Form>
           <Row className="fluid" id="row-2">
-            <Col className="content dash3" sm={12}>
+            <Col sm={12}>
               <InputGroup>
                 <br></br>
                 <InputGroup id="passage-title" sm={12}>
@@ -86,7 +91,7 @@ export default class WordCount extends Component {
                     </InputGroup.Text>
                   </InputGroup.Prepend>
                   <FormControl
-                    style={formStyle}
+                    style={formTextStyle}
                     id="title"
                     value={this.state.title}
                     placeholder="Enter the name of your chapter or title of your project"
@@ -98,7 +103,7 @@ export default class WordCount extends Component {
                   <br></br>
                 </InputGroup>
                 <FormControl
-                  style={formStyle}
+                  style={formTextStyle}
                   id="entryBody"
                   value={this.state.entryBody}
                   name="bodyEntry"
