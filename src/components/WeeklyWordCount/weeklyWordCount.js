@@ -32,14 +32,14 @@ export default class WeeklyWordcount extends Component {
     apiEntry
       .findEntriesbyweek(localStorage.getItem("id"))
       .then((entries) => {
-        console.log(entries.data);
+        //console.log(entries.data);
         let entriesbydate = [];
 
-        console.log(entries.data.length, "length");
+        //console.log(entries.data.length, "length");
         for (var i = 0; i < entries.data.length; i++) {
           entriesbydate.push(this.countWords(entries.data[i].entryBody));
 
-          console.log("weeks", entriesbydate);
+          //console.log("weeks", entriesbydate);
         }
 
         this.setState({

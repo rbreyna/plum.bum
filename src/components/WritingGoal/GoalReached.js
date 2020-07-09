@@ -64,7 +64,6 @@ export default class GoalReached extends Component {
       });
 
     apiEntry.getgoaldata(localStorage.getItem("id")).then((entries) => {
-      console.log(entries.data, "goal");
       let entriesbydate = [];
       if (entries.data.length > 0) {
         for (var i = 0; i < entries.data.length; i++) {

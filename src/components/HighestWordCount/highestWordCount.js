@@ -32,15 +32,13 @@ export default class highestWordCount extends Component {
     apiEntry
       .findEntries(localStorage.getItem("id"))
       .then((entries) => {
-        console.log("Id is " + localStorage.getItem("id"));
-        console.log(entries.data);
         let highestentries = [];
 
-        console.log(entries.data.length, "length");
+        // console.log(entries.data.length, "length");
         for (var i = 0; i < entries.data.length; i++) {
           highestentries.push(this.countWords(entries.data[i].entryBody));
 
-          console.log("Highestwords", highestentries);
+          //console.log("Highestwords", highestentries);
         }
 
         if (highestentries.length > 0) {
