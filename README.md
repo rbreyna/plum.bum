@@ -13,4 +13,5 @@ That's where **plum.bum** comes in.
 Simple. Sign up, log in, and start writing.
 
 Here's the link: https://plum-bum-app.herokuapp.com/
-Here's the link for presentation: https://docs.google.com/presentation/d/1Exr7nh_f4RVTwdmDoqSir09hhyR-m78po4opHTXSprE/edit?usp=sharing
+
+
