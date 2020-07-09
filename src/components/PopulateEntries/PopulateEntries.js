@@ -143,68 +143,65 @@ class PopulateEntries extends Component {
                       id="panel1a-header"
                       style={accordionStyle}
                     >
-                      <Typography>
-                        <h4>
-                          <MenuBookIcon fontSize="large" />
-                          &nbsp;
-                          <strong>{entry.title}</strong>
-                        </h4>
-                      </Typography>
+                      {/* <Typography> */}
+                      <h4>
+                        <MenuBookIcon fontSize="large" />
+                        &nbsp;
+                        <strong>{entry.title}</strong>
+                      </h4>
+                      {/* </Typography> */}
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography>
-                        <div style={buttonDiv}>
-                          <Button
-                            style={buttonEdit}
-                            variant="contained"
-                            color="secondary"
-                            onClick={this.handleEntryEdit}
-                            id={entry._id}
-                          >
-                            <CreateIcon />
-                            &nbsp; Edit
-                          </Button>{" "}
-                          &nbsp; &nbsp;
-                          <Button
-                            variant="contained"
-                            style={buttonDownload}
-                            value={(entry.title, entry.entryBody)}
-                            id={entry._id}
-                            onClick={() =>
-                              this.downloadTxtFile(
-                                entry._id,
-                                entry.title,
-                                entry.date.substring(
-                                  0,
-                                  entry.date.indexOf("T")
-                                ),
-                                entry.entryWords,
-                                entry.entryBody
-                              )
-                            }
-                          >
-                            <GetAppRounded />
-                            &nbsp; Download
-                          </Button>
-                          &nbsp; &nbsp;
-                          <Button
-                            variant="contained"
-                            style={buttonDelete}
-                            // value={(entry.title, entry.entryBody)}
-                            // id={entry._id}
-                          >
-                            <HighlightOffIcon />
-                          </Button>
-                        </div>
+                      {/* <Typography> */}
+                      <div style={buttonDiv}>
+                        <Button
+                          style={buttonEdit}
+                          variant="contained"
+                          color="secondary"
+                          onClick={this.handleEntryEdit}
+                          id={entry._id}
+                        >
+                          <CreateIcon />
+                          &nbsp; Edit
+                        </Button>{" "}
+                        &nbsp; &nbsp;
+                        <Button
+                          variant="contained"
+                          style={buttonDownload}
+                          value={(entry.title, entry.entryBody)}
+                          id={entry._id}
+                          onClick={() =>
+                            this.downloadTxtFile(
+                              entry._id,
+                              entry.title,
+                              entry.date.substring(0, entry.date.indexOf("T")),
+                              entry.entryWords,
+                              entry.entryBody
+                            )
+                          }
+                        >
+                          <GetAppRounded />
+                          &nbsp; Download
+                        </Button>
+                        &nbsp; &nbsp;
+                        <Button
+                          variant="contained"
+                          style={buttonDelete}
+                          // value={(entry.title, entry.entryBody)}
+                          // id={entry._id}
+                        >
+                          <HighlightOffIcon />
+                        </Button>
+                      </div>
 
-                        <p>
-                          <strong>Date Created:</strong>{" "}
-                          {entry.date.substring(0, entry.date.indexOf("T"))}
-                        </p>
-                        <p>
-                          <strong>Words:</strong> {entry.entryWords}
-                        </p>
-                      </Typography>
+                      <p>
+                        <strong>Date Created:</strong>{" "}
+                        {entry.date.substring(0, entry.date.indexOf("T"))}
+                      </p>
+                      <p>
+                        <strong>Words:</strong> {entry.entryWords}
+                      </p>
+                      {/* </Typography> */}
                     </AccordionDetails>
                   </Accordion>
                 </div>
