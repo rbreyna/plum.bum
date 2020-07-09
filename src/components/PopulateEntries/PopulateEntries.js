@@ -33,7 +33,10 @@ class PopulateEntries extends Component {
       show: false,
       entryBody: "",
       entryTitle: "",
+      entryID: "",
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -80,11 +83,38 @@ class PopulateEntries extends Component {
           show: true,
           entryBody: res.data.entryBody,
           entryTitle: res.data.title,
+          entryID: id,
         });
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  handleEditSave = (event) => {
+    event.preventDefault();
+    console.log(this.state);
+    const updatedEntry = {
+      title: this.state.entryTitle,
+      entryBody: this.state.entryBody,
+    };
+
+    console.log(updatedEntry);
+    apiEntry
+      .updateEntry(this.state.entryID, updatedEntry)
+      .then()
+      .catch((err) => console.log(err));
+
+    window.location.reload();
+  };
+
+  handleChange(event) {
+    const value = event.target.value;
+    this.setState({ [event.target.id]: value });
+  }
+
+  deleteEntry = () => {
+    console.log("Delete hit");
   };
 
   downloadTxtFile = (id, title, date, words, text) => {
@@ -237,20 +267,19 @@ class PopulateEntries extends Component {
                             <Button
                               variant="contained"
                               style={buttonDelete}
-                              // value={(entry.title, entry.entryBody)}
-                              // id={entry._id}
+                              id={entry._id}
+                              onClick={this.deleteEntry}
                             >
                               <HighlightOffIcon />
                             </Button>
+                            <p>
+                              <strong>Date Created:</strong>{" "}
+                              {entry.date.substring(0, entry.date.indexOf("T"))}
+                            </p>
+                            <p>
+                              <strong>Words:</strong> {entry.entryWords}
+                            </p>
                           </div>
-
-                          <p>
-                            <strong>Date Created:</strong>{" "}
-                            {entry.date.substring(0, entry.date.indexOf("T"))}
-                          </p>
-                          <p>
-                            <strong>Words:</strong> {entry.entryWords}
-                          </p>
                         </Typography>
                       </AccordionDetails>
                     </Accordion>
@@ -293,7 +322,7 @@ class PopulateEntries extends Component {
                       </InputGroup.Prepend>
                       <FormControl
                         style={formTextStyle}
-                        id="title"
+                        id="entryTitle"
                         value={this.state.entryTitle}
                         name="title"
                         type="text"
@@ -318,9 +347,9 @@ class PopulateEntries extends Component {
               </Row>
               <Row>
                 <Col sm={4}>
-                  <DisplaySessionCount
+                  {/*                   <DisplaySessionCount
                     wordCount={this.countWords(this.state.entryBody)}
-                  />
+                  /> */}
                 </Col>
                 <Col sm={4}>
                   <div
@@ -340,10 +369,7 @@ class PopulateEntries extends Component {
             <Button
               variant="contained"
               color="primary"
-              onClick={() => {
-                this.setState({ show: false });
-                this.updateUserInfo();
-              }}
+              onClick={this.handleEditSave}
             >
               Save
             </Button>
