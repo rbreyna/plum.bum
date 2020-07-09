@@ -84,7 +84,7 @@ export default class WordCount extends Component {
                         color: "black",
                         fontFamily: "Montserrat Alternates",
                         fontSize: "1.2rem",
-                        backgroundColor: "#ffd3b6",
+                        backgroundColor: "#dcedc1",
                       }}
                     >
                       Title | Chapter
@@ -94,7 +94,7 @@ export default class WordCount extends Component {
                     style={formTextStyle}
                     id="title"
                     value={this.state.title}
-                    placeholder="Enter the name of your chapter or title of your project"
+                    placeholder="Enter the title of your project or chapter"
                     name="title"
                     type="text"
                     className="form-control"
