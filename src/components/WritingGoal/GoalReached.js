@@ -110,7 +110,9 @@ export default class GoalReached extends Component {
     const modalStyle = {
       backgroundColor: "#ffd3b6",
       fontFamily: "Ribeye Marrow",
+      fontSize: "1.25rem",
     };
+
     const modalHeaderStyle = {
       fontFamily: "Ribeye Marrow",
       fontSize: "2rem",
@@ -139,8 +141,8 @@ export default class GoalReached extends Component {
             AWESOME!!{" "}
           </Modal.Header>
           <Modal.Body style={modalStyle}>
-            Congrats! You have reached your goal! <br /> Click Writing Goal To
-            Set a New Goal.
+            Congrats! You've reached your goal! <br /> You can set a new goal at
+            any time.
           </Modal.Body>
         </Modal>
 
@@ -154,7 +156,7 @@ export default class GoalReached extends Component {
             Don't Be Discouraged
           </Modal.Header>
           <Modal.Body style={modalStyle}>
-            O You Can Do It!!! Reset your Goal!
+            You can do it!! Reset your goal and keep writing.
           </Modal.Body>
         </Modal>
 
@@ -165,10 +167,11 @@ export default class GoalReached extends Component {
           }}
         >
           <Modal.Header style={modalHeaderStyle} closeButton>
-            Your Head Of Your Game!!!!
+            You're Ahead Of Your Game!!!!
           </Modal.Header>
           <Modal.Body style={modalStyle}>
-            WOW!!! you have reached your goal before the goal date!
+            WOW!!! You've reached your goal early! Celebrate! <br />
+            You can also set a new goal at any time.
           </Modal.Body>
         </Modal>
 
@@ -182,8 +185,11 @@ export default class GoalReached extends Component {
             Keep On Writing....
           </Modal.Header>
           <Modal.Body style={modalStyle}>
-            You still have 'TIME' to reach your goal! <br /> Words written so
-            far: {this.state.totalWords}
+            You still have time to reach your goal! <br />
+            You've written <strong>{this.state.totalWords}</strong> words so
+            far; <br /> only{" "}
+            <strong>{this.state.goal - this.state.totalWords}</strong> words
+            left!
           </Modal.Body>
         </Modal>
       </>

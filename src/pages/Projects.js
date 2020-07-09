@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // Files/Components
 import { useAuth0 } from "../contexts/auth0-context";
 import PopulateEntries from "../components/PopulateEntries/PopulateEntries.js";
+import apiUser from "../utils/apiUser";
 
 // Material UI
 import { makeStyles } from "@material-ui/core/styles";
@@ -30,11 +31,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Dashboard() {
+function Projects() {
   const { user } = useAuth0();
-  const picture = user ? user.picture : null;
+  const [dbUser, setUser] = useState({});
+
+  //Grab ID from Auth0 user to make queries to the database
+  const userID = user ? user.sub.split("|")[1] : null;
+
+  //When an ID is found, a query is made to MongoDB to grab the record for that user
+  useEffect(() => {
+    if (userID) {
+      loadUserInfo(userID);
+    }
+    return () => {};
+  }, [user, userID]);
+
+  //API call to grab record
+  const loadUserInfo = (id) => {
+    apiUser
+      .findUser(id)
+      .then((res) => {
+        console.log(res);
+        setUser({
+          name: res.data.name,
+          picture: res.data.image,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const classes = useStyles();
-  const name = user ? user.name : null;
 
   return (
     <>
@@ -43,13 +71,11 @@ function Dashboard() {
           <Grid item xs={12}>
             <div className={classes.headerDiv}>
               <h1 className={classes.headerText}>
-                {" "}
-                &nbsp; &nbsp;
-                {user ? `${user.name}'s` : null} Projects
+                {dbUser.name ? `${dbUser.name}'s Projects` : ""}
               </h1>
               <Image
-                alt={name}
-                src={picture}
+                alt={dbUser.name}
+                src={dbUser.picture}
                 width={100}
                 height={100}
                 roundedCircle
@@ -67,4 +93,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Projects;

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./Dashboard.css";
 import { Container, Image } from "react-bootstrap";
 import { useAuth0 } from "../contexts/auth0-context";
 import { WritingGoal } from "../components/WritingGoal/WritingGoal.js";
@@ -55,7 +54,9 @@ function Dashboard() {
 
   return (
     <>
-      <h1 style={headerStyles}>{dbUser.name}'s Dashboard</h1>
+      <h1 style={headerStyles}>
+        {dbUser.name ? `${dbUser.name}'s Dashboard` : ""}
+      </h1>
       <Container>
         <div>
           <Grid container spacing={3}>

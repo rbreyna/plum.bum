@@ -5,7 +5,6 @@ import CreateNewEntry from "./CreateNewEntry";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import CreateIcon from "@material-ui/icons/Create";
-import VisibilityIcon from "@material-ui/icons/Visibility";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import GetAppRounded from "@material-ui/icons/GetAppRounded";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
