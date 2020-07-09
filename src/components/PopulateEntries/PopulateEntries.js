@@ -73,7 +73,6 @@ class PopulateEntries extends Component {
 
   handleEntryEdit = (event, id) => {
     event.preventDefault();
-    var currentEntry = this.state.entries;
 
     apiEntry
       .findbyEntry_id(id)
@@ -113,8 +112,15 @@ class PopulateEntries extends Component {
     this.setState({ [event.target.id]: value });
   }
 
-  deleteEntry = () => {
-    console.log("Delete hit");
+  deleteEntry = (event, id) => {
+    event.preventDefault();
+
+    apiEntry
+      .deleteEntry(id)
+      .then((res) => console.log("entry deleted"))
+      .catch((err) => console.log(err));
+
+    window.location.reload();
   };
 
   downloadTxtFile = (id, title, date, words, text) => {
@@ -210,7 +216,6 @@ class PopulateEntries extends Component {
               return (
                 <>
                   <div style={entryReturn} key={entry._id}>
-                    {/* {console.log(entry)} */}
                     <Accordion>
                       <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
@@ -268,9 +273,12 @@ class PopulateEntries extends Component {
                               variant="contained"
                               style={buttonDelete}
                               id={entry._id}
-                              onClick={this.deleteEntry}
+                              onClick={(event) =>
+                                this.deleteEntry(event, entry._id)
+                              }
                             >
                               <HighlightOffIcon />
+                              &nbsp; Delete
                             </Button>
                             <p>
                               <strong>Date Created:</strong>{" "}
