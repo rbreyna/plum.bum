@@ -7,7 +7,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import TodayIcon from "@material-ui/icons/Today";
 import DateRangeIcon from "@material-ui/icons/DateRange";
-import EventAvailableIcon from "@material-ui/icons/EventAvailable";
+import FlareRoundedIcon from "@material-ui/icons/FlareRounded";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import Divider from "@material-ui/core/Divider";
 import WritingStreak from "../components/WritingStreak/WritingStreak.js";
@@ -20,11 +20,10 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     maxWidth: 360,
     marginBottom: "40px",
-    backgroundColor: theme.palette.secondary,
   },
   avatar: {
-    color: "#ffd3b6",
-    backgroundColor: "#88498f",
+    color: "#ffaaa5",
+    backgroundColor: "#352054",
   },
 }));
 
@@ -73,7 +72,7 @@ export default function InsetDividers() {
       <ListItem>
         <ListItemAvatar>
           <Avatar className={classes.avatar}>
-            <EventAvailableIcon />
+            <FlareRoundedIcon />
           </Avatar>
         </ListItemAvatar>
         <ListItemText

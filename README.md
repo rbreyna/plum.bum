@@ -11,3 +11,5 @@ That's where **plum.bum** comes in.
 ## How do I use plum.bum?
 
 Simple. Sign up, log in, and start writing.
+
+Here's the link: https://plum-bum-app.herokuapp.com/
