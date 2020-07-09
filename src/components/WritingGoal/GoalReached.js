@@ -186,8 +186,10 @@ export default class GoalReached extends Component {
           </Modal.Header>
           <Modal.Body style={modalStyle}>
             You still have time to reach your goal! <br />
-            You've written <strong>{this.state.totalWords}</strong> so far;{" "}
-            <br /> only {this.state.goal - this.state.totalWords} words left!
+            You've written <strong>{this.state.totalWords}</strong> words so
+            far; <br /> only{" "}
+            <strong>{this.state.goal - this.state.totalWords}</strong> words
+            left!
           </Modal.Body>
         </Modal>
       </>
